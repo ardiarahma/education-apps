@@ -1,7 +1,7 @@
 package com.ardiarahma.education.models.responses;
 
-import com.ardiarahma.educationapplication.models.Token;
-import com.ardiarahma.educationapplication.models.User;
+import com.ardiarahma.education.models.Token;
+import com.ardiarahma.education.models.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
