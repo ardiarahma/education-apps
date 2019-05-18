@@ -11,9 +11,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ardiarahma.education.R;
-import com.ardiarahma.education.activities.BanksoalActivity;
-import com.ardiarahma.education.activities.EbookActivity;
-import com.ardiarahma.education.activities.GameActivity;
+import com.ardiarahma.education.activities.child.BanksoalActivity;
+import com.ardiarahma.education.activities.child.EbookActivity;
+import com.ardiarahma.education.activities.child.GameActivity;
 import com.ardiarahma.education.models.User;
 import com.ardiarahma.education.networks.PreferencesConfig;
 

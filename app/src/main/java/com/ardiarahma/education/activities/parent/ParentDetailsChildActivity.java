@@ -1,4 +1,4 @@
-package com.ardiarahma.education.activities;
+package com.ardiarahma.education.activities.parent;
 
 import android.app.ProgressDialog;
 import android.content.Intent;

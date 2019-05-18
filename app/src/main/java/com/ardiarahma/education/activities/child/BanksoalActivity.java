@@ -1,4 +1,4 @@
-package com.ardiarahma.education.activities;
+package com.ardiarahma.education.activities.child;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,13 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ardiarahma.education.R;
-import com.ardiarahma.education.adapters.GameViewPagerAdapter;
-import com.ardiarahma.education.fragments.FragmentGameArcade;
-import com.ardiarahma.education.fragments.FragmentGameClassic;
-import com.ardiarahma.education.fragments.FragmentGamePlatform;
-import com.ardiarahma.education.fragments.FragmentGamePuzzle;
-import com.ardiarahma.education.fragments.FragmentGameRacing;
-import com.ardiarahma.education.fragments.FragmentGameShooter;
+import com.ardiarahma.education.adapters.BanksoalViewPagerAdapter;
+import com.ardiarahma.education.fragments.FragmentBanksoalSubject7;
+import com.ardiarahma.education.fragments.FragmentBanksoalSubject8;
+import com.ardiarahma.education.fragments.FragmentBanksoalSubject9;
 import com.ardiarahma.education.models.Token;
 import com.ardiarahma.education.models.User;
 import com.ardiarahma.education.models.responses.ResponseLog;
@@ -29,12 +26,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GameActivity extends AppCompatActivity {
+public class BanksoalActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
-    private ViewPager gameViewPager;
-    private GameViewPagerAdapter adapter;
-    public ImageButton toolbar_game;
+    private ViewPager banksoalViewPager;
+    private BanksoalViewPagerAdapter adapter;
     private TextView tvUserid, tvFitur;
 
     User user = PreferencesConfig.getInstance(this).getUser();
@@ -45,39 +41,33 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_banksoal);
 
-        this.setTitle("Permainan");
+        tabLayout = (TabLayout) findViewById(R.id.tablayout_banksoal);
+        banksoalViewPager = (ViewPager) findViewById(R.id.viewPager_class);
+        adapter = new BanksoalViewPagerAdapter(getSupportFragmentManager());
 
-        tabLayout = findViewById(R.id.tablayout_game);
-        gameViewPager = findViewById(R.id.viewPager_game);
-        adapter = new GameViewPagerAdapter(getSupportFragmentManager());
+        adapter.AddFragment(new FragmentBanksoalSubject7(), "VII");
+        adapter.AddFragment(new FragmentBanksoalSubject8(), "VIII");
+        adapter.AddFragment(new FragmentBanksoalSubject9(), "IX");
 
-        adapter.AddFragment(new FragmentGameArcade(), "Arcade");
-        adapter.AddFragment(new FragmentGameClassic(), "Classic");
-        adapter.AddFragment(new FragmentGamePlatform(), "Platform");
-        adapter.AddFragment(new FragmentGamePuzzle(), "Puzzle");
-        adapter.AddFragment(new FragmentGameRacing(), "Racing");
-        adapter.AddFragment(new FragmentGameShooter(), "Shooter");
-
-        gameViewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(gameViewPager);
+        banksoalViewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(banksoalViewPager);
 
         tvUserid = findViewById(R.id.userid);
         tvFitur = findViewById(R.id.fitur);
 
         tvUserid.setText(String.valueOf(user.getId()));
-        tvFitur.setText("Mini Games");
+        tvFitur.setText("Bank Soal");
 
-        ImageButton toolbar_game = (ImageButton) findViewById(R.id.toolbar_game);
-        toolbar_game.setOnClickListener(new View.OnClickListener() {
+        ImageButton toolbar_banksoal = (ImageButton) findViewById(R.id.toolbar_banksoal);
+        toolbar_banksoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GameActivity.this, MainActivity.class);
+                Intent intent = new Intent(BanksoalActivity.this, EbookActivity.MainActivity.class);
                 startActivity(intent);
             }
         });
-
     }
 
     protected void onResume() {
@@ -92,7 +82,7 @@ public class GameActivity extends AppCompatActivity {
         Call<ResponseLog> call = RetrofitClient
                 .getInstance()
                 .getApi()
-                .log_games(token, user_id, fitur);
+                .log_task(token, user_id, fitur);
 
         call.enqueue(new Callback<ResponseLog>() {
             @Override
@@ -114,7 +104,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseLog> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
-                Toast.makeText(GameActivity.this, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(BanksoalActivity.this, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
             }
         });
     }

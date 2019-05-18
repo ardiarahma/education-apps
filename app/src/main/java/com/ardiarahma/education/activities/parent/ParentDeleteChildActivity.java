@@ -1,4 +1,4 @@
-package com.ardiarahma.education.activities;
+package com.ardiarahma.education.activities.parent;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.ardiarahma.education.R;
 import com.ardiarahma.educationapplication.R;
 import com.ardiarahma.educationapplication.models.Token;
 import com.ardiarahma.educationapplication.models.response.ResponseDelete;
@@ -73,5 +74,14 @@ public class ParentDeleteChildActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+    }
+
+    public static class ForgetPasswordActivity extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_forget_password);
+        }
     }
 }

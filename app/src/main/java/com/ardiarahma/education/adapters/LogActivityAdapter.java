@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ardiarahma.education.R;
-import com.ardiarahma.education.activities.ResultActivitiesReportActivity;
+import com.ardiarahma.education.activities.parent.ParentMainActivity;
 import com.ardiarahma.education.models.Siswa;
 
 import java.util.List;
@@ -45,7 +45,7 @@ public class LogActivityAdapter extends RecyclerView.Adapter<LogActivityAdapter.
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ResultActivitiesReportActivity.class);
+                Intent intent = new Intent(context, ParentMainActivity.ResultActivitiesReportActivity.class);
                 intent.putExtra("childId", holder.id);
                 intent.putExtra("user_id", holder.user_id);
                 intent.putExtra("childName", holder.nama);

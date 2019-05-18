@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ardiarahma.education.R;
-import com.ardiarahma.education.activities.BanksoalShelvesActivity;
+import com.ardiarahma.education.activities.child.BanksoalShelvesActivity;
 import com.ardiarahma.education.models.BanksoalSubject;
 
 import java.util.List;

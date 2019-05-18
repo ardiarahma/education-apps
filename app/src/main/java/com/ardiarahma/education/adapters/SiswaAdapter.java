@@ -15,8 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ardiarahma.education.R;
-import com.ardiarahma.education.activities.ParentDetailsChildActivity;
-import com.ardiarahma.education.activities.ParentEditChildActivity;
+import com.ardiarahma.education.activities.parent.ParentDetailsChildActivity;
+import com.ardiarahma.education.activities.parent.ParentEditChildActivity;
 import com.ardiarahma.education.models.Siswa;
 import com.ardiarahma.education.models.Token;
 import com.ardiarahma.education.models.responses.ResponseDelete;

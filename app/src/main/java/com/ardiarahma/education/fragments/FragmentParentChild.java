@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.ardiarahma.education.R;
-import com.ardiarahma.education.activities.ParentRegisterChildActivity;
+import com.ardiarahma.education.activities.parent.ParentRegisterChildActivity;
 import com.ardiarahma.education.adapters.SiswaAdapter;
 import com.ardiarahma.education.models.Siswa;
 import com.ardiarahma.education.models.Token;

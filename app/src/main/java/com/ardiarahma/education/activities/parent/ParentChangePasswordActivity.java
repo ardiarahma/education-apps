@@ -1,6 +1,5 @@
-package com.ardiarahma.education.activities;
+package com.ardiarahma.education.activities.parent;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.HideReturnsTransformationMethod;
@@ -14,24 +13,26 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.ardiarahma.education.R;
-import com.ardiarahma.education.models.Token;
-import com.ardiarahma.education.models.responses.ResponsePassword;
-import com.ardiarahma.education.networks.PreferencesConfig;
-import com.ardiarahma.education.networks.RetrofitClient;
+import com.ardiarahma.educationapplication.R;
+import com.ardiarahma.educationapplication.models.Token;
+import com.ardiarahma.educationapplication.models.User;
+import com.ardiarahma.educationapplication.models.response.ResponsePassword;
+import com.ardiarahma.educationapplication.network.PreferencesConfig;
+import com.ardiarahma.educationapplication.network.RetrofitClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ParentChangePasswordChildActivity extends AppCompatActivity {
+public class ParentChangePasswordActivity extends AppCompatActivity {
 
     EditText etoldPassword, etpassword, etpassword_confirmation;
     ImageButton toolbar_password;
     Button save_pass;
     CheckBox check_pass;
 
-    Token auth = PreferencesConfig.getInstance(ParentChangePasswordChildActivity.this).getToken();
+    User user = PreferencesConfig.getInstance(this).getUser();
+    Token auth = PreferencesConfig.getInstance(ParentChangePasswordActivity.this).getToken();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +75,7 @@ public class ParentChangePasswordChildActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String token = "Bearer " + auth.getToken();
-                Intent intent = getIntent();
-                int user_id = intent.getIntExtra("childId", 0);
+                int user_id = user.getId();
 
                 String oldPassword = etoldPassword.getText().toString().trim();
                 String password = etpassword.getText().toString().trim();
@@ -93,7 +93,7 @@ public class ParentChangePasswordChildActivity extends AppCompatActivity {
                         if (response.isSuccessful()){
                             if (responsePassword.getStatus().equals("success")){
                                 Log.i("debug", "onResponse : SUCCESSFUL");
-                                Toast.makeText(ParentChangePasswordChildActivity.this, "Password berhasil diganti", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ParentChangePasswordActivity.this, "Password berhasil diganti", Toast.LENGTH_LONG).show();
                                 onBackPressed();
                             }else {
                                 Log.i("debug", "onResponse : FAILED");
@@ -104,7 +104,7 @@ public class ParentChangePasswordChildActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<ResponsePassword> call, Throwable t) {
                         Log.e("debug", "onFailure: ERROR > " + t.getMessage());
-                        Toast.makeText(ParentChangePasswordChildActivity.this, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ParentChangePasswordActivity.this, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
                     }
                 });
             }

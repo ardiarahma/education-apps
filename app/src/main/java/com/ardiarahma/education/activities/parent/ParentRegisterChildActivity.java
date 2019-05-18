@@ -1,15 +1,18 @@
-package com.ardiarahma.education.activities;
+package com.ardiarahma.education.activities.parent;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -21,10 +24,11 @@ import com.ardiarahma.education.models.District;
 import com.ardiarahma.education.models.Province;
 import com.ardiarahma.education.models.Regency;
 import com.ardiarahma.education.models.Token;
+import com.ardiarahma.education.models.User;
 import com.ardiarahma.education.models.responses.ResponseDistrict;
 import com.ardiarahma.education.models.responses.ResponseProvince;
 import com.ardiarahma.education.models.responses.ResponseRegency;
-import com.ardiarahma.education.models.responses.ResponseUpdateAnak;
+import com.ardiarahma.education.models.responses.ResponseRegisterAnak;
 import com.ardiarahma.education.networks.PreferencesConfig;
 import com.ardiarahma.education.networks.RetrofitClient;
 
@@ -36,13 +40,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ParentEditChildActivity extends AppCompatActivity {
+public class ParentRegisterChildActivity extends AppCompatActivity {
 
-    EditText etNama, etEmail, etUsername, etSekolah;
+    EditText etNama, etEmail, etUsername, etPassword, etSekolah;
     Spinner spGender, spProvince, spCity, spDistrict, spClass;
+    TextView prov, city, kecamatan;
     Context context;
-    Button bPassword, bUpdateAnak;
-    TextView prov, city, kecamatan, user_id;
     ProgressDialog loading;
 
     ArrayList<Province> provinces;
@@ -54,19 +57,20 @@ public class ParentEditChildActivity extends AppCompatActivity {
     ArrayList<District> districts;
     ArrayAdapter<District> adapterDistrict;
 
+    User user = PreferencesConfig.getInstance(this).getUser();
     Token auth = PreferencesConfig.getInstance(this).getToken();
     String token = "Bearer " + auth.getToken();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parent_child_edit);
+        setContentView(R.layout.activity_register_child);
 
         context = this;
         etNama = findViewById(R.id.namaSiswa);
         etEmail = findViewById(R.id.emailSiswa);
         etUsername = findViewById(R.id.usernameSiswa);
-        bPassword = findViewById(R.id.passwordSiswa);
+        etPassword = findViewById(R.id.passwordSiswa);
         spGender = findViewById(R.id.spinner_gender);
         spProvince = findViewById(R.id.spinner_province);
         spCity = findViewById(R.id.spinner_city);
@@ -76,41 +80,30 @@ public class ParentEditChildActivity extends AppCompatActivity {
         prov = findViewById(R.id.prov);
         city = findViewById(R.id.city);
         kecamatan = findViewById(R.id.district);
-        user_id = findViewById(R.id.id_anak);
 
-
-        Intent intent = getIntent();
-        int id = intent.getIntExtra("childId", 0);
-        String name = intent.getStringExtra("childName");
-        String email = intent.getStringExtra("childEmail");
-        String username = intent.getStringExtra("childUsername");
-        String school = intent.getStringExtra("childSchool");
-
-        etNama.setText(name, TextView.BufferType.EDITABLE);
-        user_id.setText(String.valueOf(id));
-        etEmail.setText(email, TextView.BufferType.EDITABLE);
-        etUsername.setText(username, TextView.BufferType.EDITABLE);
-        etSekolah.setText(school, TextView.BufferType.EDITABLE);
+        //=================== CHECK PASSWORD ===================//
+        CheckBox cbPassword = findViewById(R.id.check_pass);
+        cbPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
 
         //=================== REGISTER BUTTON ==================//
-        bUpdateAnak = findViewById(R.id.daftar_anak_btn);
-        bUpdateAnak.setOnClickListener(new View.OnClickListener() {
+        Button btnDaftarAnak = findViewById(R.id.daftar_anak_btn);
+        btnDaftarAnak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loading = ProgressDialog.show(context, null, "Tunggu sesaat...", true, false);
-                editAnak();
+                createAnak();
             }
         });
 
-        //=================== PASSWORD BUTTON ==================//
-        bPassword = findViewById(R.id.passwordSiswa);
-        bPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(ParentEditChildActivity.this, ParentChangePasswordChildActivity.class);
-                startActivity(intent1);
-            }
-        });
 
         //=================== BACK BUTTON ==================//
         ImageButton toolbar_regis = (ImageButton) findViewById(R.id.toolbar_regis);
@@ -153,12 +146,14 @@ public class ParentEditChildActivity extends AppCompatActivity {
 
             }
         });
+
         //Province
         spProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(final AdapterView<?> parent, View view, int position, long id) {
                 Province provinces = (Province) parent.getSelectedItem();
                 int province_id = provinces.getId();
+
                 prov.setText(String.valueOf(province_id));
 
                 //ambil data kota
@@ -183,6 +178,7 @@ public class ParentEditChildActivity extends AppCompatActivity {
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                         Regency regency = (Regency) parent.getSelectedItem();
                                         int regency_id = regency.getId();
+
                                         city.setText(String.valueOf(regency_id));
 
                                         //ambil data kecamatan
@@ -257,7 +253,7 @@ public class ParentEditChildActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loading = ProgressDialog.show(context, null, "Tunggu sesaat..", true, false);
+//        loading = ProgressDialog.show(context, null, "Tunggu sesaat..", true, false);
         loadProvince();
     }
 
@@ -274,7 +270,7 @@ public class ParentEditChildActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     ResponseProvince responseProvince = response.body();
                     if (responseProvince.getStatus().equals("success")){
-                        loading.dismiss();
+//                        loading.dismiss();
                         provinces = responseProvince.getProvince();
                         Log.d("TAG", "Response" + responseProvince.getProvince());
                         adapterProvinces = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, provinces);
@@ -286,19 +282,20 @@ public class ParentEditChildActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseProvince> call, Throwable t) {
-                loading.dismiss();
+//                loading.dismiss();
                 Toast.makeText(context, "Gagal mengambil data provinsi", Toast.LENGTH_LONG).show();
                 Log.d("TAG", "Response" + t.toString());
             }
         });
     }
 
-    public void editAnak(){
+    public void createAnak(){
         String name = etNama.getText().toString().trim();
-        int id = Integer.valueOf(user_id.getText().toString());
         String email = etEmail.getText().toString().trim();
         String username = etUsername.getText().toString().trim();
         String jenis_kelamin = spGender.getSelectedItem().toString().trim();
+        String password = etPassword.getText().toString().trim();
+        int orangtua_id = user.getId_user();
         int province_id = Integer.parseInt(prov.getText().toString());
         int regency_id = Integer.parseInt(city.getText().toString());
         int district_id = Integer.parseInt(kecamatan.getText().toString());
@@ -326,6 +323,20 @@ public class ParentEditChildActivity extends AppCompatActivity {
             return;
         }
 
+        if (password.isEmpty()) {
+            loading.dismiss();
+            etPassword.setError("Password harus diisi");
+            etPassword.requestFocus();
+            return;
+        }
+
+        if (password.length() < 6) {
+            loading.dismiss();
+            etPassword.setError("Password harus berisi minimal 8 karakter");
+            etPassword.requestFocus();
+            return;
+        }
+
         if (school.isEmpty()){
             loading.dismiss();
             etSekolah.setError("Nama sekolah harus diisi");
@@ -333,45 +344,45 @@ public class ParentEditChildActivity extends AppCompatActivity {
             return;
         }
 
-        Call<ResponseUpdateAnak> call = RetrofitClient
-                .getInstance()
-                .getApi()
-                .editAnak(token, id, name, email, username, jenis_kelamin, province_id, regency_id, district_id, school, classes, "application/json");
+        Call<ResponseRegisterAnak> call = RetrofitClient
+                .getInstance().getApi()
+                .createAnak(token, name, email, username, password, jenis_kelamin, orangtua_id, province_id, regency_id, district_id, school, classes, "application/json");
 
-        call.enqueue(new Callback<ResponseUpdateAnak>() {
+        call.enqueue(new Callback<ResponseRegisterAnak>() {
             @Override
-            public void onResponse(Call<ResponseUpdateAnak> call, Response<ResponseUpdateAnak> response) {
-                ResponseUpdateAnak responseUpdateAnak = response.body();
-                loading.dismiss();
+            public void onResponse(Call<ResponseRegisterAnak> call, Response<ResponseRegisterAnak> response) {
+                ResponseRegisterAnak responseRegisterAnak = response.body();
                 if (response.isSuccessful()){
-                    if (responseUpdateAnak.getStatus().equals("success")){
+                    Log.d("TAG", "Response " + response.body());
+                    if (responseRegisterAnak.getStatus().equals("success")){
                         Log.i("debug", "onResponse : SUCCESS");
-                        Toast.makeText(context, "Data anak berhasil diubah", Toast.LENGTH_LONG).show();
+                        loading.dismiss();
+                        Toast.makeText(context, "Akun anak berhasil dibuat", Toast.LENGTH_LONG).show();
                         onBackPressed();
                     }else {
                         Log.i("debug", "onResponse: FAILED");
-                        Toast.makeText(context, "Gagal mengubah data anak", Toast.LENGTH_LONG).show();
+                        loading.dismiss();
+                        Toast.makeText(context, responseRegisterAnak.getStatus(), Toast.LENGTH_LONG).show();
                     }
-                } else {
+                }else {
+                    loading.dismiss();
                     try {
                         JSONObject jsonObjectError = new JSONObject(response.errorBody().string());
                         Toast.makeText(context, jsonObjectError.getString("message"), Toast.LENGTH_LONG).show();
                         Log.i("debug", jsonObjectError.getString("message"));
-                    } catch (Exception e) {
+                    }catch (Exception e){
                         Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseUpdateAnak> call, Throwable t) {
+            public void onFailure(Call<ResponseRegisterAnak> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                 loading.dismiss();
                 Toast.makeText(context, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
             }
         });
-
-
 
 
     }

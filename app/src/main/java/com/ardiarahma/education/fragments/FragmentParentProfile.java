@@ -12,8 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.ardiarahma.education.R;
-import com.ardiarahma.education.activities.ParentChangePasswordActivity;
-import com.ardiarahma.education.activities.ParentProfileUpdateActivity;
+import com.ardiarahma.education.activities.parent.ParentChangePasswordActivity;
+import com.ardiarahma.education.activities.parent.ParentProfileUpdateActivity;
 import com.ardiarahma.education.models.User;
 import com.ardiarahma.education.networks.PreferencesConfig;
 

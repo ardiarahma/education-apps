@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ardiarahma.education.R;
-import com.ardiarahma.education.activities.EbookShelvesActivity;
+import com.ardiarahma.education.activities.child.EbookShelvesActivity;
 import com.ardiarahma.education.models.EbookSubject;
 
 import java.util.List;

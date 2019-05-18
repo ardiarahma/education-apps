@@ -1,4 +1,4 @@
-package com.ardiarahma.education.activities;
+package com.ardiarahma.education.activities.child;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
