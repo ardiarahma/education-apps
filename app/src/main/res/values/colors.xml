@@ -3,4 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="splash">#AFDFEE</color>
+    <color name="button">#053354</color>
+    <color name="default_bg">#F1F7F9</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="navbar">#a9afdfee</color>
+
+    <color name="default_color">#053354</color>
 </resources>

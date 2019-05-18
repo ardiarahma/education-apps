@@ -1,8 +1,36 @@
 <resources>
-    <string name="app_name">Education</string>
+    <string name="app_name">Aplikasi Edukasi</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="pref_file">com.ardiarahma.preference_file</string>
+    <string name="pref_login_status">com.ardiarahma.preference_login_status</string>
+    <string name="pref_user_name">com.ardiarahma.preference_user_name</string>
+
+    <string-array name="gender">
+        <item>Laki-laki</item>
+        <item>Perempuan</item>
+    </string-array>
+
+    <string-array name="kelas">
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string name="title_activity_main2">Main2Activity</string>
+
     <string name="action_settings">Settings</string>
+
+    <string name="class_1">7</string>
+    <string name="class_2">8</string>
+    <string name="class_3">9</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_percobaan">PercobaanActivity</string>
+    <string name="title_activity_main_parent">MainParentActivity</string>
+    <string name="title_activity_register_child">RegisterChildActivity</string>
 </resources>
