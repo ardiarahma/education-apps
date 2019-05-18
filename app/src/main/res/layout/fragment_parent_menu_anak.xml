@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_bg"
+    android:orientation="vertical"
+    tools:context="com.ardiarahma.educationapplication.fragments.FragmentParentChild">
+
+    <!-- TODO: Update blank fragment layout -->
+    <Button
+        android:id="@+id/tambahAnak"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/default_button"
+        android:layout_margin="10dp"
+        android:text="Buat Akun Anak"
+        android:ems="7"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="18dp"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_listAnak"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    android:background="@drawable/default_nav_bar">
+
+    <group android:checkableBehavior="single">
+        <item android:title="Menu Utama">
+            <menu>
+                <item
+                    android:id="@+id/nav_home"
+                    android:icon="@drawable/default_ic_home"
+                    android:title="Beranda" />
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/default_ic_user"
+                    android:title="Profil" />
+            </menu>
+        </item>
+
+    </group>
+
+    <item android:title="Kelola Akun"
+        >
+        <menu>
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/default_ic_logout"
+                android:title="Keluar" />
+
+        </menu>
+    </item>
+
+</menu>

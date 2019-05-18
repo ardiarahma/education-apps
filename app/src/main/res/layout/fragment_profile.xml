@@ -1,0 +1,159 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/default_bg_logreg"
+    android:orientation="vertical"
+    tools:context="com.ardiarahma.educationapplication.fragments.FragmentProfile">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- TODO: Update blank fragment layout -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/default_login_frame">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="11dp"
+                android:gravity="center"
+                android:text="Profil"
+                android:textSize="30dp"
+                android:textColor="#16496e" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView"
+                android:layout_marginLeft="23dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="16dp"
+                android:text="Nama Lengkap"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="@color/button" />
+
+            <TextView
+                android:id="@+id/namalengkap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView4"
+                android:layout_alignStart="@+id/textView4"
+                android:layout_below="@+id/textView4"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:text="ini nama lengkapnya anak"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView4"
+                android:layout_alignStart="@+id/textView4"
+                android:layout_below="@+id/namalengkap"
+                android:layout_marginTop="10dp"
+                android:text="Email"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="@color/button" />
+
+            <TextView
+                android:id="@+id/emailSiswa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/namalengkap"
+                android:layout_alignStart="@+id/namalengkap"
+                android:layout_below="@+id/textView6"
+                android:layout_marginTop="10dp"
+                android:text="ini emailnya anak"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView6"
+                android:layout_alignStart="@+id/textView6"
+                android:layout_below="@+id/emailSiswa"
+                android:layout_marginTop="10dp"
+                android:text="Username"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="@color/button" />
+
+            <TextView
+                android:id="@+id/usernameSiswa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/emailSiswa"
+                android:layout_alignStart="@+id/emailSiswa"
+                android:layout_below="@+id/textView7"
+                android:layout_marginTop="10dp"
+                android:text="ini usernamenya anak"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/textView6"
+                android:layout_alignStart="@id/textView6"
+                android:layout_below="@id/usernameSiswa"
+                android:layout_marginTop="10dp"
+                android:text="Asal Sekolah"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="@color/button" />
+
+            <TextView
+                android:id="@+id/sekolahSiswa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/usernameSiswa"
+                android:layout_alignStart="@+id/usernameSiswa"
+                android:layout_below="@+id/textView8"
+                android:layout_marginTop="10dp"
+                android:text="ini nama sekolahnya siswa"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/textView8"
+                android:layout_alignStart="@id/textView8"
+                android:layout_below="@id/sekolahSiswa"
+                android:layout_marginTop="10dp"
+                android:text="Kelas"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="@color/button" />
+
+            <TextView
+                android:id="@+id/kelasSiswa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/sekolahSiswa"
+                android:layout_alignStart="@+id/sekolahSiswa"
+                android:layout_below="@+id/textView9"
+                android:layout_marginTop="10dp"
+                android:text="ini kelasnya siswa"
+                android:layout_marginBottom="40dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

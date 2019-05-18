@@ -1,0 +1,297 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/default_bg_logreg"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/default_color"
+        app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+        <ImageButton
+            android:id="@+id/toolbar_regis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_back"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:text="Registrasi Anak"
+            android:textColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/frameAnak"
+                android:layout_width="match_parent"
+                android:layout_height="520dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/default_login_frame"
+                android:elevation="4dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/title_siswa"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/imgAnak"
+                    android:layout_toEndOf="@+id/imgAnak"
+                    android:layout_toRightOf="@+id/imgAnak"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:text="Data Anak"
+                    android:textColor="#16496e"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:id="@+id/imgAnak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/namaSiswa"
+                    android:layout_alignLeft="@+id/namaSiswa"
+                    android:layout_alignStart="@+id/namaSiswa"
+                    android:layout_marginBottom="11dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="13dp"
+                    android:src="@drawable/user_boy" />
+
+                <EditText
+                    android:id="@+id/namaSiswa"
+                    android:layout_width="450dp"
+                    android:layout_height="35dp"
+                    android:layout_above="@+id/spinner_gender"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/default_form"
+                    android:ems="14"
+                    android:hint="Nama Lengkap Anak"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="15dp"
+                    android:textColor="#8d16496e"
+                    android:textColorHint="#8d16496e"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <Spinner
+                    android:id="@+id/spinner_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/usernameSiswa"
+                    android:layout_marginBottom="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="7dp"
+                    android:paddingTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <EditText
+                    android:id="@+id/usernameSiswa"
+                    android:layout_width="450dp"
+                    android:layout_height="35dp"
+                    android:layout_above="@+id/emailSiswa"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/default_form"
+                    android:ems="14"
+                    android:hint="Username Anak"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="15dp"
+                    android:textColor="#8d16496e"
+                    android:textColorHint="#8d16496e"
+                    android:textSize="15dp"
+
+                    />
+
+                <EditText
+                    android:id="@+id/emailSiswa"
+                    android:layout_width="450dp"
+                    android:layout_height="35dp"
+                    android:layout_above="@+id/passwordSiswa"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/default_form"
+                    android:ems="14"
+                    android:hint="Email Anak"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="15dp"
+                    android:textColor="#8d16496e"
+                    android:textColorHint="#8d16496e"
+                    android:textSize="15dp" />
+
+                <EditText
+                    android:id="@+id/passwordSiswa"
+                    android:layout_width="450dp"
+                    android:layout_height="35dp"
+                    android:layout_above="@+id/check_pass"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/default_form"
+                    android:ems="14"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:paddingLeft="15dp"
+                    android:textColor="#8d16496e"
+                    android:textColorHint="#8d16496e"
+                    android:textSize="15dp" />
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/check_pass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_above="@+id/sekolah"
+                    android:layout_alignLeft="@id/passwordSiswa"
+                    android:text="Tampilkan password"
+                    android:textColor="#ad16496e"
+                    android:textColorHint="@color/default_color" />
+
+                <TextView
+                    android:id="@+id/sekolah"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/spinner_province"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="left"
+                    android:text="Sekolah"
+                    android:textColor="#16496e"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <Spinner
+                    android:id="@+id/spinner_province"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/spinner_city"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="7dp"
+                    android:paddingTop="5dp" />
+
+                <Spinner
+                    android:id="@+id/spinner_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/spinner_kecamatan"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="7dp"
+                    android:paddingTop="5dp" />
+
+                <Spinner
+                    android:id="@+id/spinner_kecamatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_above="@+id/namaSekolah"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="7dp"
+                    android:paddingTop="5dp" />
+
+                <EditText
+                    android:id="@+id/namaSekolah"
+                    android:layout_width="450dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/default_form"
+                    android:ems="14"
+                    android:hint="Nama Sekolah"
+                    android:paddingLeft="15dp"
+                    android:textColor="#8d16496e"
+                    android:textColorHint="#8d16496e"
+                    android:textSize="15dp" />
+
+                <Spinner
+                    android:id="@+id/spinner_class"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/namaSekolah"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="7dp"
+                    android:paddingTop="5dp" />
+
+                <TextView
+                    android:id="@+id/prov"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/district"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/daftar_anak_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_below="@+id/frameAnak"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/default_button"
+                android:ems="7"
+                android:text="Simpan"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

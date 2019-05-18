@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ardiarahma.educationapplication.fragments.FragmentHome">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/contentMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp">
+
+
+        <ImageButton
+            android:layout_width="131dp"
+            android:layout_height="235dp"
+            android:layout_alignTop="@+id/welcome_message_container"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:background="#00ffffff"
+            android:scaleType="fitXY"
+            android:src="@drawable/hanging_game"
+            android:clickable="true"
+            android:id="@+id/game" />
+
+        <ImageButton
+            android:id="@+id/ebook"
+            android:layout_width="131dp"
+            android:layout_height="375dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/game"
+            android:background="#00ffffff"
+            android:scaleType="fitXY"
+            android:src="@drawable/hanging_ebook" />
+
+        <ImageButton
+            android:id="@+id/banksoal"
+            android:layout_width="131dp"
+            android:layout_height="350dp"
+            android:layout_alignBottom="@+id/ebook"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="#00ffffff"
+            android:scaleType="fitXY"
+            android:src="@drawable/hanging_banksoal" />
+
+
+        <RelativeLayout
+            android:id="@+id/welcome_message_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:id="@+id/ribbon"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:src="@drawable/default_welcome"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/welcome_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/ribbon"
+                android:layout_marginTop="10dp"
+                android:hapticFeedbackEnabled="false"
+                android:text="Selamat datang,"
+                android:textAlignment="center"
+                android:textColor="@color/default_bg"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/wm_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/welcome_message"
+                android:hapticFeedbackEnabled="false"
+                android:text="username"
+                android:textAlignment="center"
+                android:textColor="@color/default_bg"
+                android:textSize="17dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardSoal"
+    android:elevation="14dp"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="10dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/soal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Jelaskan apa yang dinamakan bagaimana dan mengapa itu dinamakan bagaimana!"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+        <!--<RadioGroup-->
+            <!--android:id="@+id/radiogroup_soal"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_margin="20dp"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<RadioButton-->
+                <!--android:id="@+id/option_A"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="5dp"-->
+                <!--android:text="A. Ini option A"-->
+                <!--android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>-->
+            <!--<RadioButton-->
+                <!--android:id="@+id/option_B"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="5dp"-->
+                <!--android:text="B. Ini option B"-->
+                <!--android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>-->
+            <!--<RadioButton-->
+                <!--android:id="@+id/option_C"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="5dp"-->
+                <!--android:text="C. Ini option C"-->
+                <!--android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>-->
+            <!--<RadioButton-->
+                <!--android:id="@+id/option_D"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="5dp"-->
+                <!--android:text="D. Ini option D"-->
+                <!--android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>-->
+            <!--<RadioButton-->
+                <!--android:id="@+id/option_E"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="5dp"-->
+                <!--android:text="E. Ini option E"-->
+                <!--android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>-->
+
+        <!--</RadioGroup>-->
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
+
