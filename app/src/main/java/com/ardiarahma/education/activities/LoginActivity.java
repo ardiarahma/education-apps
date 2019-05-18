@@ -3,9 +3,9 @@ package com.ardiarahma.education.activities;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -18,9 +18,11 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ardiarahma.education.R;
-import com.ardiarahma.education.models.responses.ResponseLogin;
-import com.ardiarahma.education.networks.PreferencesConfig;
+import com.ardiarahma.educationapplication.R;
+import com.ardiarahma.educationapplication.models.User;
+import com.ardiarahma.educationapplication.models.response.ResponseLogin;
+import com.ardiarahma.educationapplication.network.PreferencesConfig;
+import com.ardiarahma.educationapplication.network.RetrofitClient;
 
 import org.json.JSONObject;
 
