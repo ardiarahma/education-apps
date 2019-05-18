@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ardiarahma.education.models.Siswa;
 import com.ardiarahma.educationapplication.R;
 import com.ardiarahma.educationapplication.activities.ResultStudiesReportActivity;
 import com.ardiarahma.educationapplication.models.Siswa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +26,7 @@ public class LogStudyAdapter extends RecyclerView.Adapter<LogStudyAdapter.ViewHo
     private List<Siswa> siswas;
     Context context;
 
-    public LogStudyAdapter(Context context, List<Siswa> siswas) {
+    public LogStudyAdapter(Context context, ArrayList<Siswa> siswas) {
         this.context = context;
         this.siswas = siswas;
     }

@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ardiarahma.educationapplication.R;
-import com.ardiarahma.educationapplication.models.GamePlatform;
+import com.ardiarahma.education.R;
+import com.ardiarahma.education.models.GamePlatform;
 
 import java.util.List;
 

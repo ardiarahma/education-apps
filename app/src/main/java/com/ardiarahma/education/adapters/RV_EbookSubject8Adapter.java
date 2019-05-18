@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ardiarahma.educationapplication.R;
-import com.ardiarahma.educationapplication.activities.EbookShelvesActivity;
-import com.ardiarahma.educationapplication.models.EbookSubject;
+import com.ardiarahma.education.R;
+import com.ardiarahma.education.activities.EbookShelvesActivity;
+import com.ardiarahma.education.models.EbookSubject;
 
 import java.util.List;
 

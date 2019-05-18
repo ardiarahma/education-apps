@@ -11,10 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ardiarahma.education.models.Articles;
 import com.ardiarahma.educationapplication.R;
 import com.ardiarahma.educationapplication.models.Articles;
 import com.ardiarahma.educationapplication.models.ArticlesResult;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +29,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
     List<Articles> articles;
     ArticlesResult totalResults;
 
-    public ArticlesAdapter(Context context, List<Articles> articles) {
+    public ArticlesAdapter(Context context, ArrayList<Articles> articles) {
         this.context = context;
         this.articles = articles;
     }
