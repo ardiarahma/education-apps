@@ -4,34 +4,46 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+        <item android:title="Menu Utama">
+            <menu>
+                <item
+                    android:id="@+id/nav_home_parent"
+                    android:icon="@drawable/default_ic_home"
+                    android:title="Beranda" />
+                <item
+                    android:id="@+id/nav_profile_parent"
+                    android:icon="@drawable/default_ic_user"
+                    android:title="Profil" />
+
+                <item
+                    android:id="@+id/nav_create_user"
+                    android:icon="@drawable/add_user"
+                    android:title="Kelola Akun Anak" />
+            </menu>
+        </item>
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Laporan">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_activity_report"
+                android:icon="@drawable/default_ic_report"
+                android:title="Laporan Kegiatan Anak" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_study_report"
+                android:icon="@drawable/default_ic_statistic_report"
+                android:title="Laporan Hasil Belajar Anak"/>
+        </menu>
+    </item>
+
+    <item android:title="Kelola Akun"
+        >
+        <menu>
+            <item
+                android:id="@+id/logout_parent"
+                android:icon="@drawable/default_ic_logout"
+                android:title="Keluar"/>
+
         </menu>
     </item>
 
