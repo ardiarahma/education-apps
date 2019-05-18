@@ -18,11 +18,11 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ardiarahma.educationapplication.R;
-import com.ardiarahma.educationapplication.models.User;
-import com.ardiarahma.educationapplication.models.response.ResponseLogin;
-import com.ardiarahma.educationapplication.network.PreferencesConfig;
-import com.ardiarahma.educationapplication.network.RetrofitClient;
+import com.ardiarahma.education.R;
+import com.ardiarahma.education.models.User;
+import com.ardiarahma.education.models.responses.ResponseLogin;
+import com.ardiarahma.education.networks.PreferencesConfig;
+import com.ardiarahma.education.networks.RetrofitClient;
 
 import org.json.JSONObject;
 
