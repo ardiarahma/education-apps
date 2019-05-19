@@ -19,8 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ardiarahma.education.R;
-import com.ardiarahma.education.activities.child.EbookActivity;
-import com.ardiarahma.education.activities.parent.ParentDeleteChildActivity;
+import com.ardiarahma.education.activities.child.MainActivity;
+import com.ardiarahma.education.activities.parent.ForgetPasswordActivity;
 import com.ardiarahma.education.activities.parent.ParentMainActivity;
 import com.ardiarahma.education.models.User;
 import com.ardiarahma.education.models.responses.ResponseLogin;
@@ -142,7 +142,7 @@ public class LoginActivity extends AppCompatActivity {
                         }else {
                             PreferencesConfig.getInstance(LoginActivity.this).saveUser(loginResponse.getUser());
                             PreferencesConfig.getInstance(LoginActivity.this).saveToken(loginResponse.getToken());
-                            Intent intent = new Intent(LoginActivity.this, EbookActivity.MainActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         }
@@ -182,7 +182,7 @@ public class LoginActivity extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }else {
-                Intent intent = new Intent(this, EbookActivity.MainActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
@@ -196,7 +196,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void forget(View view) {
-        Intent intent = new Intent(LoginActivity.this, ParentDeleteChildActivity.ForgetPasswordActivity.class);
+        Intent intent = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
         startActivity(intent);
     }
 }

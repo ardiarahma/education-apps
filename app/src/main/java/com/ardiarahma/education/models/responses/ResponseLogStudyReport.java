@@ -1,6 +1,6 @@
 package com.ardiarahma.education.models.responses;
 
-import com.ardiarahma.educationapplication.models.LogStudy;
+import com.ardiarahma.education.models.LogStudy;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

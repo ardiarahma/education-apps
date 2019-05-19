@@ -9,11 +9,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.ardiarahma.education.R;
-import com.ardiarahma.educationapplication.R;
-import com.ardiarahma.educationapplication.models.Token;
-import com.ardiarahma.educationapplication.models.response.ResponseDelete;
-import com.ardiarahma.educationapplication.network.PreferencesConfig;
-import com.ardiarahma.educationapplication.network.RetrofitClient;
+import com.ardiarahma.education.models.Token;
+import com.ardiarahma.education.models.responses.ResponseDelete;
+import com.ardiarahma.education.networks.PreferencesConfig;
+import com.ardiarahma.education.networks.RetrofitClient;
 
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -76,12 +75,5 @@ public class ParentDeleteChildActivity extends AppCompatActivity {
         });
     }
 
-    public static class ForgetPasswordActivity extends AppCompatActivity {
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_forget_password);
-        }
-    }
 }

@@ -12,13 +12,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ardiarahma.educationapplication.R;
-import com.ardiarahma.educationapplication.adapters.RV_BanksoalShelvesAdapter;
-import com.ardiarahma.educationapplication.models.BanksoalShelves;
-import com.ardiarahma.educationapplication.models.Token;
-import com.ardiarahma.educationapplication.models.response.ResponseBanksoal;
-import com.ardiarahma.educationapplication.network.PreferencesConfig;
-import com.ardiarahma.educationapplication.network.RetrofitClient;
+import com.ardiarahma.education.R;
+import com.ardiarahma.education.adapters.RV_BanksoalShelvesAdapter;
+import com.ardiarahma.education.models.BanksoalShelves;
+import com.ardiarahma.education.models.Token;
+import com.ardiarahma.education.models.responses.ResponseBanksoal;
+import com.ardiarahma.education.networks.PreferencesConfig;
+import com.ardiarahma.education.networks.RetrofitClient;
 
 import java.util.ArrayList;
 

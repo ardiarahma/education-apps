@@ -9,10 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ardiarahma.education.R;
+import com.ardiarahma.education.activities.parent.ResultStudiesReportActivity;
 import com.ardiarahma.education.models.Siswa;
-import com.ardiarahma.educationapplication.R;
-import com.ardiarahma.educationapplication.activities.ResultStudiesReportActivity;
-import com.ardiarahma.educationapplication.models.Siswa;
 
 import java.util.ArrayList;
 import java.util.List;

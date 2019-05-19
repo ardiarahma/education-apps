@@ -45,7 +45,7 @@ public class FragmentParentActivityReport extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_parent_activity_report, container, false);
+        View v = inflater.inflate(R.layout.fragment_parent_report, container, false);
 
         swipeRefreshLayout = v.findViewById(R.id.swipe_refresh);
 
@@ -89,6 +89,7 @@ public class FragmentParentActivityReport extends Fragment {
             @Override
             public void onResponse(retrofit2.Call<ResponseCheckUser> call, Response<ResponseCheckUser> response) {
                 loading.dismiss();
+                swipeRefreshLayout.setRefreshing(false);
                 ResponseCheckUser responseCheckUser = response.body();
                 Log.d("TAG", "Response" + response.body());
                 if (response.isSuccessful()){
@@ -101,7 +102,6 @@ public class FragmentParentActivityReport extends Fragment {
                         rv.setHasFixedSize(true);
                         rv.setLayoutManager(linearLayoutManager);
                         adapter.notifyDataSetChanged();
-                        swipeRefreshLayout.setRefreshing(false);
                     }else {
                         Log.i("debug", "onResponse : FAILED");
                     }
@@ -112,6 +112,7 @@ public class FragmentParentActivityReport extends Fragment {
             public void onFailure(retrofit2.Call<ResponseCheckUser> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                 loading.dismiss();
+                swipeRefreshLayout.setRefreshing(false);
                 Toast.makeText(getContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
             }
         });

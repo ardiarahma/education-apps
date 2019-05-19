@@ -1,6 +1,6 @@
 package com.ardiarahma.education.models.responses;
 
-import com.ardiarahma.educationapplication.models.EbookSubject;
+import com.ardiarahma.education.models.EbookSubject;
 
 /**
  * Created by Windows 10 on 3/9/2019.

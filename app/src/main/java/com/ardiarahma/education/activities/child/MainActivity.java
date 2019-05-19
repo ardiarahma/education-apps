@@ -1,5 +1,6 @@
-package com.ardiarahma.education.activities.parent;
+package com.ardiarahma.education.activities.child;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -14,32 +15,37 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ardiarahma.education.R;
-import com.ardiarahma.education.fragments.FragmentParentActivityReport;
-import com.ardiarahma.education.fragments.FragmentParentChild;
-import com.ardiarahma.education.fragments.FragmentParentHome;
-import com.ardiarahma.education.fragments.FragmentParentLogout;
-import com.ardiarahma.education.fragments.FragmentParentProfile;
-import com.ardiarahma.education.fragments.FragmentParentStudyReport;
+import com.ardiarahma.education.activities.LoginActivity;
+import com.ardiarahma.education.fragments.FragmentHome;
+import com.ardiarahma.education.fragments.FragmentLogout;
+import com.ardiarahma.education.fragments.FragmentProfile;
 import com.ardiarahma.education.models.User;
 import com.ardiarahma.education.networks.PreferencesConfig;
 
-public class ParentMainActivity extends AppCompatActivity
+/**
+ * Created by Windows 10 on 5/19/2019.
+ */
+
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    protected DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_parent);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_parent);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_parent);
+
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_parent);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View headerView = navigationView.getHeaderView(0);
 
@@ -49,12 +55,14 @@ public class ParentMainActivity extends AppCompatActivity
         header_name.setText(user.getNama());
         header_email.setText(user.getEmail());
 
-        displaySelectedScreen(R.id.nav_home_parent);
+        displaySelectedScreen(R.id.nav_home);
+
+
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_parent);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -68,38 +76,27 @@ public class ParentMainActivity extends AppCompatActivity
         Fragment fragment = null;
 
         switch (id){
-            case R.id.nav_home_parent:
-                fragment = new FragmentParentHome();
+            case R.id.nav_home:
+                fragment = new FragmentHome();
                 break;
-            case R.id.nav_profile_parent:
-                fragment = new FragmentParentProfile();
+            case R.id.nav_profile:
+                fragment = new FragmentProfile();
                 break;
-            case R.id.nav_create_user:
-                fragment = new FragmentParentChild();
-                break;
-            case R.id.nav_activity_report:
-                fragment = new FragmentParentActivityReport();
-                break;
-            case R.id.nav_study_report:
-                fragment = new FragmentParentStudyReport();
-                break;
-            case R.id.logout_parent:
-                fragment = new FragmentParentLogout();
+            case R.id.logout:
+                fragment = new FragmentLogout();
                 break;
         }
 
         if (fragment != null){
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.screen_area_parent, fragment);
+            ft.replace(R.id.screen_area, fragment);
             ft.commit();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_parent);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
     }
-
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -112,7 +109,12 @@ public class ParentMainActivity extends AppCompatActivity
         return true;
     }
 
-
-
-
+    public void onStart(){
+        super.onStart();
+        if (!PreferencesConfig.getInstance(this).isLoggedIn()){
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+    }
 }

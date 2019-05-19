@@ -73,7 +73,7 @@ public class GameActivity extends AppCompatActivity {
         toolbar_game.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GameActivity.this, EbookActivity.MainActivity.class);
+                Intent intent = new Intent(GameActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

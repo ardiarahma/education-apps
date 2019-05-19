@@ -69,16 +69,22 @@ public class FragmentParentHome extends Fragment {
         TextView wm_result = (TextView) v.findViewById(R.id.wm_result);
         wm_result.setText(user.getUsername());
 
-//        swipeRefreshLayout = v.findViewById(R.id.swipe_refresh);
-//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                loadNews();
-//            }
-//        });
+        swipeRefreshLayout = v.findViewById(R.id.swipe_refresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadNews();
+            }
+        });
 
         return v;
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadNews();
     }
 
     public void loadNews(){
@@ -90,7 +96,7 @@ public class FragmentParentHome extends Fragment {
             @Override
             public void onResponse(Call<ResponseNews> call, Response<ResponseNews> response) {
                 loading.dismiss();
-//                swipeRefreshLayout.setRefreshing(false);
+                swipeRefreshLayout.setRefreshing(false);
                 ResponseNews responseNews = response.body();
                 if (response.isSuccessful()){
                     if (responseNews.getStatus().equals("success")){
@@ -113,7 +119,7 @@ public class FragmentParentHome extends Fragment {
             public void onFailure(Call<ResponseNews> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                 loading.dismiss();
-//                swipeRefreshLayout.setRefreshing(false);
+                swipeRefreshLayout.setRefreshing(false);
                 Toast.makeText(getContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
             }
         });

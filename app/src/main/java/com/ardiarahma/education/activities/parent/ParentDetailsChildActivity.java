@@ -8,11 +8,11 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.ardiarahma.educationapplication.R;
-import com.ardiarahma.educationapplication.models.Siswa;
-import com.ardiarahma.educationapplication.models.Token;
-import com.ardiarahma.educationapplication.models.User;
-import com.ardiarahma.educationapplication.network.PreferencesConfig;
+import com.ardiarahma.education.R;
+import com.ardiarahma.education.models.Siswa;
+import com.ardiarahma.education.models.Token;
+import com.ardiarahma.education.models.User;
+import com.ardiarahma.education.networks.PreferencesConfig;
 
 import java.util.ArrayList;
 

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-import com.ardiarahma.educationapplication.R;
+import com.ardiarahma.education.R;
 
 public class SplashScreen extends AppCompatActivity {
 
