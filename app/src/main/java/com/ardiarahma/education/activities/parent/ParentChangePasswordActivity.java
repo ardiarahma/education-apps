@@ -13,12 +13,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.ardiarahma.educationapplication.R;
-import com.ardiarahma.educationapplication.models.Token;
-import com.ardiarahma.educationapplication.models.User;
-import com.ardiarahma.educationapplication.models.response.ResponsePassword;
-import com.ardiarahma.educationapplication.network.PreferencesConfig;
-import com.ardiarahma.educationapplication.network.RetrofitClient;
+import com.ardiarahma.education.R;
+import com.ardiarahma.education.models.Token;
+import com.ardiarahma.education.models.User;
+import com.ardiarahma.education.models.responses.ResponsePassword;
+import com.ardiarahma.education.networks.PreferencesConfig;
+import com.ardiarahma.education.networks.RetrofitClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;

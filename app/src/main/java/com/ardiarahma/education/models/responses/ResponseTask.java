@@ -1,8 +1,7 @@
 package com.ardiarahma.education.models.responses;
 
 import com.ardiarahma.education.models.BanksoalSoal;
-import com.ardiarahma.educationapplication.models.BanksoalShelves;
-import com.ardiarahma.educationapplication.models.BanksoalSoal;
+import com.ardiarahma.education.models.BanksoalShelves;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

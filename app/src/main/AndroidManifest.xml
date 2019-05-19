@@ -10,17 +10,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".activities.parent.ParentMainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".activities.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.child.ChildMainActivity" />
-        <activity android:name=".activities.LoginActivity"></activity>
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.RegisterParentActivity" />
+        <activity
+            android:name=".activities.child.MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activities.child.GameActivity" />
+        <activity android:name=".activities.child.EbookActivity" />
+        <activity android:name=".activities.child.EbookShelvesActivity" />
+        <activity
+            android:name=".activities.parent.ParentMainActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activities.child.BanksoalActivity" />
+        <activity android:name=".activities.child.BanksoalShelvesActivity" />
+        <activity android:name=".activities.child.BanksoalTestActivity" />
+        <activity android:name=".activities.parent.ParentRegisterChildActivity" />
+        <activity android:name=".activities.parent.ParentDeleteChildActivity" />
+        <activity android:name=".activities.parent.ParentEditChildActivity" />
+        <activity android:name=".activities.parent.ParentChangePasswordActivity" />
+        <activity android:name=".activities.parent.ParentProfileUpdateActivity" />
+        <activity android:name=".activities.parent.ParentDetailsChildActivity" />
+        <activity android:name=".activities.parent.ParentChangePasswordChildActivity" />
+        <activity android:name=".activities.parent.ResultActivitiesReportActivity" />
+        <activity android:name=".activities.parent.ResultStudiesReportActivity" />
+        <activity android:name=".activities.parent.ForgetPasswordActivity"></activity>
     </application>
 
 </manifest>

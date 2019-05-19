@@ -1,7 +1,6 @@
 package com.ardiarahma.education.models.responses;
 
 import com.ardiarahma.education.models.Regency;
-import com.ardiarahma.educationapplication.models.Regency;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

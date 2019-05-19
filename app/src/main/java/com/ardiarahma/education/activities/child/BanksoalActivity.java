@@ -64,7 +64,7 @@ public class BanksoalActivity extends AppCompatActivity {
         toolbar_banksoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BanksoalActivity.this, EbookActivity.MainActivity.class);
+                Intent intent = new Intent(BanksoalActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

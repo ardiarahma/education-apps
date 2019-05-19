@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ardiarahma.educationapplication.R;
-import com.ardiarahma.educationapplication.activities.BanksoalTestActivity;
-import com.ardiarahma.educationapplication.models.BanksoalShelves;
+import com.ardiarahma.education.R;
+import com.ardiarahma.education.activities.child.BanksoalTestActivity;
+import com.ardiarahma.education.models.BanksoalShelves;
 
 import java.util.ArrayList;
 

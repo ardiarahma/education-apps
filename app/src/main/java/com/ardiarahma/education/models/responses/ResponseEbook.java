@@ -1,6 +1,6 @@
 package com.ardiarahma.education.models.responses;
 
-import com.ardiarahma.educationapplication.models.EbookShelves;
+import com.ardiarahma.education.models.EbookShelves;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

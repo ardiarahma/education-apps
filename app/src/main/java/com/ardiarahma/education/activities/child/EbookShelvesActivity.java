@@ -12,13 +12,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ardiarahma.educationapplication.R;
-import com.ardiarahma.educationapplication.adapters.RV_EbookShelvesAdapter;
-import com.ardiarahma.educationapplication.models.EbookShelves;
-import com.ardiarahma.educationapplication.models.Token;
-import com.ardiarahma.educationapplication.models.response.ResponseEbook;
-import com.ardiarahma.educationapplication.network.PreferencesConfig;
-import com.ardiarahma.educationapplication.network.RetrofitClient;
+import com.ardiarahma.education.R;
+import com.ardiarahma.education.adapters.RV_EbookShelvesAdapter;
+import com.ardiarahma.education.models.EbookShelves;
+import com.ardiarahma.education.models.Token;
+import com.ardiarahma.education.models.responses.ResponseEbook;
+import com.ardiarahma.education.networks.PreferencesConfig;
+import com.ardiarahma.education.networks.RetrofitClient;
 
 import java.util.ArrayList;
 
