@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.ardiarahma.education.R;
 import com.ardiarahma.education.models.Articles;
 import com.ardiarahma.education.models.ArticlesResult;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,9 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
 
             }
         });
-//        new LoadImage(holder.news_thumbnail).execute(articles.get(position).getUrlToImage());
+
+        Picasso.with(context).load(articles.get(position).getUrlToImage()).into(holder.news_thumbnail);
+
     }
 
     @Override
@@ -69,7 +72,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
 
             news_title = (TextView) itemView.findViewById(R.id.title_item_news);
             news_cardview = (CardView) itemView.findViewById(R.id.news);
-//            news_thumbnail = itemView.findViewById(R.id.news_thumbnail);
+            news_thumbnail = itemView.findViewById(R.id.news_thumbnail);
         }
     }
 
