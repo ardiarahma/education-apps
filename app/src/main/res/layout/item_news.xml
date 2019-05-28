@@ -16,9 +16,9 @@
         <ImageView
             android:id="@+id/news_thumbnail"
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="65dp"
             android:layout_margin="10dp"
-            android:background="@drawable/circle" />
+            android:scaleType="fitXY"/>
 
         <TextView
             android:id="@+id/title_item_news"

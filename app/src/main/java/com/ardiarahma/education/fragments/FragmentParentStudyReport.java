@@ -91,6 +91,7 @@ public class FragmentParentStudyReport extends Fragment {
             @Override
             public void onResponse(retrofit2.Call<ResponseCheckUser> call, Response<ResponseCheckUser> response) {
                 loading.dismiss();
+                swipeRefreshLayout.setRefreshing(false);
                 ResponseCheckUser responseCheckUser = response.body();
                 Log.d("TAG", "Response" + response.body());
                 if (response.isSuccessful()){
@@ -103,9 +104,10 @@ public class FragmentParentStudyReport extends Fragment {
                         rv.setHasFixedSize(true);
                         rv.setLayoutManager(linearLayoutManager);
                         adapter.notifyDataSetChanged();
-                        swipeRefreshLayout.setRefreshing(false);
                     }else {
                         Log.i("debug", "onResponse : FAILED");
+                        swipeRefreshLayout.setRefreshing(false);
+
                     }
                 }
             }

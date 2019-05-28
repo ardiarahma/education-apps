@@ -49,7 +49,7 @@ public class ResultActivitiesReportActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result_activities_report);
+        setContentView(R.layout.activity_result_report);
 
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
 

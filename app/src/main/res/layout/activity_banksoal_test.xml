@@ -24,7 +24,7 @@
                 android:id="@+id/title_soal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Judul soal apa"
+                android:text="Judul materinya apa"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
@@ -112,89 +112,54 @@
 
     </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_pertanyaan"
+
+    <LinearLayout
+        android:id="@+id/layout_soal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp">
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/layout_soal"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="10dp"-->
-        <!--android:layout_marginLeft="10dp"-->
-        <!--android:layout_marginBottom="10dp">-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <!--<android.support.v7.widget.CardView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:cardCornerRadius="10dp">-->
+                <ImageView
+                    android:id="@+id/img_pertanyaan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_margin="20dp"/>
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:orientation="vertical">-->
+                <TextView
+                    android:id="@+id/pertanyaan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ini pertanyaannya...."
+                    android:layout_margin="20dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
-                <!--<ImageView-->
-                    <!--android:id="@+id/img_pertanyaan"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:visibility="gone"-->
-                    <!--android:layout_margin="20dp"/>-->
+                <RadioGroup
+                    android:id="@+id/rb_soal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp">
+                </RadioGroup>
+            </LinearLayout>
 
-                <!--<TextView-->
-                    <!--android:id="@+id/pertanyaan"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="ini pertanyaannya...."-->
-                    <!--android:layout_margin="20dp"-->
-                    <!--android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>-->
-
-                <!--<RadioGroup-->
-                    <!--android:id="@+id/rb_soal"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="vertical"-->
-                    <!--android:layout_marginLeft="20dp"-->
-                    <!--android:layout_marginRight="20dp"-->
-                    <!--android:layout_marginTop="5dp"-->
-                    <!--android:layout_marginBottom="20dp">-->
-                    <!--<RadioButton-->
-                        <!--android:id="@+id/option_A"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginBottom="5dp"-->
-                        <!--android:text="A. Ini option A"-->
-                        <!--android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>-->
-                    <!--<RadioButton-->
-                        <!--android:id="@+id/option_B"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginBottom="5dp"-->
-                        <!--android:text="B. Ini option B"-->
-                        <!--android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>-->
-                    <!--<RadioButton-->
-                        <!--android:id="@+id/option_C"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginBottom="5dp"-->
-                        <!--android:text="C. Ini option C"-->
-                        <!--android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>-->
-                    <!--<RadioButton-->
-                        <!--android:id="@+id/option_D"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginBottom="5dp"-->
-                        <!--android:text="D. Ini option D"-->
-                        <!--android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>-->
-                <!--</RadioGroup>-->
-            <!--</LinearLayout>-->
-
-        <!--</android.support.v7.widget.CardView>-->
-    <!--</LinearLayout>-->
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -211,6 +176,7 @@
             android:text="Sebelumnya"
             android:textAllCaps="false"
             android:textColor="#ffffff"
+            android:visibility="gone"
             android:layout_marginRight="5dp"/>
 
         <Button
@@ -221,7 +187,8 @@
             android:background="@drawable/default_button"
             android:text="Selanjutnya"
             android:textAllCaps="false"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:onClick="next"/>
 
     </LinearLayout>
 

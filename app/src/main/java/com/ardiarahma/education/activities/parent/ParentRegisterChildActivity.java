@@ -3,6 +3,7 @@ package com.ardiarahma.education.activities.parent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -42,7 +43,7 @@ import retrofit2.Response;
 
 public class ParentRegisterChildActivity extends AppCompatActivity {
 
-    EditText etNama, etEmail, etUsername, etPassword, etSekolah;
+    TextInputEditText etNama, etEmail, etUsername, etPassword, etSekolah;
     Spinner spGender, spProvince, spCity, spDistrict, spClass;
     TextView prov, city, kecamatan;
     Context context;
@@ -74,7 +75,7 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
         spGender = findViewById(R.id.spinner_gender);
         spProvince = findViewById(R.id.spinner_province);
         spCity = findViewById(R.id.spinner_city);
-        spDistrict = findViewById(R.id.spinner_kecamatan);
+        spDistrict = findViewById(R.id.spinner_district);
         etSekolah = findViewById(R.id.namaSekolah);
         spClass = findViewById(R.id.spinner_class);
         prov = findViewById(R.id.prov);

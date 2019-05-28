@@ -7,9 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.ardiarahma.education.R;
+import com.ardiarahma.education.models.Answers;
 import com.ardiarahma.education.models.BanksoalSoal;
 
 import java.util.ArrayList;
@@ -40,6 +42,9 @@ public class RV_BanksoalSoalAdapter extends RecyclerView.Adapter<RV_BanksoalSoal
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.soal_title.setText(banksoalSoals.get(position).getSoal());
+
+
+        
 //        holder.jawaban_group = banksoalSoals.get(position).getTaskAnswers();
 //        holder.jawaban_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 //            @Override
@@ -76,7 +81,7 @@ public class RV_BanksoalSoalAdapter extends RecyclerView.Adapter<RV_BanksoalSoal
 
         CardView soal_card;
         TextView soal_title;
-//        RadioGroup jawaban_group;
+//        final RadioGroup jawaban_group;
 //        RadioButton optionA, optionB, optionC, optionD, optionE;
 
         public ViewHolder(View itemView) {

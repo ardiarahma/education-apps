@@ -2,6 +2,7 @@ package com.ardiarahma.education.networks;
 
 import com.ardiarahma.education.models.responses.ResponseBanksoal;
 import com.ardiarahma.education.models.responses.ResponseCheckUser;
+import com.ardiarahma.education.models.responses.ResponseChoice;
 import com.ardiarahma.education.models.responses.ResponseDelete;
 import com.ardiarahma.education.models.responses.ResponseDistrict;
 import com.ardiarahma.education.models.responses.ResponseEbook;
@@ -215,6 +216,12 @@ public interface Api {
             @Query("id") int task_id,
             @Query("class") int classes
 
+    );
+
+    @GET("api/banksoal/pilihan")
+    Call<ResponseChoice> taskmaster_choices(
+            @Header("Authorization") String token,
+            @Query("id") int soal_id
     );
 
 }

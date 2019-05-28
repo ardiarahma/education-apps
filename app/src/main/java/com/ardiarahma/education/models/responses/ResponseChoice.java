@@ -1,18 +1,17 @@
 package com.ardiarahma.education.models.responses;
 
+import com.ardiarahma.education.models.Answers;
 import com.ardiarahma.education.models.BanksoalSoal;
-import com.ardiarahma.education.models.BanksoalShelves;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
 /**
- * Created by Windows 10 on 5/11/2019.
+ * Created by Windows 10 on 5/23/2019.
  */
 
-public class ResponseTask {
-
+public class ResponseChoice {
     @SerializedName("error")
     @Expose
     private boolean error;
@@ -23,12 +22,12 @@ public class ResponseTask {
 
     @SerializedName("result")
     @Expose
-    private ArrayList<BanksoalSoal> banksoalSoals = null;
+    private ArrayList<Answers> answers = null;
 
-    public ResponseTask(boolean error, String status, ArrayList<BanksoalSoal> banksoalSoals) {
+    public ResponseChoice(boolean error, String status, ArrayList<Answers> answers) {
         this.error = error;
         this.status = status;
-        this.banksoalSoals = banksoalSoals;
+        this.answers = answers;
     }
 
     public boolean isError() {
@@ -47,11 +46,11 @@ public class ResponseTask {
         this.status = status;
     }
 
-    public ArrayList<BanksoalSoal> getBanksoalSoals() {
-        return banksoalSoals;
+    public ArrayList<Answers> getAnswers() {
+        return answers;
     }
 
-    public void setBanksoalSoals(ArrayList<BanksoalSoal> banksoalSoals) {
-        this.banksoalSoals = banksoalSoals;
+    public void setAnswers(ArrayList<Answers> answers) {
+        this.answers = answers;
     }
 }

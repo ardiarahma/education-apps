@@ -36,17 +36,17 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
 
             <RelativeLayout
                 android:id="@+id/frameAnak"
                 android:layout_width="match_parent"
-                android:layout_height="520dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_height="590dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/default_login_frame"
                 android:elevation="4dp"
                 android:gravity="center"
@@ -58,9 +58,9 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/imgAnak"
+                    android:layout_marginLeft="5dp"
                     android:layout_toEndOf="@+id/imgAnak"
                     android:layout_toRightOf="@+id/imgAnak"
-                    android:layout_marginLeft="5dp"
                     android:gravity="center_vertical"
                     android:text="Data Anak"
                     android:textColor="#16496e"
@@ -70,105 +70,162 @@
                     android:id="@+id/imgAnak"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/namaSiswa"
-                    android:layout_alignLeft="@+id/namaSiswa"
-                    android:layout_alignStart="@+id/namaSiswa"
+                    android:layout_above="@+id/tilNamaAnak"
+                    android:layout_alignLeft="@+id/tilNamaAnak"
+                    android:layout_alignStart="@+id/tilNamaAnak"
                     android:layout_marginBottom="11dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginStart="13dp"
                     android:src="@drawable/user_boy" />
 
-                <EditText
-                    android:id="@+id/namaSiswa"
-                    android:layout_width="450dp"
-                    android:layout_height="35dp"
-                    android:layout_above="@+id/spinner_gender"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/default_form"
-                    android:ems="14"
-                    android:hint="Nama Lengkap Anak"
-                    android:inputType="textEmailAddress"
-                    android:paddingLeft="15dp"
-                    android:textColor="#8d16496e"
-                    android:textColorHint="#8d16496e"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilNamaAnak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingTop="7dp"
+                    android:textColorHint="#8d16496e">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/namaSiswa"
+                        android:layout_width="320dp"
+                        android:layout_height="35dp"
+                        android:layout_above="@+id/spinner_gender"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/default_form"
+                        android:ems="14"
+                        android:hint="Nama Lengkap Anak"
+                        android:inputType="textEmailAddress"
+                        android:paddingLeft="15dp"
+                        android:textColor="#8d16496e"
+                        android:textColorHint="#8d16496e"
+                        android:textSize="15dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tilNamaAnak"
+                    android:layout_below="@id/tilNamaAnak"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="7dp"
+                    android:text="Jenis Kelamin"
+                    android:textSize="16dp" />
 
                 <Spinner
                     android:id="@+id/spinner_gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_above="@id/usernameSiswa"
-                    android:layout_marginBottom="5dp"
+                    android:layout_alignBottom="@+id/text"
+                    android:layout_below="@id/tilNamaAnak"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toEndOf="@id/text"
+                    android:layout_toRightOf="@+id/text"
                     android:paddingBottom="5dp"
                     android:paddingLeft="7dp"
-                    android:paddingTop="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
+                    android:paddingTop="5dp" />
 
-                <EditText
-                    android:id="@+id/usernameSiswa"
-                    android:layout_width="450dp"
-                    android:layout_height="35dp"
-                    android:layout_above="@+id/emailSiswa"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/default_form"
-                    android:ems="14"
-                    android:hint="Username Anak"
-                    android:inputType="textEmailAddress"
-                    android:paddingLeft="15dp"
-                    android:textColor="#8d16496e"
-                    android:textColorHint="#8d16496e"
-                    android:textSize="15dp"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilUsernameAnak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/text"
+                    android:paddingTop="7dp"
+                    android:textColorHint="#8d16496e">
 
-                    />
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/usernameSiswa"
+                        android:layout_width="320dp"
+                        android:layout_height="35dp"
+                        android:layout_above="@+id/tilEmailAnak"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/default_form"
+                        android:ems="14"
+                        android:hint="Username Anak"
+                        android:inputType="textEmailAddress"
+                        android:paddingLeft="15dp"
+                        android:textColor="#8d16496e"
+                        android:textColorHint="#8d16496e"
+                        android:textSize="15dp" />
 
-                <EditText
-                    android:id="@+id/emailSiswa"
-                    android:layout_width="450dp"
-                    android:layout_height="35dp"
-                    android:layout_above="@+id/passwordSiswa"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/default_form"
-                    android:ems="14"
-                    android:hint="Email Anak"
-                    android:inputType="textEmailAddress"
-                    android:paddingLeft="15dp"
-                    android:textColor="#8d16496e"
-                    android:textColorHint="#8d16496e"
-                    android:textSize="15dp" />
+                </android.support.design.widget.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/passwordSiswa"
-                    android:layout_width="450dp"
-                    android:layout_height="35dp"
-                    android:layout_above="@+id/check_pass"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/default_form"
-                    android:ems="14"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:paddingLeft="15dp"
-                    android:textColor="#8d16496e"
-                    android:textColorHint="#8d16496e"
-                    android:textSize="15dp" />
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilEmailAnak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/tilUsernameAnak"
+                    android:paddingTop="7dp"
+                    android:textColorHint="#8d16496e">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/emailSiswa"
+                        android:layout_width="320dp"
+                        android:layout_height="35dp"
+                        android:layout_above="@+id/passwordSiswa"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/default_form"
+                        android:ems="14"
+                        android:hint="Email Anak"
+                        android:inputType="textEmailAddress"
+                        android:paddingLeft="15dp"
+                        android:textColor="#8d16496e"
+                        android:textColorHint="#8d16496e"
+                        android:textSize="15dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilPasswordAnak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tilEmailAnak"
+                    android:paddingTop="7dp"
+                    android:textColorHint="#8d16496e">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/passwordSiswa"
+                        android:layout_width="320dp"
+                        android:layout_height="35dp"
+                        android:layout_above="@+id/check_pass"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/default_form"
+                        android:ems="14"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:paddingLeft="15dp"
+                        android:textColor="#8d16496e"
+                        android:textColorHint="#8d16496e"
+                        android:textSize="15dp" />
+
+                </android.support.design.widget.TextInputLayout>
 
                 <android.support.v7.widget.AppCompatCheckBox
                     android:id="@+id/check_pass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_above="@+id/sekolah"
-                    android:layout_alignLeft="@id/passwordSiswa"
+                    android:layout_alignLeft="@id/tilPasswordAnak"
+                    android:layout_below="@id/tilPasswordAnak"
+                    android:layout_marginLeft="15dp"
                     android:text="Tampilkan password"
                     android:textColor="#ad16496e"
                     android:textColorHint="@color/default_color" />
@@ -177,100 +234,145 @@
                     android:id="@+id/sekolah"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/spinner_province"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:layout_below="@id/check_pass"
                     android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:gravity="left"
                     android:text="Sekolah"
                     android:textColor="#16496e"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Provinsi"
+                    android:layout_marginTop="7dp"
+                    android:layout_alignLeft="@id/text"
+                    android:layout_below="@id/sekolah"
                     android:textSize="16dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
+                    />
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kota/Kabupaten"
+                    android:layout_marginTop="7dp"
+                    android:layout_alignLeft="@id/text"
+                    android:layout_below="@id/text1"
+                    android:textSize="16dp"/>
+
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kecamatan"
+                    android:layout_marginTop="7dp"
+                    android:layout_alignLeft="@id/text"
+                    android:layout_below="@id/text2"
+                    android:textSize="16dp"/>
 
                 <Spinner
                     android:id="@+id/spinner_province"
-                    android:layout_width="match_parent"
+                    android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/spinner_city"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_alignLeft="@+id/spinner_gender"
+                    android:layout_alignStart="@+id/spinner_gender"
+                    android:layout_alignTop="@+id/text1"
+                    android:layout_above="@id/spinner_city"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="7dp"
-                    android:paddingTop="5dp" />
+                    android:layout_marginBottom="5dp"/>
 
                 <Spinner
                     android:id="@+id/spinner_city"
-                    android:layout_width="match_parent"
+                    android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/spinner_kecamatan"
+                    android:layout_above="@id/spinner_district"
+                    android:layout_alignLeft="@+id/spinner_gender"
+                    android:layout_alignStart="@+id/spinner_gender"
+                    android:layout_alignTop="@+id/text2"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="7dp"
-                    android:paddingTop="5dp" />
+                    android:layout_marginBottom="5dp"/>
 
                 <Spinner
-                    android:id="@+id/spinner_kecamatan"
-                    android:layout_width="match_parent"
+                    android:id="@+id/spinner_district"
+                    android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
+                    android:layout_alignLeft="@+id/spinner_gender"
+                    android:layout_alignStart="@+id/spinner_gender"
+                    android:layout_alignTop="@+id/text3"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_above="@+id/namaSekolah"
-                    android:layout_centerHorizontal="true"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="7dp"
-                    android:paddingTop="5dp" />
+                    android:layout_marginBottom="5dp"/>
 
-                <EditText
-                    android:id="@+id/namaSekolah"
-                    android:layout_width="450dp"
-                    android:layout_height="35dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/default_form"
-                    android:ems="14"
-                    android:hint="Nama Sekolah"
-                    android:paddingLeft="15dp"
-                    android:textColor="#8d16496e"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilSekolah"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
                     android:textColorHint="#8d16496e"
-                    android:textSize="15dp" />
+                    android:layout_below="@id/spinner_district">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/namaSekolah"
+                        android:layout_width="320dp"
+                        android:layout_height="35dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/default_form"
+                        android:ems="14"
+                        android:hint="Nama Sekolah"
+                        android:paddingLeft="15dp"
+                        android:textColor="#8d16496e"
+                        android:textColorHint="#8d16496e"
+                        android:textSize="15dp" />
+
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kelas"
+                    android:layout_marginTop="7dp"
+                    android:layout_alignLeft="@id/tilNamaAnak"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@id/tilSekolah"
+                    android:textSize="16dp"/>
 
                 <Spinner
                     android:id="@+id/spinner_class"
-                    android:layout_width="match_parent"
+                    android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/namaSekolah"
+                    android:layout_alignLeft="@+id/spinner_gender"
+                    android:layout_alignStart="@+id/spinner_gender"
+                    android:layout_alignTop="@+id/text4"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="7dp"
-                    android:paddingTop="5dp" />
+                    android:layout_marginBottom="5dp"/>
+
 
                 <TextView
                     android:id="@+id/prov"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/district"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
 
             </RelativeLayout>

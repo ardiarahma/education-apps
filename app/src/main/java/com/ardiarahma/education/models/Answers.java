@@ -9,6 +9,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class Answers {
 
+    @SerializedName("id")
+    @Expose
+    private int id;
+
     @SerializedName("choice")
     @Expose
     private char choice;
@@ -19,12 +23,21 @@ public class Answers {
 
     @SerializedName("is_answer")
     @Expose
-    private boolean right_choice;
+    private int right_choice;
 
-    public Answers (char choice, String answer, boolean right_choice) {
+    public Answers (int id, char choice, String answer, int right_choice) {
+        this.id = id;
         this.choice = choice;
         this.answer = answer;
         this.right_choice = right_choice;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public char getChoice() {
@@ -43,11 +56,12 @@ public class Answers {
         this.answer = answer;
     }
 
-    public boolean isRight_choice() {
+    public int getRight_choice() {
         return right_choice;
     }
 
-    public void setRight_choice(boolean right_choice) {
+    public void setRight_choice(int right_choice) {
         this.right_choice = right_choice;
     }
+
 }

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -28,7 +29,7 @@ import retrofit2.Response;
 
 public class RegisterParentActivity extends AppCompatActivity {
 
-    EditText etNama, etUsername, etEmail, etPassword;
+    TextInputEditText etNama, etUsername, etEmail, etPassword;
     Context mContext;
     ProgressDialog loading;
 

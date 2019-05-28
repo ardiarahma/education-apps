@@ -49,6 +49,7 @@ public class RV_BanksoalShelvesAdapter extends RecyclerView.Adapter<RV_BanksoalS
                 Intent intent = new Intent(context, BanksoalTestActivity.class);
                 intent.putExtra("task_title", holder.task_title);
                 intent.putExtra("task_id", holder.task_id);
+                intent.putExtra("task_class", holder.task_class);
                 context.startActivity(intent);
             }
         });

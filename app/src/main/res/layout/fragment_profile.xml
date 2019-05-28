@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/default_bg_logreg"
     android:orientation="vertical"
-    tools:context="com.ardiarahma.educationapplication.fragments.FragmentProfile">
+    tools:context="com.ardiarahma.education.fragments.FragmentProfile">
 
     <ScrollView
         android:layout_width="match_parent"

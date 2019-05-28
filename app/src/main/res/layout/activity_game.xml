@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/game_screen"
-    tools:context="com.ardiarahma.educationapplication.activities.GameActivity"
+    tools:context="com.ardiarahma.education.activities.child.GameActivity"
     tools:openDrawer="start">
     
     

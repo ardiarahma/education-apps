@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,10 @@ public class ResultStudiesReportActivity extends AppCompatActivity {
 
     private RecyclerView rv_actlogs;
     private RV_LogStudyReportAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private LinearLayout layoutFill, layoutEmpty;
     SwipeRefreshLayout swipeRefreshLayout;
+    TextView emptyView;
 
 
     private ArrayList<LogStudy> logStudies;
@@ -51,9 +55,12 @@ public class ResultStudiesReportActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result_activities_report);
+        setContentView(R.layout.activity_result_report);
 
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
+        layoutFill = findViewById(R.id.layoutFill);
+        layoutEmpty = findViewById(R.id.layoutEmpty);
+
 
         rv_actlogs = findViewById(R.id.rv_actlogs);
         adapter = new RV_LogStudyReportAdapter(ResultStudiesReportActivity.this, logStudies);
@@ -103,21 +110,17 @@ public class ResultStudiesReportActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     if (responseLogStudyReport.getStatus().equals("success")){
                         Log.i("debug", "onResponse : SUCCESSFUL");
-                        loading.dismiss();
                         logStudies = responseLogStudyReport.getLogStudy();
                         adapter = new RV_LogStudyReportAdapter(ResultStudiesReportActivity.this, logStudies);
-                        LinearLayoutManager linearLayout = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-                        rv_actlogs.setLayoutManager(linearLayout);
+                        layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                        rv_actlogs.setLayoutManager(layoutManager);
                         rv_actlogs.setHasFixedSize(true);
                         rv_actlogs.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-                    }else {
-                        Log.i("debug", "onResponse: FAILED");
-                        loading.dismiss();
-                        swipeRefreshLayout.setRefreshing(false);
-                        Toast.makeText(getApplicationContext(), "Gagal dalam mengambil data laporan", Toast.LENGTH_LONG).show();
                     }
                 }
+                checkList();
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
@@ -128,5 +131,15 @@ public class ResultStudiesReportActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public void checkList(){
+        if (layoutManager.getItemCount() == 0){
+            layoutFill.setVisibility(View.GONE);
+            layoutEmpty.setVisibility(View.VISIBLE);
+        }else {
+            layoutFill.setVisibility(View.VISIBLE);
+            layoutEmpty.setVisibility(View.GONE);
+        }
     }
 }
