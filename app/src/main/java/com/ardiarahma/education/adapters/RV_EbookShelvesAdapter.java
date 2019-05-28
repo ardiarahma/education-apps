@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import com.ardiarahma.education.R;
 import com.ardiarahma.education.models.EbookShelves;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -49,6 +51,8 @@ public class RV_EbookShelvesAdapter extends RecyclerView.Adapter<RV_EbookShelves
             }
         });
 
+//        File f = new File("D:/sim-api/public/images/");
+        Picasso.with(context).load(ebookShelf.getImg()).into(holder.ebook_image);
 
     }
 
@@ -68,7 +72,7 @@ public class RV_EbookShelvesAdapter extends RecyclerView.Adapter<RV_EbookShelves
 
             ebook_title = (TextView) itemView.findViewById(R.id.book_title);
             ebook_link = (CardView) itemView.findViewById(R.id.cardBook);
-//            ebook_image = itemView.findViewById(R.id.book_thumbnail);
+            ebook_image = itemView.findViewById(R.id.book_thumbnail);
         }
     }
 

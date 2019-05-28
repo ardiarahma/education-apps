@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -73,7 +74,8 @@ public class EbookShelvesActivity extends AppCompatActivity {
                         loading.dismiss();
                         ebookShelves = responseEbook.getEbookShelves();
                         adapter = new RV_EbookShelvesAdapter(ebookShelves, EbookShelvesActivity.this);
-                        rv_subject.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(EbookShelvesActivity.this, LinearLayoutManager.VERTICAL,false);
+                        rv_subject.setLayoutManager(linearLayoutManager);
                         rv_subject.setHasFixedSize(true);
                         rv_subject.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
