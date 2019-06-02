@@ -1,5 +1,9 @@
 package com.ardiarahma.education.activities.parent;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -14,10 +18,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ardiarahma.education.R;
+import com.ardiarahma.education.activities.LoginActivity;
 import com.ardiarahma.education.fragments.FragmentParentActivityReport;
 import com.ardiarahma.education.fragments.FragmentParentChild;
 import com.ardiarahma.education.fragments.FragmentParentHome;
-import com.ardiarahma.education.fragments.FragmentParentLogout;
 import com.ardiarahma.education.fragments.FragmentParentProfile;
 import com.ardiarahma.education.fragments.FragmentParentStudyReport;
 import com.ardiarahma.education.models.User;
@@ -25,6 +29,8 @@ import com.ardiarahma.education.networks.PreferencesConfig;
 
 public class ParentMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +90,7 @@ public class ParentMainActivity extends AppCompatActivity
                 fragment = new FragmentParentStudyReport();
                 break;
             case R.id.logout_parent:
-                fragment = new FragmentParentLogout();
+                logoutConfirmation();
                 break;
         }
 
@@ -112,7 +118,35 @@ public class ParentMainActivity extends AppCompatActivity
         return true;
     }
 
+    public void onStart(){
+        super.onStart();
+        if (!PreferencesConfig.getInstance(this).isLoggedIn()){
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+    }
 
-
+    public void logoutConfirmation(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+        alertDialog.setTitle("Konfirmasi");
+        alertDialog.setMessage("Anda yakin ingin keluar?");
+        alertDialog.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialog.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                PreferencesConfig.getInstance(context).clear();
+                Intent intent = new Intent(context, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        AlertDialog alert = alertDialog.create();
+        alert.show();
+    }
 
 }
