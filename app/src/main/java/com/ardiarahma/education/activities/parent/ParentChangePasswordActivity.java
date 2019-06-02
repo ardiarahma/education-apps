@@ -1,5 +1,7 @@
 package com.ardiarahma.education.activities.parent;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.HideReturnsTransformationMethod;
@@ -24,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ParentChangePasswordActivity extends AppCompatActivity {
+public class ParentChangePasswordActivity extends AppCompatActivity{
 
     EditText etoldPassword, etpassword, etpassword_confirmation;
     ImageButton toolbar_password;
@@ -74,43 +76,58 @@ public class ParentChangePasswordActivity extends AppCompatActivity {
         save_pass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String token = "Bearer " + auth.getToken();
-                int user_id = user.getId();
-
-                String oldPassword = etoldPassword.getText().toString().trim();
-                String password = etpassword.getText().toString().trim();
-                String password_confirmation = etpassword_confirmation.getText().toString().trim();
-
-                Call<ResponsePassword> call = RetrofitClient
-                        .getInstance()
-                        .getApi()
-                        .change_pass_ortu(user_id, token, oldPassword, password, password_confirmation);
-
-                call.enqueue(new Callback<ResponsePassword>() {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(ParentChangePasswordActivity.this);
+                alertDialog.setTitle("Konfirmasi");
+                alertDialog.setMessage("Anda yakin ingin mengubah password akun Anda?");
+                alertDialog.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onResponse(Call<ResponsePassword> call, Response<ResponsePassword> response) {
-                        ResponsePassword responsePassword = response.body();
-                        if (response.isSuccessful()){
-                            if (responsePassword.getStatus().equals("success")){
-                                Log.i("debug", "onResponse : SUCCESSFUL");
-                                Toast.makeText(ParentChangePasswordActivity.this, "Password berhasil diganti", Toast.LENGTH_LONG).show();
-                                onBackPressed();
-                            }else {
-                                Log.i("debug", "onResponse : FAILED");
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponsePassword> call, Throwable t) {
-                        Log.e("debug", "onFailure: ERROR > " + t.getMessage());
-                        Toast.makeText(ParentChangePasswordActivity.this, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
                     }
                 });
+                alertDialog.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String token = "Bearer " + auth.getToken();
+                        int user_id = user.getId();
+
+                        String oldPassword = etoldPassword.getText().toString().trim();
+                        String password = etpassword.getText().toString().trim();
+                        String password_confirmation = etpassword_confirmation.getText().toString().trim();
+
+                        Call<ResponsePassword> call = RetrofitClient
+                                .getInstance()
+                                .getApi()
+                                .change_pass_ortu(user_id, token, oldPassword, password, password_confirmation);
+
+                        call.enqueue(new Callback<ResponsePassword>() {
+                            @Override
+                            public void onResponse(Call<ResponsePassword> call, Response<ResponsePassword> response) {
+                                ResponsePassword responsePassword = response.body();
+                                if (response.isSuccessful()){
+                                    if (responsePassword.getStatus().equals("success")){
+                                        Log.i("debug", "onResponse : SUCCESSFUL");
+                                        Toast.makeText(ParentChangePasswordActivity.this, "Password berhasil diganti", Toast.LENGTH_LONG).show();
+                                        onBackPressed();
+                                    }else {
+                                        Log.i("debug", "onResponse : FAILED");
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponsePassword> call, Throwable t) {
+                                Log.e("debug", "onFailure: ERROR > " + t.getMessage());
+                                Toast.makeText(ParentChangePasswordActivity.this, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                });
+
+                AlertDialog alert = alertDialog.create();
+                alert.show();
             }
         });
-
-
 
     }
 }
