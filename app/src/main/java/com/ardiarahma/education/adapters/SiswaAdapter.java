@@ -130,30 +130,6 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ViewHolder> 
 
             delete.setOnClickListener(this);
 
-//            delete.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-//                    alertDialog.setTitle("Konfirmasi");
-//                    alertDialog.setMessage("Anda yakin ingin menghapus akun?");
-//                    alertDialog.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            dialog.dismiss();
-//                        }
-//                    });
-//                    alertDialog.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            delete();
-//                            dialog.dismiss();
-//                        }
-//                    });
-//
-//                    AlertDialog dialog = alertDialog.create();
-//                    dialog.show();
-//                }
-//            });
         }
 
         public void onClick(View v){

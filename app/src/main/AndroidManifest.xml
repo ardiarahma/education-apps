@@ -40,7 +40,7 @@
         <activity android:name=".activities.parent.ParentChangePasswordChildActivity" />
         <activity android:name=".activities.parent.ResultActivitiesReportActivity" />
         <activity android:name=".activities.parent.ResultStudiesReportActivity" />
-        <activity android:name=".activities.parent.ForgetPasswordActivity"></activity>
+        <activity android:name=".activities.parent.ForgetPasswordActivity" />
     </application>
 
 </manifest>

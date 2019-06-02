@@ -138,7 +138,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="7dp"
             android:textColorHint="#8d16496e"
-            android:layout_below="@+id/tilUsernameOrtu">
+            android:layout_below="@+id/tilEmailOrtu">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/passwordOrtu"
