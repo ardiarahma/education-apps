@@ -1,7 +1,9 @@
 package com.ardiarahma.education.activities.parent;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ardiarahma.education.R;
+import com.ardiarahma.education.activities.LoginActivity;
 import com.ardiarahma.education.models.District;
 import com.ardiarahma.education.models.Province;
 import com.ardiarahma.education.models.Regency;
@@ -70,7 +73,7 @@ public class ParentEditChildActivity extends AppCompatActivity {
         spGender = findViewById(R.id.spinner_gender);
         spProvince = findViewById(R.id.spinner_province);
         spCity = findViewById(R.id.spinner_city);
-        spDistrict = findViewById(R.id.spinner_kecamatan);
+        spDistrict = findViewById(R.id.spinner_district);
         etSekolah = findViewById(R.id.namaSekolah);
         spClass = findViewById(R.id.spinner_class);
         prov = findViewById(R.id.prov);
@@ -97,8 +100,25 @@ public class ParentEditChildActivity extends AppCompatActivity {
         bUpdateAnak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loading = ProgressDialog.show(context, null, "Tunggu sesaat...", true, false);
-                editAnak();
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                alertDialog.setTitle("Konfirmasi");
+                alertDialog.setMessage("Anda yakin ingin mengubah data diri anak?");
+                alertDialog.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alertDialog.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        loading = ProgressDialog.show(context, null, "Tunggu sesaat...", true, false);
+                        editAnak();
+                    }
+                });
+                AlertDialog alert = alertDialog.create();
+                alert.show();
+
             }
         });
 

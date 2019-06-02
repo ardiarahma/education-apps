@@ -1,7 +1,9 @@
 package com.ardiarahma.education.activities.parent;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -64,9 +66,24 @@ public class ParentProfileUpdateActivity extends AppCompatActivity {
         save_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loading = ProgressDialog.show(context, null, "Tunggu sesaat...", true, false);
-                updateOrtu();
-
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                alertDialog.setTitle("Konfirmasi");
+                alertDialog.setMessage("Anda yakin ingin mengubah data diri Anda?");
+                alertDialog.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alertDialog.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        loading = ProgressDialog.show(context, null, "Tunggu sesaat...", true, false);
+                        updateOrtu();
+                    }
+                });
+                AlertDialog alert = alertDialog.create();
+                alert.show();
             }
         });
     }
