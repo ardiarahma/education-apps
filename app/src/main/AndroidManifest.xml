@@ -30,7 +30,6 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".activities.child.BanksoalActivity" />
         <activity android:name=".activities.child.BanksoalShelvesActivity" />
-        <activity android:name=".activities.child.BanksoalTestActivity" />
         <activity android:name=".activities.parent.ParentRegisterChildActivity" />
         <activity android:name=".activities.parent.ParentDeleteChildActivity" />
         <activity android:name=".activities.parent.ParentEditChildActivity" />
@@ -41,6 +40,8 @@
         <activity android:name=".activities.parent.ResultActivitiesReportActivity" />
         <activity android:name=".activities.parent.ResultStudiesReportActivity" />
         <activity android:name=".activities.parent.ForgetPasswordActivity" />
+        <activity android:name=".activities.child.TaskActivity" />
+        <activity android:name=".activities.child.ResultActivity"></activity>
     </application>
 
 </manifest>

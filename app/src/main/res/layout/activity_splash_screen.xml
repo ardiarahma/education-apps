@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/splash"
+    android:background="@color/default_bg"
     android:id="@+id/splash_screen"
-    tools:context="com.ardiarahma.educationapplication.activities.SplashScreen">
-
+    tools:context="com.ardiarahma.education.activities.SplashScreen">
 
     <ImageView
         android:id="@+id/logo"
@@ -26,3 +25,4 @@
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
+

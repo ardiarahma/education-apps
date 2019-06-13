@@ -88,8 +88,6 @@ public class LoginActivity extends AppCompatActivity {
 
         final String type = "Orang Tua";
 
-
-
         if (username.isEmpty()) {
             loading.dismiss();
             tilUsername.setError("Username harus diisi");
