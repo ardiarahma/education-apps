@@ -92,7 +92,6 @@ public class BanksoalActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     if (responseLog.getStatus().equals("success")){
                         Log.i("debug", "onResponse : SUCCESS");
-                        Log.d("TAG", "Response " + responseLog.getResult());
                         Log.d("TAG", "Response " + responseLog.getResult().getMenu().getFitur());
                         Log.d("TAG", "Response " + responseLog.getResult().getMenu().getUser_id());
                     }else{
@@ -104,7 +103,7 @@ public class BanksoalActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseLog> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
-                Toast.makeText(BanksoalActivity.this, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(BanksoalActivity.this, "Kesalahan terjadi.", Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ardiarahma.education.R;
-import com.ardiarahma.education.activities.child.BanksoalTestActivity;
+import com.ardiarahma.education.activities.child.TaskActivity;
 import com.ardiarahma.education.models.BanksoalShelves;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class RV_BanksoalShelvesAdapter extends RecyclerView.Adapter<RV_BanksoalS
         holder.banksoal_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, BanksoalTestActivity.class);
+                Intent intent = new Intent(context, TaskActivity.class);
                 intent.putExtra("task_title", holder.task_title);
                 intent.putExtra("task_id", holder.task_id);
                 intent.putExtra("task_class", holder.task_class);

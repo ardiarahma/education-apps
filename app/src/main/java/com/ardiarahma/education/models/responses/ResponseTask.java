@@ -2,6 +2,7 @@ package com.ardiarahma.education.models.responses;
 
 import com.ardiarahma.education.models.BanksoalSoal;
 import com.ardiarahma.education.models.BanksoalShelves;
+import com.ardiarahma.education.models.Task;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -23,12 +24,12 @@ public class ResponseTask {
 
     @SerializedName("result")
     @Expose
-    private ArrayList<BanksoalSoal> banksoalSoals = null;
+    private ArrayList<Task> tasks = null;
 
-    public ResponseTask(boolean error, String status, ArrayList<BanksoalSoal> banksoalSoals) {
+    public ResponseTask(boolean error, String status, ArrayList<Task> tasks) {
         this.error = error;
         this.status = status;
-        this.banksoalSoals = banksoalSoals;
+        this.tasks = tasks;
     }
 
     public boolean isError() {
@@ -47,11 +48,11 @@ public class ResponseTask {
         this.status = status;
     }
 
-    public ArrayList<BanksoalSoal> getBanksoalSoals() {
-        return banksoalSoals;
+    public ArrayList<Task> getTasks() {
+        return tasks;
     }
 
-    public void setBanksoalSoals(ArrayList<BanksoalSoal> banksoalSoals) {
-        this.banksoalSoals = banksoalSoals;
+    public void setTasks(ArrayList<Task> tasks) {
+        this.tasks = tasks;
     }
 }
