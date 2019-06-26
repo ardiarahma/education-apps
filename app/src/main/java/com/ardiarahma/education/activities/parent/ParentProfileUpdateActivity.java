@@ -51,7 +51,7 @@ public class ParentProfileUpdateActivity extends AppCompatActivity {
             }
         });
 
-        etName = findViewById(R.id.namalengkapOrtu);
+        etName = findViewById(R.id.namaOrtu);
         etEmail = findViewById(R.id.emailOrtu);
         etUsername = findViewById(R.id.usernameOrtu);
 
@@ -157,7 +157,8 @@ public class ParentProfileUpdateActivity extends AppCompatActivity {
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                 loading.dismiss();
-                Toast.makeText(context, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Kesalahan terjadi. Silakan coba beberapa saat lagi.",
+                        Toast.LENGTH_LONG).show();
             }
         });
     }

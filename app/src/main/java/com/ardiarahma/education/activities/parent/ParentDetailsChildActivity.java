@@ -37,7 +37,6 @@ public class ParentDetailsChildActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_child_details);
 
-        //===================== BACK BUTTON ====================
         toolbar_details = findViewById(R.id.toolbar_details);
         toolbar_details.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,14 +45,14 @@ public class ParentDetailsChildActivity extends AppCompatActivity {
             }
         });
 
-        //===================== DETAILS ======================
         childName = findViewById(R.id.namalengkap);
         childEmail = findViewById(R.id.emailSiswa);
         childUsername = findViewById(R.id.usernameSiswa);
         childSchool = findViewById(R.id.sekolahSiswa);
         childClass = findViewById(R.id.kelasSiswa);
 
-        loading = ProgressDialog.show(this, null, "Mohon tunggu sebentar ...", true, false);
+        loading = ProgressDialog.show(this, null,
+                "Mohon tunggu sebentar ...", true, false);
 
         Intent intent = getIntent();
         int id = intent.getIntExtra("childId", 0);
@@ -70,6 +69,5 @@ public class ParentDetailsChildActivity extends AppCompatActivity {
         childClass.setText(String.valueOf(classes));
 
         loading.dismiss();
-
     }
 }

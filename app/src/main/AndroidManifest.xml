@@ -41,7 +41,8 @@
         <activity android:name=".activities.parent.ResultStudiesReportActivity" />
         <activity android:name=".activities.parent.ForgetPasswordActivity" />
         <activity android:name=".activities.child.TaskActivity" />
-        <activity android:name=".activities.child.ResultActivity"></activity>
+        <activity android:name=".activities.child.ResultActivity" />
+        <activity android:name=".activities.child.DiscussionActivity"></activity>
     </application>
 
 </manifest>

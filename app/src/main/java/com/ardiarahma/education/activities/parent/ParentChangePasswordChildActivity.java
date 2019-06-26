@@ -99,7 +99,6 @@ public class ParentChangePasswordChildActivity extends AppCompatActivity {
                                 .getInstance()
                                 .getApi()
                                 .change_pass_ortu(user_id, token, oldPassword, password, password_confirmation);
-
                         call.enqueue(new Callback<ResponsePassword>() {
                             @Override
                             public void onResponse(Call<ResponsePassword> call, Response<ResponsePassword> response) {
@@ -107,18 +106,19 @@ public class ParentChangePasswordChildActivity extends AppCompatActivity {
                                 if (response.isSuccessful()){
                                     if (responsePassword.getStatus().equals("success")){
                                         Log.i("debug", "onResponse : SUCCESSFUL");
-                                        Toast.makeText(ParentChangePasswordChildActivity.this, "Password berhasil diganti", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(ParentChangePasswordChildActivity.this,
+                                                "Password berhasil diganti", Toast.LENGTH_LONG).show();
                                         onBackPressed();
                                     }else {
                                         Log.i("debug", "onResponse : FAILED");
                                     }
                                 }
                             }
-
                             @Override
                             public void onFailure(Call<ResponsePassword> call, Throwable t) {
                                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
-                                Toast.makeText(ParentChangePasswordChildActivity.this, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ParentChangePasswordChildActivity.this,
+                                        "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
                             }
                         });
                     }

@@ -29,7 +29,7 @@ import retrofit2.Response;
 
 public class RegisterParentActivity extends AppCompatActivity {
 
-    TextInputEditText etNama, etUsername, etEmail, etPassword;
+    EditText etNama, etUsername, etEmail, etPassword;
     Context mContext;
     ProgressDialog loading;
 

@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -59,8 +58,6 @@ public class MainActivity extends AppCompatActivity
         header_email.setText(user.getEmail());
 
         displaySelectedScreen(R.id.nav_home);
-
-
     }
 
     @Override
@@ -75,9 +72,7 @@ public class MainActivity extends AppCompatActivity
 
 
     public void displaySelectedScreen(int id){
-
         Fragment fragment = null;
-
         switch (id){
             case R.id.nav_home:
                 fragment = new FragmentHome();
@@ -89,16 +84,13 @@ public class MainActivity extends AppCompatActivity
                 logoutConfirmation();
                 break;
         }
-
         if (fragment != null){
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.screen_area, fragment);
             ft.commit();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

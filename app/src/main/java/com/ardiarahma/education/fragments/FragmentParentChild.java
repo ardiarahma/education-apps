@@ -39,24 +39,19 @@ public class FragmentParentChild extends Fragment {
     SiswaAdapter adapter;
     RecyclerView rv;
     SwipeRefreshLayout swipeRefreshLayout;
-
-
     ProgressDialog loading;
     User user = PreferencesConfig.getInstance(getActivity()).getUser();
     Token auth = PreferencesConfig.getInstance(getActivity()).getToken();
 
-
     public FragmentParentChild() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_parent_menu_anak, container, false);
-
         Button btnCreateAnak = v.findViewById(R.id.tambahAnak);
         btnCreateAnak.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,15 +60,8 @@ public class FragmentParentChild extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-
         rv = v.findViewById(R.id.rv_listAnak);
         adapter = new SiswaAdapter(getContext(), siswas);
-
-//        Intent intent = getActivity().getIntent();
-//        int user_id =  intent.getIntExtra("user_id", 0);
-
         swipeRefreshLayout = v.findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -81,7 +69,6 @@ public class FragmentParentChild extends Fragment {
                 listAnak();
             }
         });
-
         return v;
     }
 
@@ -94,24 +81,18 @@ public class FragmentParentChild extends Fragment {
     @Override
     public void onViewCreated(View view, @android.support.annotation.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         getActivity().setTitle("Kelola Akun Anak");
-
     }
 
     public void listAnak(){
-        loading = ProgressDialog.show(getActivity(), null, "Please wait...",true, false);
-
-
+        loading = ProgressDialog.show(getActivity(), null, "Please wait...",
+                true, false);
         String token = "Bearer " + auth.getToken();
         int user_id = user.getId();
-
-
         retrofit2.Call<ResponseCheckUser> call = RetrofitClient
                 .getInstance()
                 .getApi()
                 .readAnak(token, user_id);
-
         call.enqueue(new Callback<ResponseCheckUser>() {
             @Override
             public void onResponse(retrofit2.Call<ResponseCheckUser> call, Response<ResponseCheckUser> response) {
@@ -123,7 +104,8 @@ public class FragmentParentChild extends Fragment {
                         Log.i("debug", "onResponse : SUCCESSFUL");
                         siswas = responseCheckUser.getAnak();
                         adapter = new SiswaAdapter(getContext(), siswas);
-                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
+                                LinearLayoutManager.VERTICAL, false);
                         rv.setAdapter(adapter);
                         rv.setHasFixedSize(true);
                         rv.setLayoutManager(linearLayoutManager);
@@ -139,9 +121,9 @@ public class FragmentParentChild extends Fragment {
             public void onFailure(retrofit2.Call<ResponseCheckUser> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                 loading.dismiss();
-                Toast.makeText(getContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.",
+                        Toast.LENGTH_LONG).show();
             }
         });
     }
-
 }

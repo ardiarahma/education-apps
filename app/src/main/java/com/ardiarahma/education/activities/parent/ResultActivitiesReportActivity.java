@@ -50,20 +50,15 @@ public class ResultActivitiesReportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_report);
-
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
-
         rv_actlogs = findViewById(R.id.rv_actlogs);
         adapter = new RV_LogActivityReportAdapter(ResultActivitiesReportActivity.this, log_details);
-
-        loading = ProgressDialog.show(ResultActivitiesReportActivity.this, null, "Please wait...",true, false);
-
+        loading = ProgressDialog.show(ResultActivitiesReportActivity.this, null,
+                "Please wait...",true, false);
         Intent intent = getIntent();
         String name = intent.getStringExtra("childName");
-
         TextView title_toolbar = (TextView) findViewById(R.id.toolbar_title);
         title_toolbar.setText(name);
-
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -71,7 +66,6 @@ public class ResultActivitiesReportActivity extends AppCompatActivity {
                 log();
             }
         });
-
         ImageButton toolbar_back = (ImageButton) findViewById(R.id.toolbar_back);
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,12 +84,10 @@ public class ResultActivitiesReportActivity extends AppCompatActivity {
     public void log(){
         Intent intent = getIntent();
         int id = intent.getIntExtra("childId", 0);
-
         Call<ResponseLogActivityReport> call = RetrofitClient
                 .getInstance()
                 .getApi()
                 .log_report(token, id);
-
         call.enqueue(new Callback<ResponseLogActivityReport>() {
             @Override
             public void onResponse(Call<ResponseLogActivityReport> call, Response<ResponseLogActivityReport> response) {
@@ -109,7 +101,8 @@ public class ResultActivitiesReportActivity extends AppCompatActivity {
                         loading.dismiss();
                         log_details = responseLogActivityReport.getLog_detail();
                         adapter = new RV_LogActivityReportAdapter(ResultActivitiesReportActivity.this, log_details);
-                        LinearLayoutManager linearLayout = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                        LinearLayoutManager linearLayout = new LinearLayoutManager(getApplicationContext(),
+                                LinearLayoutManager.VERTICAL, false);
                         rv_actlogs.setLayoutManager(linearLayout);
                         rv_actlogs.setHasFixedSize(true);
                         rv_actlogs.setAdapter(adapter);
@@ -118,17 +111,18 @@ public class ResultActivitiesReportActivity extends AppCompatActivity {
                         Log.i("debug", "onResponse: FAILED");
                         loading.dismiss();
                         swipeRefreshLayout.setRefreshing(false);
-                        Toast.makeText(getApplicationContext(), "Gagal dalam mengambil data laporan", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Gagal dalam mengambil data laporan",
+                                Toast.LENGTH_LONG).show();
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseLogActivityReport> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                 loading.dismiss();
                 swipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(getApplicationContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.",
+                        Toast.LENGTH_LONG).show();
             }
         });
     }

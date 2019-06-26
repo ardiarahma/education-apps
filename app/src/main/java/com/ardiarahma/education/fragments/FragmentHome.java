@@ -34,7 +34,6 @@ public class FragmentHome extends Fragment {
     @Override
     public void onViewCreated(View view, @android.support.annotation.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         getActivity().setTitle("Beranda");
     }
 
@@ -43,11 +42,8 @@ public class FragmentHome extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        //=================== manggil username ==================//
         TextView wm_result = (TextView) view.findViewById(R.id.wm_result);
         wm_result.setText(user.getUsername());
-
-        //=============== Click button from fragment home to GameActivity ===========//
         game = view.findViewById(R.id.game);
         game.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +52,6 @@ public class FragmentHome extends Fragment {
                 startActivity(intent);
             }
         });
-
         ebook = view.findViewById(R.id.ebook);
         ebook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +60,6 @@ public class FragmentHome extends Fragment {
                 startActivity(intent);
             }
         });
-
         banksoal = view.findViewById(R.id.banksoal);
         banksoal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +68,6 @@ public class FragmentHome extends Fragment {
                 startActivity(intent);
             }
         });
-
         return view;
     }
 

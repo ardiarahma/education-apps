@@ -46,19 +46,15 @@ public class FragmentParentActivityReport extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_parent_report, container, false);
-
         swipeRefreshLayout = v.findViewById(R.id.swipe_refresh);
-
         rv = v.findViewById(R.id.rv_listAnak);
         adapter = new LogActivityAdapter(getContext(), siswas);
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 listAnak();
             }
         });
-
         return v;
     }
 
@@ -74,17 +70,12 @@ public class FragmentParentActivityReport extends Fragment {
 
     public void listAnak(){
         loading = ProgressDialog.show(getActivity(), null, "Please wait...",true, false);
-
-
         String token = "Bearer " + auth.getToken();
         int user_id = user.getId();
-
-
         retrofit2.Call<ResponseCheckUser> call = RetrofitClient
                 .getInstance()
                 .getApi()
                 .readAnak(token, user_id);
-
         call.enqueue(new Callback<ResponseCheckUser>() {
             @Override
             public void onResponse(retrofit2.Call<ResponseCheckUser> call, Response<ResponseCheckUser> response) {
@@ -107,7 +98,6 @@ public class FragmentParentActivityReport extends Fragment {
                     }
                 }
             }
-
             @Override
             public void onFailure(retrofit2.Call<ResponseCheckUser> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());

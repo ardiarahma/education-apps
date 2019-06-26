@@ -15,6 +15,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,7 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    TextInputEditText tilUsername, tilPassword;
+    EditText tilUsername, tilPassword;
     Context mContext;
     ProgressDialog loading;
 

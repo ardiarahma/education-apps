@@ -39,89 +39,48 @@
         android:orientation="vertical"
         android:padding="13dp">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/tilUsername"
+        <EditText
+            android:id="@+id/username"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:paddingTop="7dp"
-            android:textColorHint="#8d16496e">
+            android:layout_height="35dp"
+            android:background="@drawable/default_form"
+            android:textSize="15dp"
+            android:hint="Username"
+            android:paddingLeft="17dp"
+            android:ems="14"
+            android:textColor="#8d16496e"
+            />
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/default_form"
-                android:ems="14"
-                android:hint="Username"
-                android:inputType="textEmailAddress"
-                android:paddingLeft="15dp"
-                android:textColor="#8d16496e"
-                android:textSize="15dp" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/tilPassword"
+        <EditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/default_form"
+            android:layout_below="@id/username"
+            android:ems="14"
+            android:paddingLeft="17dp"
+            android:hint="Password"
+            android:textSize="15dp"
+            android:inputType="textPassword"
+            android:textColor="#8d16496e"/>
+
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/check_pass"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tilUsername"
-            android:textColorHint="#8d16496e"
-            android:paddingTop="7dp"
-            android:layout_marginTop="5dp">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/default_form"
-                android:ems="14"
-                android:paddingLeft="15dp"
-                android:hint="Password"
-                android:textSize="15dp"
-                android:inputType="textPassword"
-                android:textColor="#8d16496e"
-                />
-
-        </android.support.design.widget.TextInputLayout>
-
-
-        <LinearLayout
-            android:id="@+id/pass"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tilPassword"
-            android:orientation="horizontal">
-            <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/check_pass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Tampilkan password"
-                android:textColor="#ad16496e" />
-            <TextView
-                android:id="@+id/forgetPass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:gravity="end"
-                android:layout_weight="1"
-                android:text="Lupa password?"
-                android:textColor="#ad16496e"
-                android:textSize="13dp"
-                android:onClick="forget"/>
-        </LinearLayout>
+            android:layout_weight="1"
+            android:text="Tampilkan password"
+            android:textColor="#ad16496e"
+            android:layout_below="@id/password"/>
 
 
         <Button
             android:id="@+id/masuk"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
-            android:layout_below="@+id/pass"
+            android:layout_below="@+id/check_pass"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:background="@drawable/default_button"

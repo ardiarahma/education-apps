@@ -70,9 +70,7 @@ public class ParentMainActivity extends AppCompatActivity
 
 
     public void displaySelectedScreen(int id){
-
         Fragment fragment = null;
-
         switch (id){
             case R.id.nav_home_parent:
                 fragment = new FragmentParentHome();
@@ -93,16 +91,13 @@ public class ParentMainActivity extends AppCompatActivity
                 logoutConfirmation();
                 break;
         }
-
         if (fragment != null){
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.screen_area_parent, fragment);
             ft.commit();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_parent);
         drawer.closeDrawer(GravityCompat.START);
-
     }
 
 

@@ -39,9 +39,7 @@ public class FragmentParentHome extends Fragment {
     ArticlesAdapter adapter;
     RecyclerView rv;
     SwipeRefreshLayout swipeRefreshLayout;
-
     ProgressDialog loading;
-
     User user = PreferencesConfig.getInstance(getActivity()).getUser();
     Token auth = PreferencesConfig.getInstance(getActivity()).getToken();
     String token = "Bearer " + auth.getToken();
@@ -50,25 +48,18 @@ public class FragmentParentHome extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_parent_home, container, false);
-
         swipeRefreshLayout = v.findViewById(R.id.swipe_refresh);
-
         rv = (RecyclerView) v.findViewById(R.id.rv_news);
         adapter = new ArticlesAdapter(getContext(), articles);
-
-        loading = ProgressDialog.show(getActivity(), null, "Tunggu sebentar ya!",true, false);
-
-        //manggil username user
-
+        loading = ProgressDialog.show(getActivity(), null, "Tunggu sebentar ya!",
+                true, false);
         TextView wm_result = (TextView) v.findViewById(R.id.wm_result);
         wm_result.setText(user.getUsername());
-
         swipeRefreshLayout = v.findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -76,15 +67,21 @@ public class FragmentParentHome extends Fragment {
                 loadNews();
             }
         });
-
         return v;
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
         loadNews();
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        getActivity().setTitle("Beranda");
+
     }
 
     public void loadNews(){
@@ -104,7 +101,8 @@ public class FragmentParentHome extends Fragment {
                         Log.i("debug", "onResponse : SUCCESSFUL");
                         articles = responseNews.getResult().getArticles();
                         adapter = new ArticlesAdapter(getContext(), articles);
-                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
+                                LinearLayoutManager.VERTICAL, false);
                         rv.setAdapter(adapter);
                         rv.setHasFixedSize(true);
                         rv.setLayoutManager(linearLayoutManager);
@@ -120,17 +118,9 @@ public class FragmentParentHome extends Fragment {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                 loading.dismiss();
                 swipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(getContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.",
+                        Toast.LENGTH_LONG).show();
             }
         });
     }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        getActivity().setTitle("Beranda");
-
-    }
-
 }

@@ -149,7 +149,6 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ViewHolder> 
                             .getInstance()
                             .getApi()
                             .deleteanak(token, id);
-
                     call.enqueue(new Callback<ResponseDelete>() {
                         @Override
                         public void onResponse(retrofit2.Call<ResponseDelete> call, Response<ResponseDelete> response) {
@@ -160,13 +159,11 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ViewHolder> 
                                     Log.i("debug", "Response success");
                                     delete(getAdapterPosition());
                                     Toast.makeText(context, responseDelete.getMessage(), Toast.LENGTH_LONG).show();
-
                                 }
                             } else {
                                 Log.i("debug", "FAILED");
                             }
                         }
-
                         @Override
                         public void onFailure(retrofit2.Call<ResponseDelete> call, Throwable t) {
                             Toast.makeText(context, "Gagal menghapus akun", Toast.LENGTH_LONG).show();

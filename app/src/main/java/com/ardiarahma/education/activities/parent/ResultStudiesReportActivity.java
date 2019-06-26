@@ -56,23 +56,17 @@ public class ResultStudiesReportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_report);
-
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         layoutFill = findViewById(R.id.layoutFill);
         layoutEmpty = findViewById(R.id.layoutEmpty);
-
-
         rv_actlogs = findViewById(R.id.rv_actlogs);
         adapter = new RV_LogStudyReportAdapter(ResultStudiesReportActivity.this, logStudies);
-
-        loading = ProgressDialog.show(ResultStudiesReportActivity.this, null, "Please wait...",true, false);
-
+        loading = ProgressDialog.show(ResultStudiesReportActivity.this, null,
+                "Please wait...",true, false);
         Intent intent = getIntent();
         String name = intent.getStringExtra("childName");
-
         TextView title_toolbar = (TextView) findViewById(R.id.toolbar_title);
         title_toolbar.setText(name);
-
         ImageButton toolbar_back = (ImageButton) findViewById(R.id.toolbar_back);
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +74,6 @@ public class ResultStudiesReportActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -88,18 +81,21 @@ public class ResultStudiesReportActivity extends AppCompatActivity {
                 log();
             }
         });
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        log();
     }
 
     public void log(){
         Intent intent = getIntent();
         int id = intent.getIntExtra("childId", 0);
-
         Call<ResponseLogStudyReport> call = RetrofitClient
                 .getInstance()
                 .getApi()
                 .log_study_report(token, id);
-
         call.enqueue(new Callback<ResponseLogStudyReport>() {
             @Override
             public void onResponse(Call<ResponseLogStudyReport> call, Response<ResponseLogStudyReport> response) {
@@ -112,34 +108,39 @@ public class ResultStudiesReportActivity extends AppCompatActivity {
                         Log.i("debug", "onResponse : SUCCESSFUL");
                         logStudies = responseLogStudyReport.getLogStudy();
                         adapter = new RV_LogStudyReportAdapter(ResultStudiesReportActivity.this, logStudies);
-                        layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                        layoutManager = new LinearLayoutManager(getApplicationContext(),
+                                LinearLayoutManager.VERTICAL, false);
                         rv_actlogs.setLayoutManager(layoutManager);
                         rv_actlogs.setHasFixedSize(true);
                         rv_actlogs.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
+                    }else {
+                        Log.i("debug", "onResponse: FAILED");
+                        loading.dismiss();
+                        swipeRefreshLayout.setRefreshing(false);
+                        Toast.makeText(getApplicationContext(), "Gagal dalam mengambil data laporan",
+                                Toast.LENGTH_LONG).show();
                     }
                 }
-                checkList();
-                swipeRefreshLayout.setRefreshing(false);
             }
-
             @Override
             public void onFailure(Call<ResponseLogStudyReport> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                 loading.dismiss();
                 swipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(getApplicationContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.",
+                        Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    public void checkList(){
-        if (layoutManager.getItemCount() == 0){
-            layoutFill.setVisibility(View.GONE);
-            layoutEmpty.setVisibility(View.VISIBLE);
-        }else {
-            layoutFill.setVisibility(View.VISIBLE);
-            layoutEmpty.setVisibility(View.GONE);
-        }
-    }
+//    public void checkList(){
+//        if (layoutManager.getItemCount() == 0){
+//            layoutFill.setVisibility(View.GONE);
+//            layoutEmpty.setVisibility(View.VISIBLE);
+//        }else {
+//            layoutFill.setVisibility(View.VISIBLE);
+//            layoutEmpty.setVisibility(View.GONE);
+//        }
+//    }
 }

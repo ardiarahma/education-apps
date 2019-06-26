@@ -48,12 +48,9 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(articles.get(position).getUrl()));
                 context.startActivity(intent);
-
             }
         });
-
         Picasso.with(context).load(articles.get(position).getUrlToImage()).into(holder.news_thumbnail);
-
     }
 
     @Override
@@ -75,34 +72,4 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
             news_thumbnail = itemView.findViewById(R.id.news_thumbnail);
         }
     }
-
-//    public class LoadImage extends AsyncTask<String, Integer, Bitmap>{
-//
-//        private ImageView news_thumbnail;
-//        public LoadImage(ImageView news_thumbnail){
-//            this.news_thumbnail = news_thumbnail;
-//        }
-//
-//        @Override
-//        protected Bitmap doInBackground(String... strings) {
-//            URL url = null;
-//            Bitmap bitmap = null;
-//
-//            try {
-//                url = new URL(strings[0]);
-//                bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-//            } catch (MalformedURLException e){
-//                e.printStackTrace();
-//            } catch (IOException e){
-//                e.printStackTrace();
-//            }
-//            return bitmap;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Bitmap bitmap) {
-//            super.onPostExecute(bitmap);
-//            news_thumbnail.setImageBitmap(bitmap);
-//        }
-//    }
 }

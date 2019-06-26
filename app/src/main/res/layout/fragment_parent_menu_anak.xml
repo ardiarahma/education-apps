@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context="com.ardiarahma.education.fragments.FragmentParentChild">
 
-    <!-- TODO: Update blank fragment layout -->
     <Button
         android:id="@+id/tambahAnak"
         android:layout_width="match_parent"
@@ -33,7 +32,4 @@
             android:layout_marginBottom="10dp"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
-
-
-
 </LinearLayout>

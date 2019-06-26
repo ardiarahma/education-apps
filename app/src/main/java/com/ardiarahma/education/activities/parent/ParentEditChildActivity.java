@@ -64,7 +64,6 @@ public class ParentEditChildActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_child_edit);
-
         context = this;
         etNama = findViewById(R.id.namaSiswa);
         etEmail = findViewById(R.id.emailSiswa);
@@ -81,7 +80,6 @@ public class ParentEditChildActivity extends AppCompatActivity {
         kecamatan = findViewById(R.id.district);
         user_id = findViewById(R.id.id_anak);
 
-
         Intent intent = getIntent();
         int id = intent.getIntExtra("childId", 0);
         String name = intent.getStringExtra("childName");
@@ -96,7 +94,7 @@ public class ParentEditChildActivity extends AppCompatActivity {
         etSekolah.setText(school, TextView.BufferType.EDITABLE);
 
         //=================== REGISTER BUTTON ==================//
-        bUpdateAnak = findViewById(R.id.daftar_anak_btn);
+        bUpdateAnak = findViewById(R.id.edit_anak_btn);
         bUpdateAnak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +110,8 @@ public class ParentEditChildActivity extends AppCompatActivity {
                 alertDialog.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        loading = ProgressDialog.show(context, null, "Tunggu sesaat...", true, false);
+                        loading = ProgressDialog.show(context, null,
+                                "Tunggu sesaat...", true, false);
                         editAnak();
                     }
                 });
@@ -356,8 +355,8 @@ public class ParentEditChildActivity extends AppCompatActivity {
         Call<ResponseUpdateAnak> call = RetrofitClient
                 .getInstance()
                 .getApi()
-                .editAnak(token, id, name, email, username, jenis_kelamin, province_id, regency_id, district_id, school, classes, "application/json");
-
+                .editAnak(token, id, name, email, username, jenis_kelamin,
+                        province_id, regency_id, district_id, school, classes, "application/json");
         call.enqueue(new Callback<ResponseUpdateAnak>() {
             @Override
             public void onResponse(Call<ResponseUpdateAnak> call, Response<ResponseUpdateAnak> response) {
@@ -382,17 +381,13 @@ public class ParentEditChildActivity extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseUpdateAnak> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                 loading.dismiss();
-                Toast.makeText(context, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Kesalahan terjadi. Silakan coba beberapa saat lagi.",
+                        Toast.LENGTH_LONG).show();
             }
         });
-
-
-
-
     }
 }

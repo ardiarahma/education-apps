@@ -18,7 +18,7 @@
     <RelativeLayout
         android:id="@+id/regisOrtu"
         android:layout_width="match_parent"
-        android:layout_height="495dp"
+        android:layout_height="350dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -47,115 +47,76 @@
             android:id="@+id/imgOrtu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/tilNamaOrtu"
-            android:layout_alignLeft="@+id/tilNamaOrtu"
-            android:layout_alignStart="@+id/tilNamaOrtu"
+            android:layout_above="@+id/namaOrtu"
+            android:layout_alignLeft="@+id/namaOrtu"
+            android:layout_alignStart="@+id/namaOrtu"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:src="@drawable/user_girl" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/tilNamaOrtu"
+        <EditText
+            android:id="@+id/namaOrtu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:textColorHint="#8d16496e">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/namaOrtu"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_above="@+id/usernameOrtu"
-                android:layout_alignLeft="@+id/usernameOrtu"
-                android:layout_alignStart="@+id/usernameOrtu"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/default_form"
-                android:ems="14"
-                android:hint="Nama Orang Tua"
-                android:inputType="textEmailAddress"
-                android:paddingLeft="15dp"
-                android:textColor="#8d16496e"
-                android:textColorHint="#8d16496e"
-                android:textSize="15dp" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/tilUsernameOrtu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="7dp"
+            android:layout_height="35dp"
+            android:layout_above="@+id/usernameOrtu"
+            android:layout_alignLeft="@+id/usernameOrtu"
+            android:layout_alignStart="@+id/usernameOrtu"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/default_form"
+            android:ems="14"
+            android:hint="Nama Orang Tua"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="17dp"
+            android:textColor="#8d16496e"
             android:textColorHint="#8d16496e"
-            android:layout_below="@+id/tilNamaOrtu">
+            android:textSize="15dp" />
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/usernameOrtu"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/default_form"
-                android:ems="14"
-                android:hint="Username Orang Tua"
-                android:inputType="textEmailAddress"
-                android:paddingLeft="15dp"
-                android:textColor="#8d16496e"
-                android:textColorHint="#8d16496e"
-                android:textSize="15dp" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/tilEmailOrtu"
+        <EditText
+            android:id="@+id/usernameOrtu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="7dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/default_form"
+            android:ems="14"
+            android:hint="Username Orang Tua"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="17dp"
+            android:textColor="#8d16496e"
             android:textColorHint="#8d16496e"
-            android:layout_below="@+id/tilUsernameOrtu">
+            android:textSize="15dp" />
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/emailOrtu"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_below="@+id/usernameOrtu"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/default_form"
-                android:ems="14"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:paddingLeft="15dp"
-                android:textColorHint="#8d16496e"
-                android:textSize="15dp"
-                android:textColor="#8d16496e"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/tilPasswordOrtu"
+        <EditText
+            android:id="@+id/emailOrtu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="7dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/usernameOrtu"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/default_form"
+            android:ems="14"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="17dp"
             android:textColorHint="#8d16496e"
-            android:layout_below="@+id/tilEmailOrtu">
+            android:textSize="15dp"
+            android:textColor="#8d16496e"/>
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/passwordOrtu"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_below="@+id/emailOrtu"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/default_form"
-                android:ems="14"
-                android:paddingLeft="15dp"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:textColorHint="#8d16496e"
-                android:textSize="15dp"
-                android:textColor="#8d16496e"/>
-
-        </android.support.design.widget.TextInputLayout>
+        <EditText
+            android:id="@+id/passwordOrtu"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@+id/emailOrtu"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/default_form"
+            android:ems="14"
+            android:paddingLeft="17dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColorHint="#8d16496e"
+            android:textSize="15dp"
+            android:textColor="#8d16496e"/>
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/check_pass"
@@ -164,7 +125,7 @@
             android:layout_weight="1"
             android:text="Tampilkan password"
             android:textColor="#ad16496e"
-            android:layout_below="@id/tilPasswordOrtu"
+            android:layout_below="@id/passwordOrtu"
             android:textColorHint="@color/default_color"
             android:layout_marginTop="8dp"/>
 

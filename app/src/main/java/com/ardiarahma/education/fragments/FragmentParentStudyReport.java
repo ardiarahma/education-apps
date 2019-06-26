@@ -47,12 +47,9 @@ public class FragmentParentStudyReport extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_parent_report, container, false);
-
         swipeRefreshLayout = v.findViewById(R.id.swipe_refresh);
-
         rv = v.findViewById(R.id.rv_listAnak);
         adapter = new LogStudyAdapter(getContext(), siswas);
-
         swipeRefreshLayout = v.findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -60,7 +57,6 @@ public class FragmentParentStudyReport extends Fragment {
                 listAnak();
             }
         });
-
         return v;
     }
 

@@ -43,7 +43,7 @@ import retrofit2.Response;
 
 public class ParentRegisterChildActivity extends AppCompatActivity {
 
-    TextInputEditText etNama, etEmail, etUsername, etPassword, etSekolah;
+    EditText etNama, etEmail, etUsername, etPassword, etSekolah;
     Spinner spGender, spProvince, spCity, spDistrict, spClass;
     TextView prov, city, kecamatan;
     Context context;
@@ -66,7 +66,6 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_child);
-
         context = this;
         etNama = findViewById(R.id.namaSiswa);
         etEmail = findViewById(R.id.emailSiswa);
@@ -81,8 +80,6 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
         prov = findViewById(R.id.prov);
         city = findViewById(R.id.city);
         kecamatan = findViewById(R.id.district);
-
-        //=================== CHECK PASSWORD ===================//
         CheckBox cbPassword = findViewById(R.id.check_pass);
         cbPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -94,19 +91,15 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
                 }
             }
         });
-
-        //=================== REGISTER BUTTON ==================//
         Button btnDaftarAnak = findViewById(R.id.daftar_anak_btn);
         btnDaftarAnak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loading = ProgressDialog.show(context, null, "Tunggu sesaat...", true, false);
+                loading = ProgressDialog.show(context, null, "Tunggu sesaat...",
+                        true, false);
                 createAnak();
             }
         });
-
-
-        //=================== BACK BUTTON ==================//
         ImageButton toolbar_regis = (ImageButton) findViewById(R.id.toolbar_regis);
         toolbar_regis.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,10 +107,10 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
         //=================== SPINNER ===================//
         //Gender
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.gender, R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.gender,
+                R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spGender.setAdapter(adapter);
         spGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -125,15 +118,13 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = String.valueOf(parent.getItemIdAtPosition(position)).toString();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
-
         //Class
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.kelas, R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.kelas,
+                R.layout.support_simple_spinner_dropdown_item);
         adapter1.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spClass.setAdapter(adapter1);
         spClass.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -141,10 +132,8 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = String.valueOf(parent.getItemAtPosition(position)).toString();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
@@ -154,15 +143,12 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
             public void onItemSelected(final AdapterView<?> parent, View view, int position, long id) {
                 Province provinces = (Province) parent.getSelectedItem();
                 int province_id = provinces.getId();
-
                 prov.setText(String.valueOf(province_id));
-
                 //ambil data kota
                 Call<ResponseRegency> call = RetrofitClient
                         .getInstance()
                         .getApi()
                         .regency(token, province_id);
-
                 call.enqueue(new Callback<ResponseRegency>() {
                     @Override
                     public void onResponse(Call<ResponseRegency> call, Response<ResponseRegency> response) {
@@ -173,21 +159,17 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
                                 adapterRegencies = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, regencies);
                                 adapterRegencies.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                 spCity.setAdapter(adapterRegencies);
-
                                 spCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                         Regency regency = (Regency) parent.getSelectedItem();
                                         int regency_id = regency.getId();
-
                                         city.setText(String.valueOf(regency_id));
-
                                         //ambil data kecamatan
                                         Call<ResponseDistrict> call2 = RetrofitClient
                                                 .getInstance()
                                                 .getApi()
                                                 .district(token, regency_id);
-
                                         call2.enqueue(new Callback<ResponseDistrict>() {
                                             @Override
                                             public void onResponse(Call<ResponseDistrict> call, Response<ResponseDistrict> response) {
@@ -198,7 +180,6 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
                                                         adapterDistrict = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, districts);
                                                         adapterDistrict.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                                         spDistrict.setAdapter(adapterDistrict);
-
                                                         spDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                                             @Override
                                                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -206,10 +187,8 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
                                                                 int district_id = district.getId();
                                                                 kecamatan.setText(String.valueOf(district_id));
                                                             }
-
                                                             @Override
                                                             public void onNothingSelected(AdapterView<?> parent) {
-
                                                             }
                                                         });
                                                     }
@@ -333,7 +312,7 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
 
         if (password.length() < 6) {
             loading.dismiss();
-            etPassword.setError("Password harus berisi minimal 8 karakter");
+            etPassword.setError("Password harus berisi minimal 6 karakter");
             etPassword.requestFocus();
             return;
         }
@@ -347,8 +326,8 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
 
         Call<ResponseRegisterAnak> call = RetrofitClient
                 .getInstance().getApi()
-                .createAnak(token, name, email, username, password, jenis_kelamin, orangtua_id, province_id, regency_id, district_id, school, classes, "application/json");
-
+                .createAnak(token, name, email, username, password, jenis_kelamin,
+                        orangtua_id, province_id, regency_id, district_id, school, classes, "application/json");
         call.enqueue(new Callback<ResponseRegisterAnak>() {
             @Override
             public void onResponse(Call<ResponseRegisterAnak> call, Response<ResponseRegisterAnak> response) {
@@ -376,12 +355,12 @@ public class ParentRegisterChildActivity extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseRegisterAnak> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                 loading.dismiss();
-                Toast.makeText(context, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).
+                        show();
             }
         });
 

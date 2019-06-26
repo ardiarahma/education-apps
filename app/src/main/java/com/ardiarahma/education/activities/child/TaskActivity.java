@@ -1,9 +1,11 @@
 package com.ardiarahma.education.activities.child;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,9 +31,9 @@ import retrofit2.Response;
 
 public class TaskActivity extends AppCompatActivity {
 
-    Task question;
     private ArrayList<Task> tasks;
-    TextView task_question, task_header;
+    ArrayList<String> answersArray = new ArrayList<String>();
+    TextView task_question, task_header, timer;
     RadioGroup choices_group;
     RadioButton choice_A, choice_B, choice_C, choice_D;
     Button next, previous;
@@ -44,6 +46,12 @@ public class TaskActivity extends AppCompatActivity {
     private int currentTaskId = 0;
     String task_answer;
 
+    private static final long START_TIME_IN_MILLIS = 600000;
+    private CountDownTimer mCountDown;
+    private boolean nTimerRunning;
+    private long mTimeLeftUntilFinished = START_TIME_IN_MILLIS;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +62,7 @@ public class TaskActivity extends AppCompatActivity {
         task_header = findViewById(R.id.task_header);
         task_header.setText(judul);
 
-
+        timer = findViewById(R.id.time);
         task_question = findViewById(R.id.pertanyaan);
         choices_group = findViewById(R.id.rg_question);
         choice_A = findViewById(R.id.option_A);
@@ -87,11 +95,32 @@ public class TaskActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 task();
+                timer();
                 dialog.dismiss();
             }
         });
         AlertDialog alert = alertDialog.create();
         alert.show();
+    }
+
+    public void timer(){
+        mCountDown = new CountDownTimer(mTimeLeftUntilFinished, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mTimeLeftUntilFinished = millisUntilFinished;
+                int minutes = (int) mTimeLeftUntilFinished / 1000 / 60;
+                int seconds = (int) mTimeLeftUntilFinished / 1000 % 60;
+                @SuppressLint("DefaultLocale") String formatted = String.format("%02d:%02d", minutes, seconds);
+
+                timer.setText(formatted);
+            }
+
+            @Override
+            public void onFinish() {
+                Intent intent = new Intent(TaskActivity.this, ResultActivity.class);
+                startActivity(intent);
+            }
+        }.start();
     }
 
     public void task(){
@@ -147,7 +176,9 @@ public class TaskActivity extends AppCompatActivity {
                 int selectedId = choices_group.getCheckedRadioButtonId();
                 RadioButton selectedRB = findViewById(selectedId);
                 if (selectedRB.getText().toString().equals(task_answer)){
-                    score+=10;
+                   String ans = selectedRB.getText().toString();
+                   answersArray.add(ans);
+                   score+=10;
                 }
 
                 if (currentTaskId < tasks.size() - 1){
@@ -155,8 +186,12 @@ public class TaskActivity extends AppCompatActivity {
                     showQuestion();
                     selectedRB.setChecked(false);
                 }else {
-                    Intent intent1 = new Intent(TaskActivity.this, ResultActivity.class);
-                    startActivity(intent1);
+                    Intent intent = new Intent(TaskActivity.this, ResultActivity.class);
+                    intent.putExtra("score", score);
+                    Intent intent1 = new Intent(TaskActivity.this, DiscussionActivity.class);
+                    intent1.putExtra("discussion", answersArray);
+                    startActivity(intent);
+//                    startActivity(intent1);
                 }
             }
         });
