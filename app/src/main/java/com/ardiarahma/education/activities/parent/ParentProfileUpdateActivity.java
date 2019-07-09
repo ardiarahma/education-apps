@@ -143,7 +143,7 @@ public class ParentProfileUpdateActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     if (responseLogin.getStatus().equals("success")){
                         Log.i("debug", "onResponse : SUCCESSFUL");
-                        loading.dismiss();
+//                        loading.dismiss();
                         PreferencesConfig.getInstance(context).saveUser(responseLogin.getUser());
                         Toast.makeText(context, "Profil berhasil diubah", Toast.LENGTH_LONG).show();
                         onBackPressed();
@@ -162,4 +162,5 @@ public class ParentProfileUpdateActivity extends AppCompatActivity {
             }
         });
     }
+
 }
