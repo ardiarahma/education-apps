@@ -54,7 +54,7 @@ public class ResultActivitiesReportActivity extends AppCompatActivity {
         rv_actlogs = findViewById(R.id.rv_actlogs);
         adapter = new RV_LogActivityReportAdapter(ResultActivitiesReportActivity.this, log_details);
         loading = ProgressDialog.show(ResultActivitiesReportActivity.this, null,
-                "Please wait...",true, false);
+                "Please wait...",true, true);
         Intent intent = getIntent();
         String name = intent.getStringExtra("childName");
         TextView title_toolbar = (TextView) findViewById(R.id.toolbar_title);
