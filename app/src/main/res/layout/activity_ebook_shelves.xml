@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ardiarahma.educationapplication.activities.EbookShelvesActivity">
+    tools:context="com.ardiarahma.education.activities.child.EbookShelvesActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -31,12 +31,6 @@
             android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"/>
 
     </android.support.v7.widget.Toolbar>
-
-    <!--<TextView-->
-        <!--android:id="@+id/test"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="test"/>-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_subject"
