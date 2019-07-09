@@ -56,21 +56,6 @@ public class ParentChangePasswordActivity extends AppCompatActivity{
             }
         });
 
-        //===================== CHECK PASS ====================//
-        check_pass.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    etoldPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    etpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    etpassword_confirmation.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                } else {
-                    etoldPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    etpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    etpassword_confirmation.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
-            }
-        });
 
         //==================== SAVE PASSWORD ====================//
         save_pass.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +79,28 @@ public class ParentChangePasswordActivity extends AppCompatActivity{
                         String oldPassword = etoldPassword.getText().toString().trim();
                         String password = etpassword.getText().toString().trim();
                         String password_confirmation = etpassword_confirmation.getText().toString().trim();
+
+                        if (oldPassword.isEmpty()) {
+                            etoldPassword.setError("Password lama harus diisi");
+                            etoldPassword.requestFocus();
+                            return;
+                        }
+
+                        if (password.isEmpty()) {
+                            etpassword.setError("Password baru harus diisi");
+                            etpassword.requestFocus();
+                            return;
+                        }
+
+                        if (!password_confirmation.equals(password)){
+                            etpassword_confirmation.setError("Password tidak sama. Mohon isi dengan password yang sesuai");
+                        }
+
+                        if (password_confirmation.isEmpty()) {
+                            etpassword_confirmation.setError("Password harus diisi");
+                            etpassword_confirmation.requestFocus();
+                            return;
+                        }
 
                         Call<ResponsePassword> call = RetrofitClient
                                 .getInstance()
