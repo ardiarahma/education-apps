@@ -6,6 +6,12 @@ import android.content.SharedPreferences;
 import com.ardiarahma.education.models.Token;
 import com.ardiarahma.education.models.User;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 /**
  * Created by Windows 10 on 5/18/2019.
  */
@@ -14,6 +20,7 @@ public class PreferencesConfig {
 
     private SharedPreferences sharedPreferences;
     private static PreferencesConfig instance;
+    private List<String> arrAnswer;
     private Context context;
 
     public PreferencesConfig(Context context) {
@@ -25,6 +32,23 @@ public class PreferencesConfig {
             instance = new PreferencesConfig(context);
         }
         return instance;
+    }
+
+    public void saveAnswer(){
+        sharedPreferences = context.getSharedPreferences("answers", Context.MODE_PRIVATE);
+        arrAnswer = new ArrayList<>();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Set<String> set = new HashSet<String>();
+        set.addAll(arrAnswer);
+//        editor.putInt("ans", )
+        editor.apply();
+    }
+
+    public String getAns(){
+        sharedPreferences = context.getSharedPreferences("answers", Context.MODE_PRIVATE);
+        return new String(
+                sharedPreferences.getString("ans", null)
+        );
     }
 
     //untuk menyimpan user ortu pas login

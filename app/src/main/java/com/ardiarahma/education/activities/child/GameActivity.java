@@ -52,23 +52,18 @@ public class GameActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tablayout_game);
         gameViewPager = findViewById(R.id.viewPager_game);
         adapter = new GameViewPagerAdapter(getSupportFragmentManager());
-
         adapter.AddFragment(new FragmentGameArcade(), "Arcade");
         adapter.AddFragment(new FragmentGameClassic(), "Classic");
         adapter.AddFragment(new FragmentGamePlatform(), "Platform");
         adapter.AddFragment(new FragmentGamePuzzle(), "Puzzle");
         adapter.AddFragment(new FragmentGameRacing(), "Racing");
         adapter.AddFragment(new FragmentGameShooter(), "Shooter");
-
         gameViewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(gameViewPager);
-
         tvUserid = findViewById(R.id.userid);
         tvFitur = findViewById(R.id.fitur);
-
         tvUserid.setText(String.valueOf(user.getId()));
         tvFitur.setText("Mini Games");
-
         ImageButton toolbar_game = (ImageButton) findViewById(R.id.toolbar_game);
         toolbar_game.setOnClickListener(new View.OnClickListener() {
             @Override

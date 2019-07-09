@@ -1,11 +1,13 @@
 package com.ardiarahma.education.networks;
 
+import com.ardiarahma.education.models.Token;
 import com.ardiarahma.education.models.responses.ResponseBanksoal;
 import com.ardiarahma.education.models.responses.ResponseCheckUser;
 import com.ardiarahma.education.models.responses.ResponseChoice;
 import com.ardiarahma.education.models.responses.ResponseDelete;
 import com.ardiarahma.education.models.responses.ResponseDistrict;
 import com.ardiarahma.education.models.responses.ResponseEbook;
+import com.ardiarahma.education.models.responses.ResponseGames;
 import com.ardiarahma.education.models.responses.ResponseLog;
 import com.ardiarahma.education.models.responses.ResponseLogActivityReport;
 import com.ardiarahma.education.models.responses.ResponseLogStudyReport;
@@ -16,6 +18,7 @@ import com.ardiarahma.education.models.responses.ResponseProvince;
 import com.ardiarahma.education.models.responses.ResponseRegency;
 import com.ardiarahma.education.models.responses.ResponseRegisterAnak;
 import com.ardiarahma.education.models.responses.ResponseRegisterOrtu;
+import com.ardiarahma.education.models.responses.ResponseScore;
 import com.ardiarahma.education.models.responses.ResponseStudent;
 import com.ardiarahma.education.models.responses.ResponseTask;
 import com.ardiarahma.education.models.responses.ResponseUpdateAnak;
@@ -145,7 +148,7 @@ public interface Api {
     );
 
     @GET("api/cek/orangtua")
-    Call<ResponseCheckUser> child_details(
+    Call<ResponseCheckUser> ortu_details(
             @Header("Authorization") String token,
             @Query("id") int user_id
     );
@@ -164,6 +167,12 @@ public interface Api {
 
 
     //=================== SISWA ==================
+
+    @GET("api/games")
+    Call<ResponseGames> games(
+            @Header("Authorization") String token,
+            @Query("gamecategories") int categoryId
+    );
 
     @GET("api/ebook/class/")
     Call<ResponseEbook> books(
@@ -218,10 +227,11 @@ public interface Api {
 
     );
 
-    @GET("api/banksoal/pilihan")
-    Call<ResponseChoice> taskmaster_choices(
+    @GET("api/siswa/nggarap")
+    Call<ResponseScore> store_score(
             @Header("Authorization") String token,
-            @Query("id") int soal_id
+            @Query("taskmaster_id") int task_id,
+            @Query("score") int score
     );
 
 }

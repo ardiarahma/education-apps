@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ardiarahma.education.R;
 import com.ardiarahma.education.activities.LoginActivity;
@@ -129,6 +130,7 @@ public class MainActivity extends AppCompatActivity
                 PreferencesConfig.getInstance(context).clear();
                 Intent intent = new Intent(context, LoginActivity.class);
                 startActivity(intent);
+                Toast.makeText(context, "Anda berhasil keluar", Toast.LENGTH_SHORT).show();
             }
         });
         AlertDialog alert = alertDialog.create();

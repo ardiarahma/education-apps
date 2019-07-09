@@ -37,7 +37,8 @@ public class FragmentBanksoalSubject7 extends Fragment {
         View v = inflater.inflate(R.layout.fragment_banksoal_subject, container, false);
         RecyclerView rv = (RecyclerView) v.findViewById(R.id.subject_recyclerview_soal);
         RV_BanksoalSubject7Adapter adapter = new RV_BanksoalSubject7Adapter(getContext(), banksoal_subjects);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,
+                false);
         rv.setAdapter(adapter);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(linearLayoutManager);

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -37,6 +38,7 @@ import retrofit2.Response;
 public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.ViewHolder> {
 
     private List<Task> tasks;
+    private ArrayList<String> answersArray;
     Context context;
 
     public DiscussionAdapter(Context context, List<Task> tasks) {
@@ -57,26 +59,20 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Vi
         holder.kunjaw.setText(tasks.get(position).getJawaban());
         holder.discussion.setText(tasks.get(position).getPembahasan());
 
-        Intent intent = Intent.getIntent();
+        SharedPreferences sharedpref = context.getSharedPreferences("Anwers", Context.MODE_PRIVATE);
+        String answer = sharedpref.getString("1", "no answer found");
+        holder.your_ans.setText(answer.length());
 
         };
 
     @Override
     public int getItemCount() {
-        return tasks.size();
+        return tasks.size() + answersArray.size();
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-//        int user_id;
-//        int id;
-//        int kelas;
-        String ans;
-        ArrayList<String> answersArray = new ArrayList<String>();
         private TextView question, your_ans, kunjaw, discussion;
-
-        Token auth = PreferencesConfig.getInstance(context).getToken();
-        final String token = "Bearer " + auth.getToken();
 
         public ViewHolder(final View view){
             super(view);

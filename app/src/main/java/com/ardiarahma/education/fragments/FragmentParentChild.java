@@ -86,7 +86,7 @@ public class FragmentParentChild extends Fragment {
 
     public void listAnak(){
         loading = ProgressDialog.show(getActivity(), null, "Please wait...",
-                true, false);
+                true, true);
         String token = "Bearer " + auth.getToken();
         int user_id = user.getId();
         retrofit2.Call<ResponseCheckUser> call = RetrofitClient

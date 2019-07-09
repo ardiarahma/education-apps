@@ -12,6 +12,8 @@ import com.ardiarahma.education.R;
 import com.ardiarahma.education.models.Token;
 import com.ardiarahma.education.networks.PreferencesConfig;
 
+import java.util.ArrayList;
+
 public class ResultActivity extends AppCompatActivity {
 
     TextView nilai;
@@ -33,6 +35,7 @@ public class ResultActivity extends AppCompatActivity {
 
         final Intent intent = getIntent();
         int score = intent.getIntExtra("score", 0);
+        ArrayList<String> answersArray;
         nilai.setText(String.valueOf(score));
 
         home.setOnClickListener(new View.OnClickListener() {

@@ -3,8 +3,10 @@ package com.ardiarahma.education.activities.child;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 import com.ardiarahma.education.R;
 import com.ardiarahma.education.models.Task;
 import com.ardiarahma.education.models.Token;
+import com.ardiarahma.education.models.responses.ResponseScore;
 import com.ardiarahma.education.models.responses.ResponseTask;
 import com.ardiarahma.education.networks.PreferencesConfig;
 import com.ardiarahma.education.networks.RetrofitClient;
@@ -33,11 +36,12 @@ public class TaskActivity extends AppCompatActivity {
 
     private ArrayList<Task> tasks;
     ArrayList<String> answersArray = new ArrayList<String>();
-    TextView task_question, task_header, timer;
+    TextView task_question, task_header, timer, count;
     RadioGroup choices_group;
     RadioButton choice_A, choice_B, choice_C, choice_D;
     Button next, previous;
 
+    Context context;
     ProgressDialog loading;
     Token auth = PreferencesConfig.getInstance(this).getToken();
     String token = "Bearer " + auth.getToken();
@@ -50,7 +54,6 @@ public class TaskActivity extends AppCompatActivity {
     private CountDownTimer mCountDown;
     private boolean nTimerRunning;
     private long mTimeLeftUntilFinished = START_TIME_IN_MILLIS;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,7 @@ public class TaskActivity extends AppCompatActivity {
         choice_B = findViewById(R.id.option_B);
         choice_C = findViewById(R.id.option_C);
         choice_D = findViewById(R.id.option_D);
+        count = findViewById(R.id.count);
         next = findViewById(R.id.bNext);
         previous = findViewById(R.id.bPrevious);
 
@@ -128,7 +132,7 @@ public class TaskActivity extends AppCompatActivity {
         loading = ProgressDialog.show(this, null, "Please wait...",true, false);
 
         Intent intent = getIntent();
-        final int task_id = intent.getIntExtra("task_id", 0);
+        int task_id = intent.getIntExtra("task_id", 0);
         int classes = intent.getIntExtra("task_class", 0);
 
         Call<ResponseTask> call = RetrofitClient
@@ -163,7 +167,7 @@ public class TaskActivity extends AppCompatActivity {
     }
 
     public void showQuestion(){
-        Task task = tasks.get(currentTaskId);
+        final Task task = tasks.get(currentTaskId);
         task_question.setText(task.getSoal());
         choice_A.setText(task.getOption_A());
         choice_B.setText(task.getOption_B());
@@ -176,22 +180,28 @@ public class TaskActivity extends AppCompatActivity {
                 int selectedId = choices_group.getCheckedRadioButtonId();
                 RadioButton selectedRB = findViewById(selectedId);
                 if (selectedRB.getText().toString().equals(task_answer)){
-                   String ans = selectedRB.getText().toString();
-                   answersArray.add(ans);
-                   score+=10;
+                    int answerId = currentTaskId;
+                    String ans = selectedRB.getText().toString();
+//                    SharedPreferences sharedpref = context.getSharedPreferences("Answers", Context.MODE_PRIVATE);
+//                    SharedPreferences.Editor editor = sharedpref.edit();
+//                    editor.putString(String.valueOf(answerId), ans);
+//                    editor.apply();
+                    score+=10;
                 }
 
                 if (currentTaskId < tasks.size() - 1){
                     currentTaskId++;
                     showQuestion();
                     selectedRB.setChecked(false);
+                    choices_group.clearCheck();
+//                    count.setText(String.valueOf(currentTaskId + 1));
+
                 }else {
+
                     Intent intent = new Intent(TaskActivity.this, ResultActivity.class);
                     intent.putExtra("score", score);
-                    Intent intent1 = new Intent(TaskActivity.this, DiscussionActivity.class);
-                    intent1.putExtra("discussion", answersArray);
                     startActivity(intent);
-//                    startActivity(intent1);
+
                 }
             }
         });

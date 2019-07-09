@@ -16,11 +16,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
 
-//    private  static  final String BASE_URL = "http://10.0.2.2:8000/";
+    private  static  final String BASE_URL = "http://10.0.2.2:8000/";
     //hp
-    private  static  final String BASE_URL = "http://192.168.43.100:8000/";
+//    private  static  final String BASE_URL = "http://192.168.43.100:8000/";
     //wifi kosan
-//    private  static  final String BASE_URL = "http://192.168.100.5:8000/";
+//    private  static  final String BASE_URL = "http://192.168.100.4:8000/";
 //    private  static  final String BASE_URL = "http://192.168.43.100:8000/";
 
 
@@ -49,9 +49,9 @@ public class RetrofitClient {
     }
 
     final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(40, TimeUnit.SECONDS)
+            .connectTimeout(40, TimeUnit.SECONDS)
+            .writeTimeout(40, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
             .build();
 
     public Api getApi(){

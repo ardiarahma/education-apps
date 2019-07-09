@@ -29,40 +29,11 @@ public class FragmentEbookSubject7 extends Fragment {
         final View v = inflater.inflate(R.layout.fragment_ebook_subject, container, false);
         final RecyclerView rv = (RecyclerView) v.findViewById(R.id.subject_recyclerview);
         RV_EbookSubject7Adapter adapter = new RV_EbookSubject7Adapter(getContext(), ebook_subjects);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,
+                false);
         rv.setAdapter(adapter);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(linearLayoutManager);
-
-//        String token = "Bearer ";
-//
-//        Call<ResponseSubjects> call = RetrofitClient
-//                .getInstance()
-//                .getApi()
-//                .subjects(token);
-//
-//        call.enqueue(new Callback<ResponseSubjects>() {
-//            @Override
-//            public void onResponse(Call<ResponseSubjects> call, Response<ResponseSubjects> response) {
-//                ResponseSubjects responseSubjects = response.body();
-//                if (response.isSuccessful()){
-//                    if (responseSubjects.getStatus().equals("success")){
-//                        ebook_subjects = new ArrayList<>(Arrays.asList(responseSubjects.getResult()));
-//                        RV_EbookSubject7Adapter adapter = new RV_EbookSubject7Adapter(getContext(), ebook_subjects);
-//                        adapter.notifyDataSetChanged();
-//                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-//                        rv.setAdapter(adapter);
-//                        rv.setHasFixedSize(true);
-//                        rv.setLayoutManager(linearLayoutManager);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseSubjects> call, Throwable t) {
-//                Log.d("Error", t.getMessage());
-//            }
-//        });
 
         return v;
     }

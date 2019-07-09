@@ -44,7 +44,7 @@ public class BanksoalShelvesActivity extends AppCompatActivity {
         rv_banksoal.setHasFixedSize(true);
         rv_banksoal.setLayoutManager(new LinearLayoutManager(this));
 
-        loading = ProgressDialog.show(BanksoalShelvesActivity.this, null, "Please wait...",true, false);
+        loading = ProgressDialog.show(BanksoalShelvesActivity.this, null, "Please wait...",true, true);
 
         Intent intent = getIntent();
         int subjectsId = intent.getIntExtra("subjectsId", 0);
@@ -56,12 +56,10 @@ public class BanksoalShelvesActivity extends AppCompatActivity {
 
         Token auth = PreferencesConfig.getInstance(BanksoalShelvesActivity.this).getToken();
         String token = "Bearer " + auth.getToken();
-
         Call<ResponseBanksoal> call = RetrofitClient
                 .getInstance()
                 .getApi()
                 .subsoal(token, subjectsId, classes);
-
         call.enqueue(new Callback<ResponseBanksoal>() {
             @Override
             public void onResponse(Call<ResponseBanksoal> call, Response<ResponseBanksoal> response) {
@@ -73,8 +71,10 @@ public class BanksoalShelvesActivity extends AppCompatActivity {
                         Log.i("debug", "onResponse : SUCCESSFUL");
                         loading.dismiss();
                         banksoalShelves = responseBanksoal.getBanksoalShelves();
-                        adapter = new RV_BanksoalShelvesAdapter(banksoalShelves, BanksoalShelvesActivity.this);
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(BanksoalShelvesActivity.this, LinearLayoutManager.VERTICAL, false);
+                        adapter = new RV_BanksoalShelvesAdapter(banksoalShelves,
+                                BanksoalShelvesActivity.this);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(
+                                BanksoalShelvesActivity.this, LinearLayoutManager.VERTICAL, false);
                         rv_banksoal.setLayoutManager(layoutManager);
                         rv_banksoal.setHasFixedSize(true);
                         rv_banksoal.setAdapter(adapter);
@@ -82,15 +82,16 @@ public class BanksoalShelvesActivity extends AppCompatActivity {
                     }else {
                         Log.i("debug", "onResponse: FAILED");
                         loading.dismiss();
-                        Toast.makeText(getApplicationContext(), "Gagal dalam mengambil data buku", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Gagal dalam mengambil data buku",
+                                Toast.LENGTH_LONG).show();
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseBanksoal> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
-                Toast.makeText(BanksoalShelvesActivity.this, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(BanksoalShelvesActivity.this, "Kesalahan terjadi. Silakan coba beberapa saat lagi.",
+                        Toast.LENGTH_LONG).show();
             }
         });
 

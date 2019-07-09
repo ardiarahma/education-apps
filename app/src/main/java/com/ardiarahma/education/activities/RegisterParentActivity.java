@@ -21,7 +21,10 @@ import com.ardiarahma.education.R;
 import com.ardiarahma.education.models.responses.ResponseRegisterOrtu;
 import com.ardiarahma.education.networks.RetrofitClient;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.Iterator;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -119,7 +122,7 @@ public class RegisterParentActivity extends AppCompatActivity {
 
         if (password.length() < 6) {
             loading.dismiss();
-            etPassword.setError("Password harus berisi minimal 8 karakter");
+            etPassword.setError("Password harus berisi minimal 6 karakter");
             etPassword.requestFocus();
             return;
         }
@@ -149,8 +152,21 @@ public class RegisterParentActivity extends AppCompatActivity {
                 }else {
                     loading.dismiss();
                     try {
-                        JSONObject jsonObjectError = new JSONObject(response.errorBody().string());
-                        Toast.makeText(mContext, jsonObjectError.getString("message"), Toast.LENGTH_LONG).show();
+                        String errBody = response.errorBody().string();
+                        JSONObject jsonObjectError = new JSONObject(errBody.trim());
+                        jsonObjectError = jsonObjectError.getJSONObject("errors");
+                        Iterator<String> keys = jsonObjectError.keys();
+                        StringBuilder errors = new StringBuilder();
+                        String separator = "";
+                        while (keys.hasNext()){
+                            String key = keys.next();
+                            JSONArray arr = jsonObjectError.getJSONArray(key);
+                            for (int i = 0; i < arr.length(); i++){
+                                errors.append(separator).append(key).append(" : ").append(arr.getString(i));
+                                separator = "\n";
+                            }
+                        }
+                        Toast.makeText(mContext, errors.toString(), Toast.LENGTH_LONG).show();
                     }catch (Exception e){
                         Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -161,7 +177,7 @@ public class RegisterParentActivity extends AppCompatActivity {
             public void onFailure(Call<ResponseRegisterOrtu> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                 loading.dismiss();
-                Toast.makeText(mContext, "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, "aaaaaaaaaaaaa", Toast.LENGTH_LONG).show();
             }
         });
 

@@ -40,28 +40,22 @@ public class EbookShelvesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ebook_shelves);
-
         rv_subject = findViewById(R.id.rv_subject);
         adapter = new RV_EbookShelvesAdapter(ebookShelves, EbookShelvesActivity.this);
-
-        loading = ProgressDialog.show(EbookShelvesActivity.this, null, "Please wait...",true, false);
-
+        loading = ProgressDialog.show(EbookShelvesActivity.this, null, "Please wait...",
+                true, false);
         Intent intent = getIntent();
         int subjectsId = intent.getIntExtra("subjectsId", 0);
         int classes = intent.getIntExtra("classes", 0);
         String title = intent.getStringExtra("title");
-
         TextView title_toolbar = (TextView) findViewById(R.id.toolbar_title);
         title_toolbar.setText(title);
-
         Token auth = PreferencesConfig.getInstance(EbookShelvesActivity.this).getToken();
         String token = "Bearer " + auth.getToken();
-
         Call<ResponseEbook> call = RetrofitClient
                 .getInstance()
                 .getApi()
                 .books(token, subjectsId, classes);
-
         call.enqueue(new Callback<ResponseEbook>() {
             @Override
             public void onResponse(Call<ResponseEbook> call, Response<ResponseEbook> response) {
@@ -74,27 +68,26 @@ public class EbookShelvesActivity extends AppCompatActivity {
                         loading.dismiss();
                         ebookShelves = responseEbook.getEbookShelves();
                         adapter = new RV_EbookShelvesAdapter(ebookShelves, EbookShelvesActivity.this);
-                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(EbookShelvesActivity.this, LinearLayoutManager.VERTICAL,false);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
+                                EbookShelvesActivity.this, LinearLayoutManager.VERTICAL,false);
                         rv_subject.setLayoutManager(linearLayoutManager);
                         rv_subject.setHasFixedSize(true);
                         rv_subject.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-
                     }else{
                         Log.i("debug", "onResponse: FAILED");
                         loading.dismiss();
-                        Toast.makeText(getApplicationContext(), "Gagal dalam mengambil data buku", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Gagal dalam mengambil data buku",
+                                Toast.LENGTH_LONG).show();
                     }
                 }
             }
-
-            //buat get image : http://10.0.2.2/testing-adi/sim-api/public/images/818564468.jpg
-
             @Override
             public void onFailure(Call<ResponseEbook> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                 loading.dismiss();
-                Toast.makeText(getApplicationContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.",
+                        Toast.LENGTH_LONG).show();
             }
         });
 
