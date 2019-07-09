@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.ardiarahma.education.R;
 import com.ardiarahma.education.models.GameArcade;
+import com.ardiarahma.education.models.Games;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -21,14 +23,15 @@ import java.util.List;
  * Created by Windows 10 on 1/3/2019.
  */
 
-public class RecyclerViewGameArcadeAdapter extends RecyclerView.Adapter<RecyclerViewGameArcadeAdapter.MyViewHolder> {
+public class RV_GameArcade extends RecyclerView.Adapter<RV_GameArcade.MyViewHolder> {
 
     Context mContext;
-    List<GameArcade> mData;
+    List<Games> games;
+    int gamecategories = 1;
 
-    public RecyclerViewGameArcadeAdapter(Context mContext, List<GameArcade> mData) {
+    public RV_GameArcade(Context mContext, List<Games> games) {
         this.mContext = mContext;
-        this.mData = mData;
+        this.games = games;
     }
 
     @Override
@@ -41,13 +44,13 @@ public class RecyclerViewGameArcadeAdapter extends RecyclerView.Adapter<Recycler
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.game_title.setText(mData.get(position).getName());
-        holder.game_thumbnail.setImageResource(mData.get(position).getThumbnail());
+        holder.game_title.setText(games.get(position).getName());
+        Picasso.with(mContext).load(games.get(position).getImg()).into(holder.game_thumbnail);
         holder.arcade_cardview.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mData.get(position).getLink()));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(games.get(position).getUrl()));
                 mContext.startActivity(intent);
             }
         });
@@ -55,7 +58,7 @@ public class RecyclerViewGameArcadeAdapter extends RecyclerView.Adapter<Recycler
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return games.size();
     }
 
 
