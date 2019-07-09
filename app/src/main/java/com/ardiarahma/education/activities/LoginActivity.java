@@ -112,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (password.length() < 6) {
             loading.dismiss();
-            tilPassword.setError("Password harus berisi minimal 8 karakter");
+            tilPassword.setError("Password harus berisi minimal 6 karakter");
             tilPassword.requestFocus();
             return;
         }
