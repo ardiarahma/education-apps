@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Adapter;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -33,6 +35,7 @@ public class DiscussionActivity extends AppCompatActivity {
     private ArrayList<Task> tasks;
     private DiscussionAdapter adapter;
     RecyclerView rv;
+    Button back;
 
     ProgressDialog loading;
     Token auth = PreferencesConfig.getInstance(this).getToken();
@@ -48,11 +51,20 @@ public class DiscussionActivity extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this));
         adapter = new DiscussionAdapter(DiscussionActivity.this, tasks);
 
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DiscussionActivity.this, BanksoalShelvesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         loading = ProgressDialog.show(this, null, "Please wait...",true, false);
 
-        Intent intent = getIntent();
-        final int task_id = intent.getIntExtra("task_id", 0);
-        int classes = intent.getIntExtra("task_class", 0);
+        int task_id = PreferencesConfig.getInstance(this).getTaskData().getTask_id();
+        int classes = PreferencesConfig.getInstance(this).getTaskData().getClasses();
 
         Call<ResponseTask> call = RetrofitClient
                 .getInstance()

@@ -38,7 +38,6 @@ import retrofit2.Response;
 public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.ViewHolder> {
 
     private List<Task> tasks;
-    private ArrayList<String> answersArray;
     Context context;
 
     public DiscussionAdapter(Context context, List<Task> tasks) {
@@ -59,25 +58,24 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Vi
         holder.kunjaw.setText(tasks.get(position).getJawaban());
         holder.discussion.setText(tasks.get(position).getPembahasan());
 
-        SharedPreferences sharedpref = context.getSharedPreferences("Anwers", Context.MODE_PRIVATE);
-        String answer = sharedpref.getString("1", "no answer found");
-        holder.your_ans.setText(answer.length());
+//        SharedPreferences sharedpref = context.getSharedPreferences("Anwers", Context.MODE_PRIVATE);
+//        String answer = sharedpref.getString("1", "no answer found");
+//        holder.your_ans.setText(answer.length());
 
         };
 
     @Override
     public int getItemCount() {
-        return tasks.size() + answersArray.size();
+        return tasks.size();
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView question, your_ans, kunjaw, discussion;
+        private TextView question, kunjaw, discussion;
 
         public ViewHolder(final View view){
             super(view);
             question = itemView.findViewById(R.id.que);
-            your_ans = itemView.findViewById(R.id.ur_ans);
             kunjaw = itemView.findViewById(R.id.kunjaw);
             discussion = itemView.findViewById(R.id.discussion);
 

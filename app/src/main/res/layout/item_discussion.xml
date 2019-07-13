@@ -23,27 +23,11 @@
             android:layout_height="wrap_content"
 
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="7dp"
             android:text="Question"
+            android:textColor="@color/button"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Jawabanmu : "
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="20dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
-
-        <TextView
-            android:id="@+id/ur_ans"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="30dp"
-            android:text="your ans here"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/text1"
@@ -52,6 +36,8 @@
             android:text="Kunci Jawaban : "
             android:layout_marginTop="5dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/button"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
         <TextView
@@ -59,7 +45,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="7dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginRight="20dp"
             android:text="our ans here"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="18sp" />
@@ -71,6 +59,8 @@
             android:text="Pembahasan : "
             android:layout_marginTop="5dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/button"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
         <TextView
@@ -79,6 +69,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="7dp"
             android:text="discussion here"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="18sp" />
