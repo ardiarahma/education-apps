@@ -50,15 +50,19 @@
 
     <LinearLayout
         android:id="@+id/layoutEmpty"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        >
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Oops! Data tidak tersedia."
             android:layout_gravity="center"
-            android:gravity="center"/>
+            android:text="Oops! Data belum tersedia"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/button" />
+
     </LinearLayout>
 
 </LinearLayout>

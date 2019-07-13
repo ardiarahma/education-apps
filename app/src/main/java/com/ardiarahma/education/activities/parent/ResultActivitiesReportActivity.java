@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,8 +35,10 @@ import retrofit2.Response;
 public class ResultActivitiesReportActivity extends AppCompatActivity {
 
     private RecyclerView rv_actlogs;
+    RecyclerView.LayoutManager layoutManager;
     private RV_LogActivityReportAdapter adapter;
     SwipeRefreshLayout swipeRefreshLayout;
+    LinearLayout noData, fillData;
 
     private ArrayList<Log_detail> log_details;
     //    private ArrayList<Siswa> siswas;
@@ -66,6 +69,8 @@ public class ResultActivitiesReportActivity extends AppCompatActivity {
                 log();
             }
         });
+        noData = findViewById(R.id.layoutEmpty);
+        fillData = findViewById(R.id.layoutFill);
         ImageButton toolbar_back = (ImageButton) findViewById(R.id.toolbar_back);
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,9 +106,9 @@ public class ResultActivitiesReportActivity extends AppCompatActivity {
                         loading.dismiss();
                         log_details = responseLogActivityReport.getLog_detail();
                         adapter = new RV_LogActivityReportAdapter(ResultActivitiesReportActivity.this, log_details);
-                        LinearLayoutManager linearLayout = new LinearLayoutManager(getApplicationContext(),
+                        layoutManager = new LinearLayoutManager(getApplicationContext(),
                                 LinearLayoutManager.VERTICAL, false);
-                        rv_actlogs.setLayoutManager(linearLayout);
+                        rv_actlogs.setLayoutManager(layoutManager);
                         rv_actlogs.setHasFixedSize(true);
                         rv_actlogs.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
@@ -114,6 +119,7 @@ public class ResultActivitiesReportActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Gagal dalam mengambil data laporan",
                                 Toast.LENGTH_LONG).show();
                     }
+                    checklist();
                 }
             }
             @Override
@@ -125,5 +131,15 @@ public class ResultActivitiesReportActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public void checklist(){
+        if (layoutManager.getItemCount() == 0){
+            fillData.setVisibility(View.GONE);
+            noData.setVisibility(View.VISIBLE);
+        }else{
+            noData.setVisibility(View.GONE);
+            fillData.setVisibility(View.VISIBLE);
+        }
     }
 }

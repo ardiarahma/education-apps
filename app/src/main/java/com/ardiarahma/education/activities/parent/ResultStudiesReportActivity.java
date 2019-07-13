@@ -37,9 +37,8 @@ public class ResultStudiesReportActivity extends AppCompatActivity {
     private RecyclerView rv_actlogs;
     private RV_LogStudyReportAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private LinearLayout layoutFill, layoutEmpty;
+    LinearLayout noData, fillData;
     SwipeRefreshLayout swipeRefreshLayout;
-    TextView emptyView;
 
 
     private ArrayList<LogStudy> logStudies;
@@ -57,12 +56,12 @@ public class ResultStudiesReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_report);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
-        layoutFill = findViewById(R.id.layoutFill);
-        layoutEmpty = findViewById(R.id.layoutEmpty);
+        noData = findViewById(R.id.layoutEmpty);
+        fillData = findViewById(R.id.layoutFill);
         rv_actlogs = findViewById(R.id.rv_actlogs);
         adapter = new RV_LogStudyReportAdapter(ResultStudiesReportActivity.this, logStudies);
         loading = ProgressDialog.show(ResultStudiesReportActivity.this, null,
-                "Please wait...",true, false);
+                "Please wait...",true, true);
         Intent intent = getIntent();
         String name = intent.getStringExtra("childName");
         TextView title_toolbar = (TextView) findViewById(R.id.toolbar_title);
@@ -121,6 +120,7 @@ public class ResultStudiesReportActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Gagal dalam mengambil data laporan",
                                 Toast.LENGTH_LONG).show();
                     }
+                    checklist();
                 }
             }
             @Override
@@ -134,13 +134,13 @@ public class ResultStudiesReportActivity extends AppCompatActivity {
         });
     }
 
-//    public void checkList(){
-//        if (layoutManager.getItemCount() == 0){
-//            layoutFill.setVisibility(View.GONE);
-//            layoutEmpty.setVisibility(View.VISIBLE);
-//        }else {
-//            layoutFill.setVisibility(View.VISIBLE);
-//            layoutEmpty.setVisibility(View.GONE);
-//        }
-//    }
+    public void checklist(){
+        if (layoutManager.getItemCount() == 0){
+            fillData.setVisibility(View.GONE);
+            noData.setVisibility(View.VISIBLE);
+        }else{
+            noData.setVisibility(View.GONE);
+            fillData.setVisibility(View.VISIBLE);
+        }
+    }
 }

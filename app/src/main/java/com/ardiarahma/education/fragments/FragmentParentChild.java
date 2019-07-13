@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ardiarahma.education.R;
@@ -38,7 +40,10 @@ public class FragmentParentChild extends Fragment {
     ArrayList<Siswa> siswas;
     SiswaAdapter adapter;
     RecyclerView rv;
+    RecyclerView.LayoutManager layoutManager;
+    LinearLayout noData, fillData;
     SwipeRefreshLayout swipeRefreshLayout;
+    TextView emptyText;
     ProgressDialog loading;
     User user = PreferencesConfig.getInstance(getActivity()).getUser();
     Token auth = PreferencesConfig.getInstance(getActivity()).getToken();
@@ -60,6 +65,7 @@ public class FragmentParentChild extends Fragment {
                 startActivity(intent);
             }
         });
+
         rv = v.findViewById(R.id.rv_listAnak);
         adapter = new SiswaAdapter(getContext(), siswas);
         swipeRefreshLayout = v.findViewById(R.id.swipe_refresh);
@@ -69,6 +75,8 @@ public class FragmentParentChild extends Fragment {
                 listAnak();
             }
         });
+        noData = v.findViewById(R.id.layoutEmpty);
+        fillData = v.findViewById(R.id.layoutFill);
         return v;
     }
 
@@ -104,16 +112,17 @@ public class FragmentParentChild extends Fragment {
                         Log.i("debug", "onResponse : SUCCESSFUL");
                         siswas = responseCheckUser.getAnak();
                         adapter = new SiswaAdapter(getContext(), siswas);
-                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
+                        layoutManager = new LinearLayoutManager(getContext(),
                                 LinearLayoutManager.VERTICAL, false);
                         rv.setAdapter(adapter);
                         rv.setHasFixedSize(true);
-                        rv.setLayoutManager(linearLayoutManager);
+                        rv.setLayoutManager(layoutManager);
                         adapter.notifyDataSetChanged();
                         swipeRefreshLayout.setRefreshing(false);
                     }else {
                         Log.i("debug", "onResponse : FAILED");
                     }
+                    checklist();
                 }
             }
 
@@ -126,4 +135,15 @@ public class FragmentParentChild extends Fragment {
             }
         });
     }
+
+    public void checklist(){
+        if (layoutManager.getItemCount() == 0){
+            fillData.setVisibility(View.GONE);
+            noData.setVisibility(View.VISIBLE);
+        }else{
+            noData.setVisibility(View.GONE);
+            fillData.setVisibility(View.VISIBLE);
+        }
+    }
+
 }

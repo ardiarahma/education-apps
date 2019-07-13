@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,8 @@ public class EbookShelvesActivity extends AppCompatActivity {
 
     private RecyclerView rv_subject;
     private RV_EbookShelvesAdapter adapter;
-
+    private RecyclerView.LayoutManager layoutManager;
+    LinearLayout noData, fillData;
     private ArrayList<EbookShelves> ebookShelves;
 
     ProgressDialog loading;
@@ -40,10 +42,12 @@ public class EbookShelvesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ebook_shelves);
+        noData = findViewById(R.id.layoutEmpty);
+        fillData = findViewById(R.id.layoutFill);
         rv_subject = findViewById(R.id.rv_subject);
         adapter = new RV_EbookShelvesAdapter(ebookShelves, EbookShelvesActivity.this);
         loading = ProgressDialog.show(EbookShelvesActivity.this, null, "Please wait...",
-                true, false);
+                true, true);
         Intent intent = getIntent();
         int subjectsId = intent.getIntExtra("subjectsId", 0);
         int classes = intent.getIntExtra("classes", 0);
@@ -68,9 +72,9 @@ public class EbookShelvesActivity extends AppCompatActivity {
                         loading.dismiss();
                         ebookShelves = responseEbook.getEbookShelves();
                         adapter = new RV_EbookShelvesAdapter(ebookShelves, EbookShelvesActivity.this);
-                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
+                        layoutManager = new LinearLayoutManager(
                                 EbookShelvesActivity.this, LinearLayoutManager.VERTICAL,false);
-                        rv_subject.setLayoutManager(linearLayoutManager);
+                        rv_subject.setLayoutManager(layoutManager);
                         rv_subject.setHasFixedSize(true);
                         rv_subject.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
@@ -80,6 +84,7 @@ public class EbookShelvesActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Gagal dalam mengambil data buku",
                                 Toast.LENGTH_LONG).show();
                     }
+                    checklist();
                 }
             }
             @Override
@@ -91,26 +96,6 @@ public class EbookShelvesActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-//        ebookShelves = new ArrayList<>();
-//        ebookShelves.add(new EbookShelves("Ilmu Cocoklogi untuk Siswa SMP Kelas 7", "https://google.com", R.drawable.default_tab_layout));
-//        ebookShelves.add(new EbookShelves("Ilmu Ternak Lele untuk Siswa SMP Kelas 7", "https://google.com", R.drawable.default_tab_layout));
-//        ebookShelves.add(new EbookShelves("Pendidikan Ternak Lele untuk Siswa SMP Kelas 7", "https://google.com", R.drawable.default_tab_layout));
-//        ebookShelves.add(new EbookShelves("Ilmu Menghilang untuk Siswa SMP Kelas 7", "https://google.com", R.drawable.default_tab_layout));
-//        ebookShelves.add(new EbookShelves("Ilmu Terbakar untuk Siswa SMP Kelas 7", "https://google.com", R.drawable.default_tab_layout));
-//        ebookShelves.add(new EbookShelves("Ilmu Ternak Cupang untuk Siswa SMP Kelas 7", "https://google.com", R.drawable.default_tab_layout));
-//        ebookShelves.add(new EbookShelves("Ilmu Cocoklogi untuk Siswa SMP Kelas 7", "https://google.com", R.drawable.default_tab_layout));
-//        ebookShelves.add(new EbookShelves("Ilmu Cocoklogi untuk Siswa SMP Kelas 7", "https://google.com", R.drawable.default_tab_layout));
-//        ebookShelves.add(new EbookShelves("Ilmu Cocoklogi untuk Siswa SMP Kelas 7", "https://google.com", R.drawable.default_tab_layout));
-
-
-//        adapter = new RV_EbookShelvesAdapter(ebookShelves, this);
-//        rv_subject.setAdapter(adapter);
-
-
-        //================================ back to activity sebelumnya =================================================//
         ImageButton toolbar_ebook = (ImageButton) findViewById(R.id.toolbar_shelves);
         toolbar_ebook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +106,14 @@ public class EbookShelvesActivity extends AppCompatActivity {
         });
     }
 
-
-
+    public void checklist(){
+        if (layoutManager.getItemCount() == 0){
+            fillData.setVisibility(View.GONE);
+            noData.setVisibility(View.VISIBLE);
+        }else{
+            noData.setVisibility(View.GONE);
+            fillData.setVisibility(View.VISIBLE);
+        }
+    }
 
 }

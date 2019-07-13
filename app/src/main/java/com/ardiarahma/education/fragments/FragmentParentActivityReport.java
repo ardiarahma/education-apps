@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ardiarahma.education.R;
@@ -31,6 +32,8 @@ public class FragmentParentActivityReport extends Fragment {
     ArrayList<Siswa> siswas;
     LogActivityAdapter adapter;
     RecyclerView rv;
+    RecyclerView.LayoutManager layoutManager;
+    LinearLayout noData, fillData;
     SwipeRefreshLayout swipeRefreshLayout;
 
     ProgressDialog loading;
@@ -55,6 +58,8 @@ public class FragmentParentActivityReport extends Fragment {
                 listAnak();
             }
         });
+        noData = v.findViewById(R.id.layoutEmpty);
+        fillData = v.findViewById(R.id.layoutFill);
         return v;
     }
 
@@ -88,14 +93,15 @@ public class FragmentParentActivityReport extends Fragment {
                         Log.i("debug", "onResponse : SUCCESSFUL");
                         siswas = responseCheckUser.getAnak();
                         adapter = new LogActivityAdapter(getContext(), siswas);
-                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+                        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
                         rv.setAdapter(adapter);
                         rv.setHasFixedSize(true);
-                        rv.setLayoutManager(linearLayoutManager);
+                        rv.setLayoutManager(layoutManager);
                         adapter.notifyDataSetChanged();
                     }else {
                         Log.i("debug", "onResponse : FAILED");
                     }
+                    checklist();
                 }
             }
             @Override
@@ -106,5 +112,15 @@ public class FragmentParentActivityReport extends Fragment {
                 Toast.makeText(getContext(), "Kesalahan terjadi. Silakan coba beberapa saat lagi.", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public void checklist(){
+        if (layoutManager.getItemCount() == 0){
+            fillData.setVisibility(View.GONE);
+            noData.setVisibility(View.VISIBLE);
+        }else{
+            noData.setVisibility(View.GONE);
+            fillData.setVisibility(View.VISIBLE);
+        }
     }
 }
