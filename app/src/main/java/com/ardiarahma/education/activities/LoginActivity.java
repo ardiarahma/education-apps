@@ -6,9 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -36,7 +40,8 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText tilUsername, tilPassword;
+    TextView daftar;
+    EditText tilEmail, tilPassword;
     Context mContext;
     ProgressDialog loading;
 
@@ -45,9 +50,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        tilUsername = findViewById(R.id.username);
+        tilEmail = findViewById(R.id.email);
         tilPassword = findViewById(R.id.password);
 
+        daftar = findViewById(R.id.daftar);
+//        SpannableString content = new SpannableString("Daftar disini!");
+//        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         CheckBox cbPassword = findViewById(R.id.check_pass);
         cbPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -84,24 +92,31 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginUser(){
-        final String username = tilUsername.getText().toString().trim();
+        final String email = tilEmail.getText().toString().trim();
         String password = tilPassword.getText().toString().trim();
 
         final String type = "Orang Tua";
 
-        if (username.isEmpty()) {
+        if (email.isEmpty()) {
             loading.dismiss();
-            tilUsername.setError("Username harus diisi");
-            tilUsername.requestFocus();
+            tilEmail.setError("Email harus diisi");
+            tilEmail.requestFocus();
             return;
         }
 
-        if (username.length() < 4) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             loading.dismiss();
-            tilUsername.setError("Username harus berisi minimal 4 karakter");
-            tilUsername.requestFocus();
+            tilEmail.setError("Masukkan email yang benar");
+            tilEmail.requestFocus();
             return;
         }
+
+//        if (email.length() < 4) {
+//            loading.dismiss();
+//            tilUsername.setError("Username harus berisi minimal 4 karakter");
+//            tilUsername.requestFocus();
+//            return;
+//        }
 
         if (password.isEmpty()) {
             loading.dismiss();
@@ -120,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
         Call<ResponseLogin> call = RetrofitClient
                 .getInstance()
                 .getApi()
-                .loginUser(username, password);
+                .loginUser(email, password);
 
         call.enqueue(new Callback<ResponseLogin>() {
             @Override
@@ -191,11 +206,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void daftar(View view) {
         Intent intent = new Intent(LoginActivity.this, RegisterParentActivity.class);
-        startActivity(intent);
-    }
-
-    public void forget(View view) {
-        Intent intent = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
         startActivity(intent);
     }
 }

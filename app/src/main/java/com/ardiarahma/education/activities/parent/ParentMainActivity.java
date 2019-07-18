@@ -79,15 +79,6 @@ public class ParentMainActivity extends AppCompatActivity
             case R.id.nav_profile_parent:
                 fragment = new FragmentParentProfile();
                 break;
-            case R.id.nav_create_user:
-                fragment = new FragmentParentChild();
-                break;
-            case R.id.nav_activity_report:
-                fragment = new FragmentParentActivityReport();
-                break;
-            case R.id.nav_study_report:
-                fragment = new FragmentParentStudyReport();
-                break;
             case R.id.logout_parent:
                 logoutConfirmation();
                 break;

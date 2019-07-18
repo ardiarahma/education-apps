@@ -6,17 +6,7 @@
     android:orientation="vertical"
     tools:context="com.ardiarahma.education.fragments.FragmentParentChild">
 
-    <Button
-        android:id="@+id/tambahAnak"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/default_button"
-        android:layout_margin="10dp"
-        android:text="Buat Akun Anak"
-        android:ems="7"
-        android:textAllCaps="false"
-        android:textColor="#ffffff"
-        android:textSize="18dp"/>
+
 
     <LinearLayout
         android:id="@+id/layoutFill"

@@ -16,14 +16,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
 
-    private  static  final String BASE_URL = "http://10.0.2.2:8000/";
+//    private  static  final String BASE_URL = "http://10.0.2.2:8000/";
     //hp
-//    private  static  final String BASE_URL = "http://192.168.43.100:8000/";
+    private  static  final String BASE_URL = "http://192.168.43.100:8000/";
     //wifi kosan
 //    private  static  final String BASE_URL = "http://192.168.100.4:8000/";
-//    private  static  final String BASE_URL = "http://192.168.43.100:8000/";
-
-
+    //ugm.hotspot
+//    private  static  final String BASE_URL = "http://10.33.70.93:8000/";
+    //wifi upnormal
+//    private  static  final String BASE_URL = "http://172.20.2.104:8000/";
 
 
     private  static  RetrofitClient mInstance;

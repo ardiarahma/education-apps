@@ -108,8 +108,8 @@ public class RegisterParentActivity extends AppCompatActivity {
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             loading.dismiss();
-            etNama.setError("Masukkan email yang valid");
-            etNama.requestFocus();
+            etEmail.setError("Masukkan email yang valid");
+            etEmail.requestFocus();
             return;
         }
 
@@ -177,7 +177,7 @@ public class RegisterParentActivity extends AppCompatActivity {
             public void onFailure(Call<ResponseRegisterOrtu> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                 loading.dismiss();
-                Toast.makeText(mContext, "aaaaaaaaaaaaa", Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, "Username atau Email telah terdaftar", Toast.LENGTH_LONG).show();
             }
         });
 
