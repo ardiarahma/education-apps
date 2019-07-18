@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/default_bg_logreg">
+    android:background="@drawable/default_tab_layout">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -49,7 +49,7 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="20dp"
-                android:background="@drawable/default_login_frame">
+                android:background="@drawable/customborder">
 
 
                 <TextView
@@ -62,8 +62,9 @@
                     android:layout_marginLeft="5dp"
                     android:gravity="start"
                     android:text="Data Orang Tua"
-                    android:textColor="#16496e"
-                    android:textSize="16dp" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
                 <ImageView
                     android:id="@+id/imgOrtu"
@@ -90,9 +91,9 @@
                     android:hint="Nama Orang Tua"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="17dp"
-                    android:textColor="#8d16496e"
-                    android:textColorHint="#8d16496e"
-                    android:textSize="15dp" />
+                    android:textColorHint="#8e80a3bc"
+                    android:textColor="#e3041a2b"
+                    android:textSize="16dp" />
 
                 <EditText
                     android:id="@+id/usernameOrtu"
@@ -106,9 +107,9 @@
                     android:hint="Username Orang Tua"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="17dp"
-                    android:textColor="#8d16496e"
-                    android:textColorHint="#8d16496e"
-                    android:textSize="15dp" />
+                    android:textColorHint="#8e80a3bc"
+                    android:textColor="#e3041a2b"
+                    android:textSize="16dp" />
 
                 <EditText
                     android:id="@+id/emailOrtu"
@@ -121,9 +122,9 @@
                     android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="17dp"
-                    android:textColorHint="#8d16496e"
-                    android:textSize="15dp"
-                    android:textColor="#8d16496e"/>
+                    android:textColorHint="#8e80a3bc"
+                    android:textColor="#e3041a2b"
+                    android:textSize="16dp"/>
 
 
 
@@ -138,6 +139,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/default_button"
                 android:ems="7"
+                android:textSize="16dp"
                 android:text="Simpan"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"/>

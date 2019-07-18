@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.ardiarahma.education.R;
 import com.ardiarahma.education.activities.parent.ParentDetailsChildActivity;
 import com.ardiarahma.education.activities.parent.ParentEditChildActivity;
+import com.ardiarahma.education.activities.parent.ResultActivitiesReportActivity;
+import com.ardiarahma.education.activities.parent.ResultStudiesReportActivity;
 import com.ardiarahma.education.models.Siswa;
 import com.ardiarahma.education.models.Token;
 import com.ardiarahma.education.models.responses.ResponseDelete;
@@ -87,15 +89,26 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ViewHolder> 
                 context.startActivity(intent);
             }
         });
-//        holder.delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(context, ParentDeleteChildActivity.class);
-//                intent.putExtra("childId", holder.id);
-//                context.startActivity(intent);
-//            }
-//        });
 
+        holder.log_act.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ResultActivitiesReportActivity.class);
+                intent.putExtra("childId", holder.id);
+                intent.putExtra("childName", holder.nama);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.log_study.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ResultStudiesReportActivity.class);
+                intent.putExtra("childId", holder.id);
+                intent.putExtra("childName", holder.nama);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -116,7 +129,7 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ViewHolder> 
         String email, sekolah, nama, username;
         private TextView namaanak;
         private ImageButton edit, delete;
-        private CardView details;
+        private CardView details, log_act, log_study;
 
         Token auth = PreferencesConfig.getInstance(context).getToken();
         final String token = "Bearer " + auth.getToken();
@@ -127,6 +140,8 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ViewHolder> 
             edit = itemView.findViewById(R.id.edit);
             details = itemView.findViewById(R.id.item_anak);
             delete = itemView.findViewById(R.id.delete);
+            log_act = itemView.findViewById(R.id.b_log_act);
+            log_study = itemView.findViewById(R.id.b_log_study);
 
             delete.setOnClickListener(this);
 

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/default_bg_logreg"
+    android:background="@drawable/default_tab_layout"
     tools:context="com.ardiarahma.education.fragments.FragmentProfile">
 
     <!-- TODO: Update blank fragment layout -->
@@ -22,7 +22,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/default_login_frame">
+                android:background="@drawable/customborder">
 
                 <TextView
                     android:id="@+id/textView"
@@ -34,7 +34,8 @@
                     android:gravity="center"
                     android:text="Profil"
                     android:textSize="30dp"
-                    android:textColor="#16496e" />
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/textView4"
@@ -48,7 +49,8 @@
                     android:layout_marginTop="16dp"
                     android:text="Nama Lengkap"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                    android:textColor="@color/button" />
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/namalengkap"
@@ -59,6 +61,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="40dp"
                     android:text="in nama lengkapnya"
+                    android:textColor="#FFFFFF"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
 
@@ -72,7 +75,8 @@
                     android:layout_marginTop="10dp"
                     android:text="Email"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                    android:textColor="@color/button" />
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/emailOrtu"
@@ -84,6 +88,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="40dp"
                     android:text="ini email"
+                    android:textColor="#FFFFFF"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
                 <TextView
@@ -96,7 +101,8 @@
                     android:layout_marginTop="10dp"
                     android:text="Username"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                    android:textColor="@color/button" />
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/usernameOrtu"
@@ -108,6 +114,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="40dp"
                     android:text="ini username"
+                    android:textColor="#FFFFFF"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
                 <TextView
@@ -120,7 +127,8 @@
                     android:layout_marginTop="8dp"
                     android:text="Password"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                    android:textColor="@color/button" />
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"/>
 
                 <Button
                     android:id="@+id/pass_change"
@@ -134,10 +142,11 @@
                     android:layout_alignRight="@id/usernameOrtu"
                     android:layout_alignEnd="@id/usernameOrtu"
                     android:layout_marginTop="8dp"
+                    android:textSize="16dp"
                     android:text="Ganti password"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
-                    android:layout_marginBottom="20dp"/>
+                    android:layout_marginBottom="10dp"/>
 
 
 
@@ -152,6 +161,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/default_button"
                 android:ems="7"
+                android:textSize="16dp"
                 android:text="Edit Profil"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"/>

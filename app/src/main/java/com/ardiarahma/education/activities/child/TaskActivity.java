@@ -10,7 +10,9 @@ import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -19,8 +21,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ardiarahma.education.R;
+import com.ardiarahma.education.models.BanksoalShelves;
 import com.ardiarahma.education.models.Task;
 import com.ardiarahma.education.models.Token;
+import com.ardiarahma.education.models.User;
 import com.ardiarahma.education.models.responses.ResponseScore;
 import com.ardiarahma.education.models.responses.ResponseTask;
 import com.ardiarahma.education.networks.PreferencesConfig;
@@ -43,11 +47,13 @@ public class TaskActivity extends AppCompatActivity {
 
     Context context;
     ProgressDialog loading;
+    User user = PreferencesConfig.getInstance(this).getUser();
     Token auth = PreferencesConfig.getInstance(this).getToken();
     String token = "Bearer " + auth.getToken();
 
     int score;
     private int currentTaskId = 0;
+    private boolean check;
     String task_answer;
 
     private static final long START_TIME_IN_MILLIS = 600000;
@@ -60,8 +66,7 @@ public class TaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banksoal_test);
 
-        final Intent intent = getIntent();
-        String judul = intent.getStringExtra("task_title");
+        String judul = PreferencesConfig.getInstance(this).getTaskData().getName();
         task_header = findViewById(R.id.task_header);
         task_header.setText(judul);
 
@@ -90,9 +95,9 @@ public class TaskActivity extends AppCompatActivity {
         alertDialog.setNegativeButton("Jangan dulu, saya belum siap!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                onBackPressed();
-//                Intent intent = new Intent(TaskActivity.this, BanksoalShelvesActivity.class);
-//                startActivity(intent);
+//                onBackPressed();
+                Intent intent = new Intent(TaskActivity.this, BanksoalShelvesActivity.class);
+                startActivity(intent);
             }
         });
         alertDialog.setPositiveButton("Ayo, dimulai!", new DialogInterface.OnClickListener() {
@@ -131,9 +136,8 @@ public class TaskActivity extends AppCompatActivity {
 
         loading = ProgressDialog.show(this, null, "Please wait...",true, false);
 
-        Intent intent = getIntent();
-        int task_id = intent.getIntExtra("task_id", 0);
-        int classes = intent.getIntExtra("task_class", 0);
+        int task_id = PreferencesConfig.getInstance(this).getTaskData().getTask_id();
+        int classes = PreferencesConfig.getInstance(this).getTaskData().getClasses();
 
         Call<ResponseTask> call = RetrofitClient
                 .getInstance()
@@ -180,28 +184,30 @@ public class TaskActivity extends AppCompatActivity {
                 int selectedId = choices_group.getCheckedRadioButtonId();
                 RadioButton selectedRB = findViewById(selectedId);
                 if (selectedRB.getText().toString().equals(task_answer)){
-                    int answerId = currentTaskId;
                     String ans = selectedRB.getText().toString();
-//                    SharedPreferences sharedpref = context.getSharedPreferences("Answers", Context.MODE_PRIVATE);
-//                    SharedPreferences.Editor editor = sharedpref.edit();
-//                    editor.putString(String.valueOf(answerId), ans);
-//                    editor.apply();
                     score+=10;
                 }
 
+//                if (!choice_A.isChecked() || !choice_B.isChecked() || !choice_C.isChecked() || !choice_D.isChecked()){
+//                    Toast.makeText(TaskActivity.this, "Pertanyaan wajib diisi!", Toast.LENGTH_SHORT).show();
+//                }
+
                 if (currentTaskId < tasks.size() - 1){
+
                     currentTaskId++;
                     showQuestion();
-                    selectedRB.setChecked(false);
+                    selectedRB.setChecked(true);
                     choices_group.clearCheck();
-//                    count.setText(String.valueOf(currentTaskId + 1));
-
+                    previous.setVisibility(View.VISIBLE);
+                    count.setText(String.valueOf(currentTaskId +1));
                 }else {
-
+                    previous.setVisibility(View.INVISIBLE);
+                    next.setText("Selesai");
+                    next.setGravity(Gravity.CENTER);
                     Intent intent = new Intent(TaskActivity.this, ResultActivity.class);
                     intent.putExtra("score", score);
+                    storescore();
                     startActivity(intent);
-
                 }
             }
         });
@@ -211,8 +217,37 @@ public class TaskActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (currentTaskId > 0){
                     currentTaskId--;
+                    count.setText(String.valueOf(currentTaskId));
                     showQuestion();
                 }
+            }
+        });
+    }
+
+    public void storescore(){
+        int task_id = PreferencesConfig.getInstance(this).getTaskData().getTask_id();
+
+        Call<ResponseScore> call = RetrofitClient
+                .getInstance()
+                .getApi()
+                .store_score(token, task_id, score);
+        call.enqueue(new Callback<ResponseScore>() {
+            @Override
+            public void onResponse(Call<ResponseScore> call, Response<ResponseScore> response) {
+                loading.dismiss();
+                ResponseScore responseScore = response.body();
+                Log.d("TAG", "Response " + response.body());
+                if (response.isSuccessful()){
+                    if (responseScore.getStatus().equals("success")){
+                        Log.i("debug", "onResponse : SUCCESSFUL");
+                    }else {
+                        Log.i("debug", "onResponse : FAILED");
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseScore> call, Throwable t) {
+
             }
         });
     }

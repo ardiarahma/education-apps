@@ -12,7 +12,7 @@
         android:scaleType="fitXY"
         android:id="@+id/bgImage"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/default_bg_logreg"/>
+        android:src="@drawable/default_tab_layout"/>
 
 
     <RelativeLayout
@@ -26,8 +26,7 @@
         android:elevation="4dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="20dp"
-        android:background="@drawable/default_login_frame">
+        android:padding="20dp">
 
 
         <TextView
@@ -40,8 +39,8 @@
             android:layout_marginLeft="5dp"
             android:gravity="start"
             android:text="Data Orang Tua"
-            android:textColor="#16496e"
-            android:textSize="16dp" />
+            android:textColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <ImageView
             android:id="@+id/imgOrtu"
@@ -68,9 +67,9 @@
             android:hint="Nama Orang Tua"
             android:inputType="textEmailAddress"
             android:paddingLeft="17dp"
-            android:textColor="#8d16496e"
-            android:textColorHint="#8d16496e"
-            android:textSize="15dp" />
+            android:textColor="#e3041a2b"
+            android:textColorHint="#8e80a3bc"
+            android:textSize="16dp" />
 
         <EditText
             android:id="@+id/usernameOrtu"
@@ -84,9 +83,9 @@
             android:hint="Username Orang Tua"
             android:inputType="textEmailAddress"
             android:paddingLeft="17dp"
-            android:textColor="#8d16496e"
-            android:textColorHint="#8d16496e"
-            android:textSize="15dp" />
+            android:textColor="#e3041a2b"
+            android:textColorHint="#8e80a3bc"
+            android:textSize="16dp" />
 
         <EditText
             android:id="@+id/emailOrtu"
@@ -99,9 +98,9 @@
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:paddingLeft="17dp"
-            android:textColorHint="#8d16496e"
+            android:textColorHint="#8e80a3bc"
             android:textSize="15dp"
-            android:textColor="#8d16496e"/>
+            android:textColor="#e3041a2b"/>
 
         <EditText
             android:id="@+id/passwordOrtu"
@@ -114,17 +113,18 @@
             android:paddingLeft="17dp"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColorHint="#8d16496e"
-            android:textSize="15dp"
-            android:textColor="#8d16496e"/>
+            android:textColorHint="#8e80a3bc"
+            android:textSize="16dp"
+            android:textColor="#e3041a2b"/>
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/check_pass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="16dp"
             android:text="Tampilkan password"
-            android:textColor="#ad16496e"
+            android:textColor="#FFFFFF"
             android:layout_below="@id/passwordOrtu"
             android:textColorHint="@color/default_color"
             android:layout_marginTop="8dp"/>
@@ -140,6 +140,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/default_button"
         android:ems="7"
+        android:textSize="16dp"
         android:text="Daftar"
         android:textAllCaps="false"
         android:textColor="#ffffff"/>

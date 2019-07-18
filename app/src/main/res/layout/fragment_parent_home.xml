@@ -69,37 +69,60 @@
             android:elevation="10dp">
 
             <LinearLayout
-                android:id="@+id/contentnews"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/titlenews"
+                <Button
+                    android:id="@+id/tambahAnak"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:text="Berita"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_height="50dp"
+                    android:background="@drawable/default_button"
+                    android:layout_margin="10dp"
+                    android:text="Buat Akun Anak"
+                    android:ems="7"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:textSize="18dp"/>
 
-                <android.support.v4.widget.SwipeRefreshLayout
-                    android:id="@+id/swipe_refresh"
+                <LinearLayout
+                    android:id="@+id/layoutFill"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rv_news"
+                    <android.support.v4.widget.SwipeRefreshLayout
+                        android:id="@+id/swipe_refresh"
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_listAnak"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"/>
+
+                    </android.support.v4.widget.SwipeRefreshLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutEmpty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/titlenews"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:scrollbars="vertical">
-                    </android.support.v7.widget.RecyclerView>
-                </android.support.v4.widget.SwipeRefreshLayout>
+                        android:layout_gravity="center"
+                        android:text="Oops! Data belum tersedia"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/button" />
+
+                </LinearLayout>
             </LinearLayout>
+
+
         </android.support.v7.widget.CardView>
 
     </RelativeLayout>

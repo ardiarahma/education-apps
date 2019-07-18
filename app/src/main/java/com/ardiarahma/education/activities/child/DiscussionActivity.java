@@ -55,7 +55,7 @@ public class DiscussionActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DiscussionActivity.this, BanksoalShelvesActivity.class);
+                Intent intent = new Intent(DiscussionActivity.this, BanksoalActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,66 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/item_anak"
-    android:elevation="14dp"
-    android:layout_margin="10dp"
-    app:cardCornerRadius="10dp">
+    >
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        
-        <TextView
-            android:id="@+id/namalengkapanak"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:text="ini nama anaknya"
-            android:textSize="18dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="12dp"
-            android:ellipsize="end"/>
+    <android.support.v7.widget.CardView
+        android:id="@+id/item_anak"
+        android:layout_width="0dp"
+        android:layout_weight="0.7"
+        android:layout_height="50dp"
+        app:cardCornerRadius="10dp"
+        android:elevation="14dp"
+        android:layout_margin="10dp"
+        >
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_gravity="end"
-            android:layout_marginRight="10dp">
+            android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/edit"
-                android:src="@drawable/user_edit"
+            <TextView
+                android:id="@+id/namalengkapanak"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:background="#ffffff"
-                android:layout_marginRight="3dp"
-                android:scaleX="1.5"
-                android:scaleY="1.5" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:text="ini nama anaknya"
+                android:textSize="18dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:ellipsize="end"/>
 
-            <ImageButton
-                android:id="@+id/delete"
-                android:src="@drawable/user_delete"
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:background="#ffffff"
-                android:scaleY="1.5"
-                android:scaleX="1.5"
-                />
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_gravity="end"
+                android:layout_marginRight="10dp">
+
+                <ImageButton
+                    android:id="@+id/edit"
+                    android:src="@drawable/user_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:background="#ffffff"
+                    android:layout_marginRight="3dp"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5" />
+
+                <ImageButton
+                    android:id="@+id/delete"
+                    android:src="@drawable/user_delete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:background="#ffffff"
+                    android:scaleY="1.5"
+                    android:scaleX="1.5"
+                    />
+            </LinearLayout>
+
+
+
+
         </LinearLayout>
-        
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/b_log_act"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="0.1"
+        app:cardCornerRadius="10dp"
+        android:elevation="14dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:src="@drawable/default_ic_report" />
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/b_log_study"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="0.1"
+        app:cardCornerRadius="10dp"
+        android:elevation="14dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:src="@drawable/default_ic_statistic_report" />
+
+    </android.support.v7.widget.CardView>
 
 
-        
-    </LinearLayout>
 
-</android.support.v7.widget.CardView>
+</LinearLayout>
 

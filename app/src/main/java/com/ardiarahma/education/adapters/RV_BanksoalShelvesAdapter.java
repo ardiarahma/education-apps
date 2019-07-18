@@ -1,7 +1,9 @@
 package com.ardiarahma.education.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import com.ardiarahma.education.R;
 import com.ardiarahma.education.activities.child.TaskActivity;
 import com.ardiarahma.education.models.BanksoalShelves;
+import com.ardiarahma.education.networks.PreferencesConfig;
 
 import java.util.ArrayList;
 
@@ -36,7 +39,7 @@ public class RV_BanksoalShelvesAdapter extends RecyclerView.Adapter<RV_BanksoalS
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final BanksoalShelves banksoalShelf = banksoalShelves.get(position);
 
         holder.task_id = banksoalShelves.get(position).getTask_id();
@@ -46,10 +49,8 @@ public class RV_BanksoalShelvesAdapter extends RecyclerView.Adapter<RV_BanksoalS
         holder.banksoal_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PreferencesConfig.getInstance(context).saveTaskVar(banksoalShelf);
                 Intent intent = new Intent(context, TaskActivity.class);
-                intent.putExtra("task_title", holder.task_title);
-                intent.putExtra("task_id", holder.task_id);
-                intent.putExtra("task_class", holder.task_class);
                 context.startActivity(intent);
             }
         });

@@ -3,25 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_bg"
+    android:background="@drawable/default_tab_layout"
     android:id="@+id/splash_screen"
     tools:context="com.ardiarahma.education.activities.SplashScreen">
 
     <ImageView
-        android:id="@+id/logo"
+        android:id="@+id/logo_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="83dp"
         android:layout_margin="45pt"
         android:scaleType="fitXY"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo_3" />
 
     <ProgressBar
         android:id="@+id/progresBar1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
+        android:layout_below="@+id/logo_3"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/default_bg_logreg"
+    android:background="@drawable/default_tab_layout"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -47,7 +47,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/default_login_frame"
+                android:background="@drawable/customborder"
                 android:elevation="4dp"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -63,8 +63,8 @@
                     android:layout_toRightOf="@+id/imgAnak"
                     android:gravity="center_vertical"
                     android:text="Data Anak"
-                    android:textColor="#16496e"
-                    android:textSize="16dp" />
+                    android:textColor="#FFFFFF"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
                 <ImageView
                     android:id="@+id/imgAnak"
@@ -90,9 +90,9 @@
                     android:hint="Nama Lengkap Anak"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="15dp"
-                    android:textColor="@color/button"
-                    android:textColorHint="#8d16496e"
-                    android:textSize="15dp"
+                    android:textColor="#e3041a2b"
+                    android:textColorHint="#8e80a3bc"
+                    android:textSize="16dp"
                     android:layout_above="@id/ll1"/>
 
                 <LinearLayout
@@ -111,12 +111,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
                         android:text="Jenis Kelamin"
+                        android:textColor="#FFFFFF"
                         android:textSize="16dp"/>
                     <Spinner
                         android:id="@+id/spinner_gender"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.5"/>
+                        android:layout_weight="0.5"
+                        />
                 </LinearLayout>
 
                 <EditText
@@ -132,9 +134,9 @@
                     android:hint="Username Anak"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="15dp"
-                    android:textColor="@color/button"
-                    android:textColorHint="#8d16496e"
-                    android:textSize="15dp" />
+                    android:textColor="#e3041a2b"
+                    android:textColorHint="#8e80a3bc"
+                    android:textSize="16dp" />
 
                 <EditText
                     android:id="@+id/emailSiswa"
@@ -149,9 +151,9 @@
                     android:hint="Email Anak"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="15dp"
-                    android:textColor="@color/button"
-                    android:textColorHint="#8d16496e"
-                    android:textSize="15dp" />
+                    android:textColor="#e3041a2b"
+                    android:textColorHint="#8e80a3bc"
+                    android:textSize="16dp" />
 
                 <Button
                     android:id="@+id/passwordSiswa"
@@ -180,8 +182,8 @@
                     android:layout_marginRight="10dp"
                     android:gravity="left"
                     android:text="Sekolah"
-                    android:textColor="#16496e"
-                    android:textSize="16dp" />
+                    android:textColor="#FFFFFF"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
                 <LinearLayout
                     android:id="@+id/ll2"
@@ -192,7 +194,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="7dp"
                     android:paddingLeft="15dp"
-                    android:layout_above="@id/ll3">
+                    android:layout_above="@id/ll3"
+                    >
 
                     <TextView
                         android:id="@+id/text1"
@@ -200,7 +203,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
                         android:text="Provinsi"
-                        android:textSize="16dp" />
+                        android:textSize="16dp"
+                        android:textColor="#FFFFFF"/>
 
                     <Spinner
                         android:id="@+id/spinner_province"
@@ -225,7 +229,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
                         android:text="Kota/Kabupaten"
-                        android:textSize="16dp" />
+                        android:textSize="16dp"
+                        android:textColor="#FFFFFF"/>
                     <Spinner
                         android:id="@+id/spinner_city"
                         android:layout_width="0dp"
@@ -249,7 +254,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
                         android:text="Kecamatan"
-                        android:textSize="16dp" />
+                        android:textSize="16dp"
+                        android:textColor="#FFFFFF"/>
                     <Spinner
                         android:id="@+id/spinner_district"
                         android:layout_width="0dp"
@@ -271,9 +277,9 @@
                     android:ems="14"
                     android:hint="Nama Sekolah"
                     android:paddingLeft="15dp"
-                    android:textColor="#8d16496e"
-                    android:textColorHint="#8d16496e"
-                    android:textSize="15dp" />
+                    android:textColor="#e3041a2b"
+                    android:textColorHint="#8e80a3bc"
+                    android:textSize="16dp" />
 
                 <LinearLayout
                     android:id="@+id/ll5"
@@ -289,7 +295,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
                         android:text="Kelas"
-                        android:textSize="16dp" />
+                        android:textSize="16dp"
+                        android:textColor="#FFFFFF"/>
                     <Spinner
                         android:id="@+id/spinner_class"
                         android:layout_width="0dp"

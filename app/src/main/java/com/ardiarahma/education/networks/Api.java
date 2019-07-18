@@ -43,7 +43,7 @@ public interface Api {
     @FormUrlEncoded
     @POST("api/user/login")
     Call<ResponseLogin> loginUser(
-            @Field("username") String username,
+            @Field("email") String email,
             @Field("password") String password
     );
 

@@ -3,6 +3,7 @@ package com.ardiarahma.education.networks;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.ardiarahma.education.models.BanksoalShelves;
 import com.ardiarahma.education.models.Token;
 import com.ardiarahma.education.models.User;
 
@@ -34,20 +35,39 @@ public class PreferencesConfig {
         return instance;
     }
 
-    public void saveAnswer(){
-        sharedPreferences = context.getSharedPreferences("answers", Context.MODE_PRIVATE);
-        arrAnswer = new ArrayList<>();
+//    public void saveAnswer(){
+//        sharedPreferences = context.getSharedPreferences("answers", Context.MODE_PRIVATE);
+//        arrAnswer = new ArrayList<>();
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        Set<String> set = new HashSet<String>();
+//        set.addAll(arrAnswer);
+////        editor.putInt("ans", )
+//        editor.apply();
+//    }
+//
+//    public String getAns(){
+//        sharedPreferences = context.getSharedPreferences("answers", Context.MODE_PRIVATE);
+//        return new String(
+//                sharedPreferences.getString("ans", null)
+//        );
+//    }
+
+    //nyimpen task_id, dsb
+    public void saveTaskVar(BanksoalShelves task){
+        sharedPreferences = context.getSharedPreferences("BankSoal", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        Set<String> set = new HashSet<String>();
-        set.addAll(arrAnswer);
-//        editor.putInt("ans", )
+        editor.putInt("task_id", task.getTask_id());
+        editor.putString("name", task.getName());
+        editor.putInt("classes", task.getClasses());
         editor.apply();
     }
 
-    public String getAns(){
-        sharedPreferences = context.getSharedPreferences("answers", Context.MODE_PRIVATE);
-        return new String(
-                sharedPreferences.getString("ans", null)
+    public BanksoalShelves getTaskData(){
+        sharedPreferences = context.getSharedPreferences("BankSoal", Context.MODE_PRIVATE);
+        return  new BanksoalShelves(
+                sharedPreferences.getInt("task_id", 0),
+                sharedPreferences.getString("name", null),
+                sharedPreferences.getInt("classes", 0)
         );
     }
 

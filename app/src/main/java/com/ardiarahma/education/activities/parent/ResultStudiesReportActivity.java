@@ -62,8 +62,8 @@ public class ResultStudiesReportActivity extends AppCompatActivity {
         adapter = new RV_LogStudyReportAdapter(ResultStudiesReportActivity.this, logStudies);
         loading = ProgressDialog.show(ResultStudiesReportActivity.this, null,
                 "Please wait...",true, true);
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("childName");
+//        Intent intent = getIntent();
+        String name = "Laporan Hasil Belajar Anak";
         TextView title_toolbar = (TextView) findViewById(R.id.toolbar_title);
         title_toolbar.setText(name);
         ImageButton toolbar_back = (ImageButton) findViewById(R.id.toolbar_back);

@@ -58,8 +58,8 @@ public class ResultActivitiesReportActivity extends AppCompatActivity {
         adapter = new RV_LogActivityReportAdapter(ResultActivitiesReportActivity.this, log_details);
         loading = ProgressDialog.show(ResultActivitiesReportActivity.this, null,
                 "Please wait...",true, true);
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("childName");
+//        Intent intent = getIntent();
+        String name = "Laporan Kegiatan Anak";
         TextView title_toolbar = (TextView) findViewById(R.id.toolbar_title);
         title_toolbar.setText(name);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
